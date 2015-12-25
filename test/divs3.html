@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler</title>
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+      div#footer{
+      border-top: 1px solid #ccc;
+      color: #666;
+      font-size: 80%;
+      }
+      div#footer a{
+      color: #555;
+      }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" id="sgvzlr_script" src="../sgvizler.js"></script>
+    <script type="text/javascript">
+      sgvizler
+          .defaultEndpointOutputFormat('json')
+          .prefix('foaf', 'http://xmlns.com/foaf/0.1/')
+          .prefix('geo',  'http://www.w3.org/2003/01/geo/wgs84_pos#')
+          .prefix('dbp',  'http://dbpedia.org/resource/');
+      
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.containerDrawAll);
+    </script>
+  </head>
+  <body>
+    <h1>Sgvizler</h1>
+
+    <p>Test page for Sgvizler. Tests the use
+    of <code>data-sgvizler-rdf</code>, i.e. FROMs.</p>
+
+
+    <h2>1</h2>
+
+    <div id="sgvzl_example31"
+	 data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/from"
+	 data-sgvizler-rdf="http://folk.uio.no/martige/foaf|http://folk.uio.no/martingi/foaf.rdf"
+	 data-sgvizler-query="SELECT *
+			      WHERE{?s foaf:knows ?o}
+			      LIMIT 10"
+	 data-sgvizler-chart="google.visualization.Table"
+	 data-sgvizler-loglevel="2"
+	 style="height:400px"
+	 ></div>
+
+    <div id="footer">
+      <!-- Please leave a link to the Sgvizler homepage --> 
+      <p>
+	Sgvizler visualizes the result of SPARQL SELECT queries. For more
+	information, see
+	the <a href="http://dev.data2000.no/sgvizler/">Sgvizler</a>
+	homepage. (c)
+	2011-2013 Martin G. Skj&#230;veland.
+      </p>
+    </div>
+  </body>
+</html>

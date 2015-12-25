@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Sgvizler</title>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../examples.css"><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="../../sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('npd', 'http://sws.ifi.uio.no/npd/');
+      sgvizler.prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
+      
+	$(document).ready(function() { sgvizler.containerDrawAll(); });
+      </script></head>
+   <body>
+      <div id="logo"><a href="http://dev.data2000.no/sgvizler/"><img src="http://beta.data2000.no/sgvizler/misc/image/mr.sgvizler.png" alt="mr.sgvizler.png"></a><br>Mr. Sgvizler
+         
+      </div>
+      <h3><code>google.visualization.GeoChart</code>: Some things which have a totalDepth
+      </h3>
+      <p></p>
+      <div id="sgvzl_example_query" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" data-sgvizler-query="SELECT * WHERE{ [] npdv:nsDecDeg ?lat ; npdv:ewDecDeg ?long ; npdv:totalDepth ?depth ; FILTER(?lat &gt; 0 &amp;&amp; ?depth &gt; 0) } LIMIT 100" data-sgvizler-chart="google.visualization.GeoChart" data-sgvizler-chart-options="region=154" data-sgvizler-loglevel="2" style="width:800px; height:200px;"></div>
+      <p>The element which draws the above chart:</p><pre id="sgvzl_example_pre">&lt;div id="sgvzl_example_query" 
+   data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" 
+   data-sgvizler-query="SELECT * WHERE{ [] npdv:nsDecDeg ?lat ; npdv:ewDecDeg ?long ; npdv:totalDepth ?depth ; FILTER(?lat &gt; 0 &amp;amp;&amp;amp; ?depth &gt; 0) } LIMIT 100" 
+   data-sgvizler-chart="google.visualization.GeoChart" 
+   data-sgvizler-chart-options="region=154" 
+   data-sgvizler-loglevel="2" 
+   style="width:800px; height:200px;"/&gt;</pre><h3>The results of the query in <code>gTable</code></h3>
+      <div id="sgvzl_example_table" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" data-sgvizler-query="SELECT * WHERE{ [] npdv:nsDecDeg ?lat ; npdv:ewDecDeg ?long ; npdv:totalDepth ?depth ; FILTER(?lat &gt; 0 &amp;&amp; ?depth &gt; 0) } LIMIT 100" data-sgvizler-chart="google.visualization.Table" data-sgvizler-loglevel="2" style="width:800px; height:200px;"></div>
+      <h3>Same query, different charts</h3>
+      <p>Not all charts may be well-suited for displaying this dataset.</p>
+      <h4><code>google.visualization.GeoMap</code></h4>
+      <div id="sgvzl_example_query_copy_1" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd" data-sgvizler-query="SELECT * WHERE{ [] npdv:nsDecDeg ?lat ; npdv:ewDecDeg ?long ; npdv:totalDepth ?depth ; FILTER(?lat &gt; 0 &amp;&amp; ?depth &gt; 0) } LIMIT 100" data-sgvizler-chart="google.visualization.GeoMap" data-sgvizler-chart-options="region=154" data-sgvizler-loglevel="2" style="width:800px; height:400px;"></div>
+      <div id="footer">
+         <!--Please leave a link to the Sgvizler homepage.-->
+         <p>
+            	Sgvizler visualizes the result of SPARQL SELECT queries. For more
+            	information, see the <a href="http://dev.data2000.no/sgvizler/">Sgvizler</a>
+            	homepage. (c) 2011--2013 Martin G. Skjæveland.
+            
+         </p>
+      </div>
+   </body>
+</html>

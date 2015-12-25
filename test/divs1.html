@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler</title>
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+      div#footer{
+      border-top: 1px solid #ccc;
+      color: #666;
+      font-size: 80%;
+      }
+      div#footer a{
+      color: #555;
+      }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" id="sgvzlr_script" src="../sgvizler.js"></script>
+    <script type="text/javascript">
+      sgvizler
+          .defaultEndpointURL("http://sws.ifi.uio.no/sparql/npd")
+          .prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#');
+     
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.containerDrawAll);
+    </script>
+  </head>
+  <body>
+    <h1>Sgvizler</h1>
+
+    <p>Test page for Sgvizler. Tests chart types. Due to the amount of
+      data gathered in total for these charts, some might not show up
+      but give an error at first. Try then to reload page.</p>
+    
+    <p>All queries are sent
+      to <a href="http://sws.ifi.uio.no/sparql/npd">http://sws.ifi.uio.no/sparql/npd</a>
+    </p>
+    
+
+    <h2>1: gPieChart</h2>
+
+    <div id="sgvzl_example1" 
+	 data-sgvizler-query="SELECT ?class (count(?instance) AS ?noOfInstances)
+			      WHERE{ ?instance a ?class }
+			      GROUP BY ?class
+			      ORDER BY ?class"
+	 data-sgvizler-chart="google.visualization.PieChart"
+	 data-sgvizler-log="0"
+	 style="width:800px; height:600px;"
+	 >
+    </div>
+
+    <h2>2: gBarChart</h2>
+
+    <div id="sgvzl_example2" 
+	 data-sgvizler-query="SELECT * WHERE{ []
+			      a npdv:NCSProductionPeriod ;
+			      npdv:year ?year ;
+			      npdv:producedNetOilMillSm  ?Oil_millSm ;
+			      npdv:producedNetGasBillSm  ?Gas_billSm ;
+			      npdv:producedNetNGLMillSm3 ?NGL_millSm3 ;
+			      npdv:producedNetCondensateMillSm3 ?Condensate_millSm3 ;
+			      npdv:producedWaterMillSm3  ?Water_millSm3 ;
+			      FILTER (xsd:int(?year) < 2011)
+			      } ORDER BY ?year"
+	 data-sgvizler-chart="google.visualization.BarChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>3: gAreaChart</h2>
+
+    <div id="sgvzl_example3" 
+	 data-sgvizler-query="SELECT ?year ?Oil_millSm3 ?Gas_billSm3 ?NGL_millSm3 ?Condensate_millSm3 ?Water_millSm3
+			      WHERE{  ?period a npdv:FieldProductionPeriod ;
+			      npdv:hasField <http://sws.ifi.uio.no/npd/field/Ekofisk> ;
+			      npdv:year ?year ;
+			      npdv:producedNetOilMillSm3 ?Oil_millSm3 ;
+			      npdv:producedNetGasBillSm3 ?Gas_billSm3 ;
+			      npdv:producedNetNGLMillSm3 ?NGL_millSm3 ;
+			      npdv:producedNetCondensateMillSm3 ?Condensate_millSm3 ;
+			      npdv:producedWaterMillSm3  ?Water_millSm3 ;
+			      OPTIONAL{?period npdv:month ?month} .
+			      FILTER (!bound(?month))
+			      FILTER (xsd:int(?year) < 2011)
+			      } ORDER BY ?year"
+	 data-sgvizler-chart="google.visualization.AreaChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>3a: gSteppedAreaChart</h2>
+
+    <div id="sgvzl_example3a" 
+	 data-sgvizler-query="SELECT ?year ?Oil_millSm3 ?Gas_billSm3 ?NGL_millSm3 ?Condensate_millSm3 ?Water_millSm3
+			      WHERE{  ?period a npdv:FieldProductionPeriod ;
+			      npdv:hasField <http://sws.ifi.uio.no/npd/field/Ekofisk> ;
+			      npdv:year ?year ;
+			      npdv:producedNetOilMillSm3 ?Oil_millSm3 ;
+			      npdv:producedNetGasBillSm3 ?Gas_billSm3 ;
+			      npdv:producedNetNGLMillSm3 ?NGL_millSm3 ;
+			      npdv:producedNetCondensateMillSm3 ?Condensate_millSm3 ;
+			      npdv:producedWaterMillSm3  ?Water_millSm3 ;
+			      OPTIONAL{?period npdv:month ?month} .
+			      FILTER (!bound(?month))
+			      FILTER (xsd:int(?year) < 2011)
+			      } ORDER BY ?year"
+	 data-sgvizler-chart="google.visualization.SteppedAreaChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:400px;"
+	 ></div>
+
+    <h2>4: gColumnChart</h2>
+
+
+    <div id="sgvzl_example4" 
+	 data-sgvizler-query="SELECT * WHERE{ []
+			      a npdv:NCSProductionPeriod ;
+			      npdv:year ?year ;
+			      npdv:producedNetOilMillSm  ?Oil_millSm ;
+			      npdv:producedNetGasBillSm  ?Gas_billSm ;
+			      npdv:producedNetNGLMillSm3 ?NGL_millSm3 ;
+			      npdv:producedNetCondensateMillSm3 ?Condensate_millSm3 ;
+			      npdv:producedWaterMillSm3  ?Water_millSm3 ;
+			      FILTER (xsd:int(?year) < 2011)
+			      } ORDER BY ?year"
+	 data-sgvizler-chart="google.visualization.ColumnChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>5: gLineChart</h2>
+
+    <!-- // avg and max no of days of drilling, and sum exploration  -->
+    <!-- // wellbores per completion year. no obvious corrolation. -->
+    <div id="sgvzl_example5" 
+	 data-sgvizler-query="SELECT ?year (AVG(?days) AS ?noDrillingDays) (COUNT(?wellbore) AS ?noWellbores)
+			      WHERE { ?wellbore a npdv:ExplorationWellbore ;
+			      npdv:numberOfDrillingDays ?days ;
+			      npdv:completionYear ?year ;
+			      FILTER(xsd:int(?year) > 0 && xsd:int(?year) < 2011)
+			      }
+			      GROUP BY (?year)
+			      ORDER BY ?year "
+	 data-sgvizler-chart="google.visualization.LineChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>9: gScatterChart</h2>
+
+    <!-- // comparing mudDepths and test values -->
+    <div id="sgvzl_example9" 
+	 data-sgvizler-query="SELECT *
+			      WHERE{
+			      [] a npdv:WellboreMudTest;
+			      npdv:mudDepth ?mudDepth ;
+			      npdv:mudViscosityAtMudDepth ?Viscosity ;
+			      } LIMIT 200"
+	 data-sgvizler-chart="google.visualization.ScatterChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>12: gGeoMap</h2>
+
+    <!-- // lat and long of things with totalDepth and a name. Works with GeoMap. -->
+    <div id="sgvzl_example12" 
+	 data-sgvizler-query="SELECT *
+			      WHERE{ [] 
+			      npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:totalDepth ?depth ;
+			      npdv:name ?name ;
+			      FILTER(?lat > 0 && ?depth > 0)
+			      } LIMIT 100"
+	 data-sgvizler-chart="google.visualization.GeoMap"
+	 data-sgvizler-log="2"
+      	 data-sgvizler-chart-dataMode="markers"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>12a: gGeoChart</h2>
+
+    <div id="sgvzl_example12a" 
+	 data-sgvizler-query="SELECT *
+			      WHERE{ [] 
+			      npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:totalDepth ?depth ;
+			      FILTER(?lat > 0 && ?depth > 0)
+			      } LIMIT 100"
+	 data-sgvizler-chart="google.visualization.GeoChart"
+	 data-sgvizler-log="2"
+      	 data-sgvizler-chart-options="datamode=markers|region=154"
+	 style="width:800px; height:400px;"
+	 ></div>
+
+    <h2>12b: gBubbleChart</h2>
+
+    <div id="sgvzl_example12b" 
+	 data-sgvizler-query="SELECT ?name ?lat ?long ?name ?depth
+			      WHERE{ [] 
+			      npdv:name ?name ;
+			      npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:totalDepth ?depth ;
+			      FILTER(?lat > 0 && ?depth > 0)
+			      } LIMIT 15"
+	 data-sgvizler-chart="google.visualization.BubbleChart"
+	 data-sgvizler-log="2"
+	 style="width:1600px; height:800px;"
+	 ></div>
+
+
+    <h2>13: gMotionChart</h2>
+
+
+    <!-- // Motion Chart. Produced oil, gas, NGL and water per year.    -->
+    <div id="sgvzl_example13" 
+	 data-sgvizler-query="SELECT ?cat xsd:int(?year) ?value 
+			      WHERE{{[]  
+			      a npdv:NCSProductionPeriod ;
+			      npdv:year ?year ;
+			      npdv:producedNetOilMillSm ?value ;
+			      LET(?cat := 'OIL')}
+			      UNION {[]  
+			      a npdv:NCSProductionPeriod ;
+			      npdv:year ?year ;
+			      npdv:producedNetGasBillSm ?value ;
+			      LET(?cat := 'GAS')}
+			      UNION {[]  
+			      a npdv:NCSProductionPeriod ;
+			      npdv:year ?year ;
+			      npdv:producedNetNGLMillSm3 ?value ;
+			      LET(?cat := 'NGL')}
+			      UNION {[]  
+			      a npdv:NCSProductionPeriod ;
+			      npdv:year ?year ;
+			      npdv:producedWaterMillSm3 ?value ;
+			      LET(?cat := 'Water')} }"
+	 data-sgvizler-chart="google.visualization.MotionChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+
+    <h2>15: gTreeMap</h2>
+
+
+    <!-- // Treemap. Structure: All -> Company -> Field -> ExplorationWellbore -->
+    <!-- // value is quite random: numberOfDrillingDays. -->
+    <div id="sgvzl_example15" 
+	 data-sgvizler-query="SELECT DISTINCT ?node ?parent ?value
+			      WHERE{
+			      {   [] a [] .
+			      LET(?node := 'ALL')
+			      LET(?parent := '')
+			      LET(?value := 0)
+			      } 
+			      UNION
+			      {   ?s npdv:name ?node;
+			      a npdv:Company .
+			      [] a npdv:Field ;
+			      npdv:hasCompany ?s .
+			      LET(?parent := 'ALL')
+			      LET(?value := 0)
+			      }
+			      UNION
+			      {   ?s npdv:name ?node;
+			      a npdv:Field ;
+			      npdv:hasCompany [npdv:name ?parent] .
+			      [] a npdv:ExplorationWellbore ;
+			      npdv:hasField ?s .
+			      LET(?value := 0)
+			      }
+			      UNION
+			      {   ?s npdv:name ?node;
+			      a npdv:ExplorationWellbore ;
+			      npdv:hasField [npdv:name ?parent ] ;
+			      npdv:numberOfDrillingDays ?value;
+			      }}"
+	 data-sgvizler-chart="google.visualization.TreeMap"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>16: gOrgChart</h2>
+
+    <!-- // OrgChart. Structure: ALL -> Company -> Field (which has ExplorationWellbore). -->
+    <div id="sgvzl_example16" 
+	 data-sgvizler-query="SELECT DISTINCT ?node ?parent
+			      WHERE{
+			      {   [] a [] .
+			      LET(?node := 'ALL')
+			      LET(?parent := '')
+			      LET(?value := 0)
+			      }
+			      UNION
+			      {  ?s npdv:name ?node ;
+			      a npdv:Company .
+			      [] a npdv:Field ;
+			      npdv:hasCompany ?s .
+			      LET(?parent := 'ALL')
+			      LET(?value := 0)
+			      } 
+			      UNION
+			      {   ?s npdv:name ?node;
+			      a npdv:Field ;
+			      npdv:hasCompany [npdv:name ?parent] .
+			      [] a npdv:ExplorationWellbore ;
+			      npdv:hasField ?s .
+			      }
+			      }"
+	 data-sgvizler-chart="google.visualization.OrgChart"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>17: gTimeline</h2>
+
+    <!-- // Production oil and gas at Ekofisk. Timeline data format. -->
+    <div id="sgvzl_example17" 
+	 data-sgvizler-query="PREFIX fn: <http://www.w3.org/2005/xpath-functions#> 
+			      SELECT xsd:date(?date) ?Oil_millSm '' '' ?Gas_billSm '' ''
+			      WHERE{ 
+			      {[] 
+			      a npdv:FieldProductionPeriod ;
+			      npdv:hasField <http://sws.ifi.uio.no/npd/field/Ekofisk> ;
+			      npdv:month ?month ;
+			      npdv:year ?year ;
+			      npdv:producedNetOilMillSm3 ?Oil_millSm ;
+			      npdv:producedNetGasBillSm3 ?Gas_billSm ;
+			      LET (?date := fn:concat(fn:concat(fn:concat(?year, '-'), ?month), '-01'))
+			      FILTER (xsd:int(?year) < 2011 && xsd:int(?month) > 9)
+			      }
+			      UNION
+			      {
+			      [] 
+			      a npdv:FieldProductionPeriod ;
+			      npdv:hasField <http://sws.ifi.uio.no/npd/field/Ekofisk> ;
+			      npdv:month ?month ;
+			      npdv:year ?year ;
+			      npdv:producedNetOilMillSm3 ?Oil_millSm ;
+			      npdv:producedNetGasBillSm3 ?Gas_billSm ;
+			      LET (?date := fn:concat(fn:concat(fn:concat(?year, '-0'), ?month), '-01'))
+			      FILTER (xsd:int(?year) < 2011 && xsd:int(?month) < 10)
+			      } }ORDER BY xsd:date(?date)"
+	 data-sgvizler-chart="google.visualization.AnnotatedTimeLine"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    <h2>18: sMap</h2>
+
+    <!-- // lat and long of things north of 72.5 degrees north. -->
+    <div id="sgvzl_example18" 
+	 data-sgvizler-query="SELECT ?lat ?long ?name ?text ?url
+			      WHERE 
+			      {
+			      ?url npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:name ?name .
+			      FILTER (?lat > 72.5)
+			      }"
+	 data-sgvizler-chart="sgvizler.visualization.Map"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    
+    <h2>19: gTable</h2>
+
+    <!-- // lat, long, name of the development wellbores of Frigg. -->
+    <div id="sgvzl_example19" 
+	 data-sgvizler-query="SELECT ?lat ?long ?name
+			      WHERE 
+			      { ?url npdv:hasField <http://sws.ifi.uio.no/npd/field/Frigg> ;
+			      npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:name ?name ;
+			      a npdv:DevelopmentWellbore
+			      }"
+	 data-sgvizler-chart="google.visualization.Table"
+	 data-sgvizler-log="2"
+	 style="width:800px; height:600px;"
+	 ></div>
+
+    
+    <h2>20: sList</h2>
+
+    <!-- // lat, long, name of the development wellbores of Frigg. -->
+    <div id="sgvzl_example20" 
+	 data-sgvizler-query="SELECT ?lat ?long ?name
+			      WHERE 
+			      { ?url npdv:hasField <http://sws.ifi.uio.no/npd/field/Frigg> ;
+			      npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:name ?name ;
+			      a npdv:DevelopmentWellbore .
+			      } LIMIT 10"
+	 data-sgvizler-chart="sgvizler.visualization.List"
+      	 data-sgvizler-chart-options="cellSep= "
+	 data-sgvizler-log="2"
+	 ></div>
+
+    <h2>21: sDefList</h2>
+
+    <!-- // lat, long, name of the development wellbores of Frigg. -->
+    <div id="sgvzl_example21" 
+	 data-sgvizler-query="SELECT ?lat ?long ?name
+			      WHERE 
+			      { ?url npdv:hasField <http://sws.ifi.uio.no/npd/field/Frigg> ;
+			      npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:name ?name ;
+			      a npdv:DevelopmentWellbore .
+			      } LIMIT 10"
+	 data-sgvizler-chart="sgvizler.visualization.DefList"
+      	 data-sgvizler-chart-options=""
+	 data-sgvizler-log="2"
+	 ></div>
+
+    
+    <h2>22: sText</h2>
+
+    <!-- // lat, long, name of the development wellbores of Frigg. -->
+    <div id="sgvzl_example22" 
+	 data-sgvizler-query="SELECT ?lat ?long ?name
+			      WHERE 
+			      { ?url npdv:hasField <http://sws.ifi.uio.no/npd/field/Frigg> ;
+			      npdv:nsDecDeg ?lat ;
+			      npdv:ewDecDeg ?long ;
+			      npdv:name ?name ;
+			      a npdv:DevelopmentWellbore .
+			      } LIMIT 10"
+	 data-sgvizler-chart="sgvizler.visualization.Text"
+      	 data-sgvizler-chart-options=""
+	 data-sgvizler-log="2"
+	 ></div>
+
+    <div id="footer">
+      <!-- Please leave a link to the Sgvizler homepage --> 
+      <p>
+	Sgvizler visualizes the result of SPARQL SELECT queries. For more
+	information, see
+	the <a href="http://dev.data2000.no/sgvizler/">Sgvizler</a>
+	homepage. (c) 2011-2013 Martin G. Skj&#230;veland.
+      </p>
+    </div>
+  </body>
+</html>
