@@ -9,19 +9,19 @@
          * @return {google.visualization.DataTable}
          * @since 0.6.0
          */
-        DT.prefixify = datatables.add(modST, 'prefixify', function (dataTable) {
-            var c, clen = dataTable.getNumberOfColumns(),
-                r, rlen = dataTable.getNumberOfRows();
+        DT.prefixify = datatables.add(modST, 'prefixify', function (data) {
+            var c, clen = data.getNumberOfColumns(),
+                r, rlen = data.getNumberOfRows();
 
             for (c = 0; c < clen; c += 1) {
-                if (dataTable.getColumnType(c) === 'string') {
+                if (data.getColumnType(c) === 'string') {
                     for (r = 0; r < rlen; r += 1) {
-                        dataTable.setValue(r, c,
-                            namespace.prefixify(dataTable.getValue(r, c))
+                        data.setValue(r, c,
+                            namespace.prefixify(data.getValue(r, c))
                             );
                     }
                 }
             }
-            return dataTable;
+            return data;
         });
 

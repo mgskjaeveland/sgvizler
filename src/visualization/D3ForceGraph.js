@@ -17,15 +17,15 @@
          */
         /*global d3 */
         C.D3ForceGraph = charts.add(modSC, 'D3ForceGraph',
-            function (data, chartOpt) {
+            function (data, chartOptions) {
                 var r, noRows = data.getNumberOfRows(),
                     i, len,
                     noColumns = data.getNumberOfColumns(),
 
-                    opt = $.extend({'maxnodesize': 15, 'minnodesize': 2 }, chartOpt), // set defaults
+                    opt = $.extend({ maxnodesize: 15, minnodesize: 2 }, chartOptions), // set defaults
                     colors = d3.scale.category20(),
-                    w = chartOpt.width,
-                    h = chartOpt.height,
+                    w = chartOptions.width,
+                    h = chartOptions.height,
                     isNumber = function (n) {  return !isNaN(parseFloat(n)) && isFinite(n); },
 
                     // build arrays of nodes and links.

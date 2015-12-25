@@ -36,9 +36,7 @@
      * @since 0.5
      **/
 
-    // Note: the parameter names in the documention are different just
-    // for better readability.
-    S.Query = function (queryOpt, chartOpt) {
+    S.Query = function (queryOptions, chartOptions) {
 
         /*global $ */
 
@@ -68,12 +66,12 @@
              * sgvizler class) and are loaded on construction---and
              * get overwritten by properties in the constructed
              * parameter.
-             * @property queryOptions
+             * @property queryOpt
              * @type Object
              * @private
              * @since 0.5
              **/
-            queryOptions,
+            queryOpt,
 
             /**
              * Contains properties relevant for chart drawing
@@ -85,12 +83,12 @@
              * sgvizler class) and are loaded on construction---and
              * get overwritten by properties in the constructed
              * parameter.
-             * @property chartOptions
+             * @property chartOpt
              * @type Object
              * @private
              * @since 0.5
              **/
-            chartOptions,
+            chartOpt,
 
             //TODO
             listeners = {},
@@ -144,7 +142,7 @@
              * @since 0.5
              **/
             addFrom = function (url) {
-                queryOptions.froms.push(url);
+                queryOpt.froms.push(url);
             },
 
             /**
@@ -156,7 +154,7 @@
              * @since 0.5
              **/
             clearFroms = function () {
-                queryOptions.froms = [];
+                queryOpt.froms = [];
             },
 
             //// Getters/Setters
@@ -180,7 +178,7 @@
                 if (queryString !== undefined) {
                     clearFroms();
                 }
-                return getset('query', queryString, queryOptions, this);
+                return getset('query', queryString, queryOpt, this);
             },
             /**
              * Get endpoint URL.
@@ -201,7 +199,7 @@
              * @since 0.5
              **/
             endpointURL = function (url) {
-                return getset('endpoint', url, queryOptions, this);
+                return getset('endpoint', url, queryOpt, this);
             },
 
             /**
@@ -221,12 +219,12 @@
              * @since 0.5
              **/
             endpointOutputFormat = function (format) {
-                return getset('endpoint_output_format', format, queryOptions, this);
+                return getset('endpoint_output_format', format, queryOpt, this);
             },
 
             // TODO
             endpointResultsURLPart = function (value) {
-                return getset('endpoint_results_urlpart', value, queryOptions, this);
+                return getset('endpoint_results_urlpart', value, queryOpt, this);
             },
 
             /**
@@ -249,17 +247,17 @@
              *     TODO
              **/
             validatorURL = function (url) {
-                return getset('validator_url', url, queryOptions, this);
+                return getset('validator_url', url, queryOpt, this);
             },
 
             // TODO
             loglevel = function (value) {
-                return getset('loglevel', value, queryOptions, this);
+                return getset('loglevel', value, queryOpt, this);
             },
 
             // TODO
             logContainer = function (value) {
-                return getset('logContainer', value, queryOptions, this);
+                return getset('logContainer', value, queryOpt, this);
             },
 
             /**
@@ -281,7 +279,7 @@
              * @since 0.5
              **/
             datatableFunction = function (functionName) {
-                return getset('datatable', functionName, queryOptions, this);
+                return getset('datatable', functionName, queryOpt, this);
             },
 
             /**
@@ -302,7 +300,7 @@
              * @since 0.5
              **/
             chartFunction = function (functionName) {
-                return getset('chart', functionName, queryOptions, this);
+                return getset('chart', functionName, queryOpt, this);
             },
 
             /**
@@ -321,7 +319,7 @@
              * @since 0.5
              **/
             chartHeight = function (height) {
-                return getset('height', height, chartOptions, this);
+                return getset('height', height, chartOpt, this);
             },
 
             /**
@@ -340,7 +338,25 @@
              * @since 0.5
              **/
             chartWidth = function (width) {
-                return getset('width', width, chartOptions, this);
+                return getset('width', width, chartOpt, this);
+            },
+
+            /**
+             * Get a current query parameter by its default name.
+             * @public
+             * @return {string}
+             * @since 0.6.1 
+             */
+            /**
+             * Set a query parameter.
+             * @public
+             * @param {string} defaultname The default name of the query parameter, e.g,. `query`.
+             * @param {string} newname The new name of the query parameter.
+             * @chainable
+             * @since 0.6.1 
+             */
+            queryParameter = function (defaultname, newname) {
+                return getset(defaultname, newname, queryOpt.params, this);
             },
 
             /**
@@ -363,12 +379,12 @@
              * @since 0.5
              **/
             insertFrom = function () {
-                var i, len = queryOptions.froms.length,
+                var i, len = queryOpt.froms.length,
                     from;
                 if (len) {
                     from = "";
                     for (i = 0; i < len; i += 1) {
-                        from += 'FROM <' + queryOptions.froms[i] + '>\n';
+                        from += 'FROM <' + queryOpt.froms[i] + '>\n';
                     }
                     query(query().replace(/((WHERE)?(\s)*\{)/i, '\n' + from + '$1'));
                 }
@@ -444,7 +460,7 @@
              * on the listener `name`.
              *
              * See `addListener`.
-             *
+              *
              * @method fireListener
              * @private
              * @param {String} name The name of the listener.
@@ -485,8 +501,8 @@
                             var qx = $.Deferred(),
                                 xdr = new XDomainRequest(),
                                 url = endpointURL() +
-                                    "?query=" + getEncodedQuery() +
-                                    "&output=" + myEndpointOutput;
+                                    "?" + queryOpt.params.query + "=" + getEncodedQuery() +
+                                    "&" + queryOpt.params.output + "=" + myEndpointOutput;
                             xdr.open("GET", url);
                             xdr.onload = function () {
                                 var data;
@@ -504,10 +520,14 @@
                 } else {
                     promise = $.ajax({
                         url: endpointURL(),
-                        data: {
-                            query: prefixesSPARQL() + query(),
-                            output: (myEndpointOutput === qfJSONP) ? qfJSON : myEndpointOutput
-                        },
+                        data: (
+                            function () {
+                                var data = {};
+                                data[queryOpt.params.query] = prefixesSPARQL() + query();
+                                data[queryOpt.params.output] = (myEndpointOutput === qfJSONP) ? qfJSON : myEndpointOutput;
+                                return data;
+                            }()
+                        ),
                         dataType: myEndpointOutput
                     });
                 }
@@ -643,7 +663,7 @@
                                 }
 
                                 // dataTable is set by saveDataTable.
-                                chartFunc.draw(dataTable, chartOptions);
+                                chartFunc.draw(dataTable, chartOpt);
                             } catch (x) {
                                 // TODO: better error reporting, what went wrong?
                                 logger.log(myChart + " -- " + x);
@@ -657,11 +677,11 @@
 
         // Load default values, and overwrite them with values given
         // in constructer parameters.
-        queryOptions = $.extend(defaults.getQueryOptions(),
-                                queryOpt);
-        chartOptions = $.extend(defaults.getChartOptions(),
+        queryOpt = $.extend(defaults.getQueryOptions(),
+                                queryOptions);
+        chartOpt = $.extend(defaults.getChartOptions(),
                                 defaults.getChartSpecificOptions(chartFunction()),
-                                chartOpt);
+                                chartOptions);
 
         // Safeguard constructor.
         if (!(this instanceof S.Query)) {
@@ -740,6 +760,7 @@
             datatableFunction: datatableFunction,
             chartFunction: chartFunction,
             chartHeight: chartHeight,
-            chartWidth: chartWidth
+            chartWidth: chartWidth,
+            queryParameter: queryParameter
         };
     };

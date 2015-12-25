@@ -16,7 +16,7 @@
          * @since 0.6.0
          */
         C.MapWKT = charts.add(modSC, "MapWKT",
-            function (data, chartOpt) {
+            function (data, chartOptions) {
                 /*global google, OpenLayers */
                 var //c,
                     noColumns = data.getNumberOfColumns(),
@@ -32,7 +32,7 @@
                             geoDatumIn: "EPSG:4326",//"EPSG:4230",
                             geoDatumOut: "EPSG:4326"
                         },
-                        chartOpt
+                        chartOptions
                     ),
 
                     mapOptions = {

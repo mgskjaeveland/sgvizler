@@ -1,4 +1,3 @@
-
     //// OTHER SOURCE FILES ARE CONCATENATED IN ABOVE
     //// STARTING WITH start.js.part
 
@@ -52,6 +51,7 @@
         containerDrawAll: S.container.drawAll,
 
         formDraw: S.form.draw,
+        formParameterName: S.form.parameterName,
         formSubmit: S.form.submit,
         formReset: S.form.reset,
 
@@ -95,7 +95,7 @@
          * @since 0.6.0
          **/
         /**
-         * Set Base URL. 
+         * Set Base URL.
          * @method defaultBaseURL
          * @public
          * @param {string} url
@@ -174,6 +174,33 @@
             return globalGetSet('endpoint', endpointURL, globalDefaultsQuery, this);
         },
 
+
+        /**
+         * Get default query parameter name.
+         * @method defaultQueryParameter
+         * @public
+         * @param {string} defaultname
+         * @return {string}
+         * @since 0.6.1
+         **/
+        /**
+         * Set default query parameter
+         * @method defaultQueryParameter
+         * @public
+         * @param {string} defaultname
+         * @param {string} newname
+         * @chainable
+         * @example sgvizler.defaultQueryParameter('output', 'format')
+         *     sets the name of the `output` parameter to `format`,
+         *     i.e., the request sent to the endpoint uses `format`
+         *     instead of `output`.
+         * @since 0.6.1
+         **/
+        defaultQueryParameter: function (defaultname, newname) {
+            return globalGetSet(defaultname, newname, globalDefaultsQuery.params, this);
+        },
+
+
         /**
          * Get default endpoint output format.
          * @method defaultEndpointOutputFormat
@@ -239,6 +266,7 @@
          *   - FINER
          *   - FINEST (lowest value)
          * @method defaultLoglevel
+         * @param {String} value
          */
         defaultLogLevel: function (value) {
             return globalGetSet('loglevel', value, globalDefaultsQuery, this);
@@ -332,6 +360,9 @@
          * @method defaultChartSpecificOption
          * @public
          * @chainable
+         * @param {String} chart
+         * @param {String} option
+         * @param {String} value
          * @since 0.6.0
          **/
         defaultChartSpecificOption: function (chart, option, value) {

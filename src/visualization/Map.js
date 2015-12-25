@@ -34,7 +34,7 @@
          * @since 0.3.0
          */
         C.Map = charts.add(modSC, "Map",
-            function (data, chartOpt) {
+            function (data, chartOptions) {
                 /*global google */
                 var c, noColumns = data.getNumberOfColumns(),
                     r, noRows = data.getNumberOfRows(),
@@ -43,7 +43,7 @@
                                      showTip: true,
                                      useMapTypeControl: true
                                    },
-                                   chartOpt),
+                                   chartOptions),
                     chart,
                     newData,
                     newValue;

@@ -32,7 +32,11 @@
                     "&amp;linenumbers=true" +
                     "&amp;query=",
                 chart: moduleGooVis + '.Table',
-                loglevel: 2
+                loglevel: 2,
+                params: {
+                    query: 'query',
+                    output: 'output'
+                }
             },
 
             chartDefaults = {
@@ -92,7 +96,7 @@
              * @since 0.6.0
              **/
             getQueryOptions: function () {
-                return $.extend({}, queryDefaults);
+                return $.extend(true, {}, queryDefaults);
             },
 
             /**
@@ -102,7 +106,7 @@
              * @since 0.6.0
              **/
             getChartOptions: function () {
-                return $.extend({}, chartDefaults);
+                return $.extend(true, {}, chartDefaults);
             },
 
             /**

@@ -1,4 +1,3 @@
-
     /**
      * Handles all UI business for the HTML form for writing, issuing
      * and drawing sgvizler queries.
@@ -265,7 +264,7 @@
                               [
                                   ['a', { href: S.core.HOMEPAGE },  ['Sgvizler'] ],
                                   ' version ' + S.core.VERSION +
-                                      ' (c) 2011&ndash;2013 Martin G. Skj&#230;veland.'
+                                      ' (c) 2011&ndash;' + new Date().getFullYear() + ' Martin G. Skj&#230;veland.'
                               ]
                              ]
                          ]
@@ -276,18 +275,47 @@
             /**
              * A list of permissible URL parameters. The parameter
              * name must be in this list to be read by the form.
-             * @property permissible_urlparams
+             * @property urlparamnames
              * @type Array
              * @private
              * @since 0.3.1
              **/
-            permissible_urlparams = [ 'query',
-                                      'endpoint',
-                                      'endpoint_output',
-                                      'chart',
-                                      'width',
-                                      'height',
-                                      'ui'],
+            urlparamnames = {
+                query: 'query',
+                endpoint: 'endpoint',
+                endpoint_output: 'endpoint_output',
+                chart: 'chart',
+                width: 'width',
+                height: 'height',
+                ui: 'ui'
+            },
+
+            /**
+             * Get-setter function for the URL parameter names. Useful
+             * for changing what parameters Sgvizler is listening
+             * to. The list of default names are:
+             *  - query
+             *  - endpoint
+             *  - endpoint_output
+             *  - chart
+             *  - width
+             *  - height
+             *  - ui
+             * @method formParameterName
+             * @for sgvizler
+             * @public
+             * @param {String} defaultname The parameter name to change.
+             * @param {String} newname The new value of the parameter
+             * name. If this value is undefined, then the function
+             * acts as a get function, returning the value of the
+             * value set for the parameter with the given default
+             * name.
+             * @return {String}
+             * @since 0.6.1
+             */
+            parameterName = function (defaultname, newname) {
+                return util.getset(defaultname, newname, urlparamnames);
+            },
 
             /**
              * Tests if there really is an element with the give
@@ -475,6 +503,7 @@
              * selections in the form, using other `displayX` methods.
              * @method displayUI
              * @private
+             * @param {sgvizler.Query} query Possible to Query to display in the interface.
              * @since 0.1
              **/
             displayUI = function (query) {
@@ -487,21 +516,23 @@
              * Parses the current URL for parameters. Permissible
              * parameters are, if present, those listed in the input
              * of this method, or in the array
-             * `permissible_urlparams`.
+             * `urlparamnames`.
              * @method getUrlParams
-             * @param {Array} [urlparams]
+             * @param {Array} [names] list of parameter names to pick
+             * up from the URL. If undefined, then all available and
+             * permissible parameters will be returned.
              * @private
              * @return {Object} A list of parameter--value pairs.
              * @since 0.1
              **/
-            getUrlParams = function (urlparams) {
+            getUrlParams = function (names) {
                 /*jslint regexp: true */
                 var urlParams = {},
                     e,
                     r = /([^&=]+)=?([^&]*)/g, // parameter, value pairs.
                     d = function (s) { return decodeURIComponent(s.replace(/\+/g, " ")); }, // replace '+' with space.
                     q = window.location.search.substring(1), // URL query string part.
-                    params = urlparams || permissible_urlparams; // set defaults if necessary.
+                    params = names || util.getObjectValues(urlparamnames); // set defaults if necessary.
 
                 while ((e = r.exec(q)) !== null) {
                     if (e[2].length > 0 && util.isInArray(e[1], params)) {
@@ -551,21 +582,21 @@
                 var params = getUrlParams(),
                     query = new Query(
                         {
-                            query: params.query,
-                            chart: params.chart,
-                            endpoint: params.endpoint,
-                            endpoint_output: params.endpoint_output
+                            query: params[urlparamnames.query],
+                            chart: params[urlparamnames.chart],
+                            endpoint: params[urlparamnames.endpoint],
+                            endpoint_output: params[urlparamnames.endpoint_output]
                         },
                         {
-                            width: params.width,
-                            height: params.height
+                            width: params[urlparamnames.width],
+                            height: params[urlparamnames.height]
                         }
                     );
 
-                createUI(elementID, params.ui);
+                createUI(elementID, params[urlparamnames.ui]);
                 displayUI(query);
 
-                if (isElement(idChartCon) && params.query) {
+                if (isElement(idChartCon) && params[urlparamnames.query]) {
                     query.logContainer(idMessageCon);
                     query.draw(idChartCon);
                 }
@@ -577,6 +608,8 @@
 
         return {
             draw: draw,
+
+            parameterName: parameterName,
 
             reset: reset,
             submit: submit

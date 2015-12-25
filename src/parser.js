@@ -90,12 +90,12 @@
                 } else if (gdatatype === 'date') {
                     //assume format yyyy-MM-dd
                     newvalue = new Date(value.substr(0, 4),
-                                        value.substr(5, 2),
+                                        parseInt(value.substr(5, 2), 10) - 1,
                                         value.substr(8, 2));
                 } else if (gdatatype === 'datetime') {
                     //assume format yyyy-MM-ddZHH:mm:ss
                     newvalue = new Date(value.substr(0, 4),
-                                        value.substr(5, 2),
+                                        parseInt(value.substr(5, 2), 10) - 1,
                                         value.substr(8, 2),
                                         value.substr(11, 2),
                                         value.substr(14, 2),
@@ -112,12 +112,7 @@
                     newvalue = value;
                 }
                 return newvalue;
-            };
-
-        ///////////////////////////////////////////////////
-        // PUBLICs
-
-        return {
+            },
 
             /**
              * Converts a SPARQL XML result set into "Google JSON",
@@ -130,7 +125,7 @@
              * `google.visualization.DataTable` consumption.
              * @since 0.2.2
              **/
-            convertXML: function (sxml) {
+            convertXML = function (sxml) {
                 var c, clen, // column index.
                     r, // row index.
                     gcols = [],
@@ -194,7 +189,7 @@
              * `google.visualization.DataTable` consumption.
              * @since 0.1
              **/
-            convertJSON: function (stable) {
+            convertJSON = function (stable) {
                 var c, clen, // column index.
                     r, rlen, // row index.
                     srow,
@@ -247,7 +242,7 @@
              * @return {number} The number of result set rows.
              * @since 0.2.2
              */
-            countXML: function (sxml) {
+            countXML = function (sxml) {
                 return $(sxml).find('sparql').find('results').find('result').length;
             },
 
@@ -259,9 +254,19 @@
              * @return {number} The number of result set rows.
              * @since 0.1
              */
-            countJSON: function (stable) {
+            countJSON = function (stable) {
                 return stable.results.bindings && stable.results.bindings.length;
-            }
+            };
+
+        ///////////////////////////////////////////////////
+        // PUBLICs
+
+        return {
+            getGoogleJsonValue: getGoogleJsonValue, // revealed for testing  
+            convertXML: convertXML,
+            convertJSON: convertJSON,
+            countXML: countXML,
+            countJSON: countJSON
         };
 
     }());

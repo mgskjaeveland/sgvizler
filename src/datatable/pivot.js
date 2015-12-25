@@ -31,10 +31,10 @@
          * @return {google.visualization.DataTable}
          * @since 0.6.0
          */
-        DT.pivot = datatables.add(modST, "pivot", function (dataTable) {
+        DT.pivot = datatables.add(modST, "pivot", function (data) {
 
-            var columns = dataTable.getDistinctValues(0), // Get elements which will become columns.
-                dataView = new google.visualization.DataView(dataTable),
+            var columns = data.getDistinctValues(0), // Get elements which will become columns.
+                dataView = new google.visualization.DataView(data),
 
             // Manually pivot the data table. First, we have to separate
             // out the "equipment" values into their own columns using a

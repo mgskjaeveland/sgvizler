@@ -11,7 +11,7 @@ GCLOSURE = java -jar tool/google-closure/compiler.jar \
 MINIFIER = $(UGLIFY)
 #MINIFIER = $(GCLOSURE)
 
-XSLT = java -jar bin/saxon9he.jar
+XSLT = java -jar /home/martige/repo/sgvizler/bin/saxon9he.jar
 
 ##JSDOCROOT = tool/jsdoc2
 ##JSDOC = $ java -jar $(JSDOCROOT)/jsrun.jar $(JSDOCROOT)/app/run.js

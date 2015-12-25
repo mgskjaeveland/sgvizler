@@ -36,7 +36,7 @@
          */
         /*global Dracula */
         C.DraculaGraph = charts.add(modSC, "DraculaGraph",
-            function (data, chartOpt) {
+            function (data, chartOptions) {
 
                 var row, numberOfRows = data.getNumberOfRows(),
                     i, len,
@@ -57,7 +57,7 @@
                         edgestrokewidth: 1,
                         edgefontsize: "10px",
                         edgeseparator: ", "
-                    }, chartOpt),
+                    }, chartOptions),
 
                     graph = new Dracula.Graph(),
                     layouter,

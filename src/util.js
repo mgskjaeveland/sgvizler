@@ -1,4 +1,3 @@
-
     /**
      * A helpful set of static utility functions: type checking
      * variables, generic get-setter, get-setting values in
@@ -126,7 +125,7 @@
              * @since 0.6.0
              **/
             inherit = (function () {
-                var Proxy = function () {};
+                var Proxy = function () { return; };
                 return function (Child, Parent) {
                     Proxy.prototype = Parent.prototype;
                     Child.prototype = new Proxy();
@@ -282,6 +281,25 @@
                 return output;
             },
 
+
+            /**
+             * Return the attribute values of a object as a (unsorted) list.
+             * @protected
+             * @param {Object} object
+             * @return {Array}
+             * @example
+             *     getObjectValues({a: 'apple', b: 'orange', c: 'horse'}) = ['apple', 'orange', 'horse']
+             */
+            getObjectValues = function (object) {
+                var key, list = [];
+                for (key in object) {
+                    if (object.hasOwnProperty(key)) {
+                        list.push(object[key]);
+                    }
+                }
+                return list;
+            },
+
             /**
              * Creates an HTML element according to a custom made
              * "array syntax". Used to make HTML DOM manipulation more
@@ -356,6 +374,7 @@
             toArray: toArray,
             removeDuplicates: removeDuplicates,
 
+            getObjectValues: getObjectValues,
             getObjectByPath: getObjectByPath,
 
             getset: getset,
