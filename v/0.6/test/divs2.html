@@ -1,0 +1,101 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler</title>
+    <meta charset="UTF-8"/>
+    <style type="text/css">
+      div#footer{
+      border-top: 1px solid #ccc;
+      color: #666;
+      font-size: 80%;
+      }
+      div#footer a{
+      color: #555;
+      }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" id="sgvzlr_script" src="../sgvizler.js"></script>
+    <script type="text/javascript">
+      sgvizler
+          .defaultEndpointOutputFormat('jsonp')
+          .prefix('npdv', 'http://sws.ifi.uio.no/vocab/npd#')
+          .prefix('geo', 'http://www.w3.org/2003/01/geo/wgs84_pos#')
+          .prefix('dbp', 'http://dbpedia.org/resource/')
+          .prefix('prod', 'http://prod.cetis.ac.uk/vocab/')
+          .prefix('jisc', 'http://www.rkbexplorer.com/ontologies/jisc#');
+
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.containerDrawAll);
+    </script>
+  </head>
+  <body>
+    <h1>Sgvizler</h1>
+
+    <p>Test page for Sgvizler. Tests external endpoints using JSONP.</p>
+
+    <h2>21: Map+, external endpoint</h2>
+
+    <div id="sgvzl_example21"
+	 data-sgvizler-endpoint="http://irm.dnv.com/ep/saio/sparql"
+	 data-sgvizler-query="SELECT xsd:float(?lat) xsd:float(?long) ?label ?comment ?subject
+			      WHERE{
+			      ?subject geo:location [
+	                      geo:lat ?lat ;
+	                      geo:long ?long ] ;
+			      rdfs:label ?label ;
+			      rdfs:comment ?comment .
+			      }
+			      LIMIT 50
+			      "
+	 data-sgvizler-chart="sgvizler.visualization.Map"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:400px;"
+	 ></div>
+
+    <h2>22: List, external endpoint</h2>
+
+    <div id="sgvzl_example22"
+	 data-sgvizler-endpoint="http://dbpedia.org/sparql"
+	 data-sgvizler-query="
+			      SELECT *
+			      WHERE{?s ?p ?o
+			      }
+			      LIMIT 5
+			      "
+	 data-sgvizler-chart="sgvizler.visualization.List"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:300px;"
+	 ></div>
+
+    <h2>23: Wilbert's Projects</h2>
+
+    <div id="sgvzl_example23"
+	 data-sgvizler-endpoint="http://www.ovod.net/wilbert/sparql"
+	 data-sgvizler-query="SELECT ?node ?parent ?n xsd:int('1')
+			      WHERE {
+			      ?s a prod:relationship .
+			      ?s prod:builds_on_by ?nodeID .
+			      ?s prod:builds_on ?parentID .
+			      ?nodeID jisc:short-name ?node .
+			      ?parentID jisc:short-name ?parent .
+			      FILTER (?parent != <http://prod.cetis.ac.uk/projects/0>) 
+			      FILTER (?node != <http://prod.cetis.ac.uk/projects/0>)
+			      }
+			      ORDER BY ?parent DESC(?node)"
+	 data-sgvizler-chart="sgvizler.visualization.D3ForceGraph"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:600px;"></div> 
+
+    <div id="footer">
+      <!-- Please leave a link to the Sgvizler homepage --> 
+      <p>
+	Sgvizler visualizes the result of SPARQL SELECT queries. For more
+	information, see
+	the <a href="http://dev.data2000.no/sgvizler/">Sgvizler</a>
+	homepage. (c)
+	2011-2013 Martin G. Skj&#230;veland.
+      </p>
+    </div>
+  </body>
+</html>

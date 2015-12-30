@@ -1,0 +1,94 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler</title>
+    <meta charset="UTF-8"/>
+    <link rel="shortcut icon" href="../../www/favicon.ico" />
+    <style type="text/css">
+      div#footer{
+      border-top: 1px solid #ccc;
+      color: #666;
+      font-size: 80%;
+      }
+      div#footer a{
+      color: #555;
+      }
+    </style>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" id="sgvzlr_script" src="../sgvizler.js"></script>
+    <script type="text/javascript">
+      sgvizler.queryOptions = {
+      //'query':                  "SELECT ?class (count(?instance) AS ?noOfInstances)\nWHERE{ ?instance a ?class }\nGROUP BY ?class\nORDER BY ?class",
+      //'endpoint':               "http://sws.ifi.uio.no/sparql/npd",
+      'endpointOutput':         'json',  /* only 'xml' or 'json' is supported */
+      //'endpointQueryURL':       "?output=text&amp;query=",
+      //'chart':                  'gLineChart',
+      //'loglevel':               2
+      };
+
+      sgvizler.namespaces['npdv'] = 'http://sws.ifi.uio.no/vocab/npd#';
+      sgvizler.namespaces['geo'] =    'http://www.w3.org/2003/01/geo/wgs84_pos#' ;
+
+      sgvizler.namespaces['dbp'] =    'http://dbpedia.org/resource/';
+      sgvizler.chartOptions = {};
+      
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.go());
+    </script>
+  </head>
+  <body>
+    <h1>Sgvizler</h1>
+
+    <p>Test page for Sgvizler. Tests external endpoints. If an
+    endpoint not CORS enabled, then it won't work.</p>
+
+
+    <h2>21: Map+, external endpoint</h2>
+
+    <div id="sgvzl_example21"
+	 data-sgvizler-endpoint="http://irm.dnv.com/ep/saio/sparql"
+	 data-sgvizler-query="
+			      SELECT xsd:float(?lat) xsd:float(?long) ?label ?comment ?subject
+			      WHERE{
+			      ?subject geo:location [
+	                      geo:lat ?lat ;
+	                      geo:long ?long ] ;
+			      rdfs:label ?label ;
+			      rdfs:comment ?comment .
+			      }
+			      LIMIT 50
+			      "
+	 data-sgvizler-chart="sMap"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:400px;"
+	 ></div>
+
+    <h2>22: List, external endpoint</h2>
+
+    <div id="sgvzl_example22"
+	 data-sgvizler-endpoint="http://dbpedia.org/sparql"
+	 data-sgvizler-query="
+			      SELECT *
+			      WHERE{?s ?p ?o
+			      }
+			      LIMIT 15
+			      "
+	 data-sgvizler-chart="sList"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:400px;"
+	 ></div>
+
+    <div id="footer">
+      <!-- Please leave a link to the Sgvizler homepage --> 
+      <p>
+	Sgvizler visualizes the result of SPARQL SELECT queries using
+	javascript and the Google Visualization API. For more
+	information, see
+	the <a href="http://sws.ifi.uio.no/sgvizler/">Sgvizler</a>
+	homepage. (c)
+	2011 Martin G. Skj&#230;veland.
+      </p>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+div#logo img{
+    width: 50%;
+    height: 50%;
+}
+div#logo{
+    font-size: 50%;
+}
+
+#sgvzl_example_pre{
+    padding: 20px;
+    border: 1px solid #ccc;
+}
+
+#sgvzl_example_table{
+    width: 800px;
+    height: 200px;
+}

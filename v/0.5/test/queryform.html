@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler</title>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" id="sgvzlr_script" src="../sgvizler.js"></script>
+    <script type="text/javascript">
+      sgvizler.option.query.endpoint = "http://sws.ifi.uio.no/sparql/npd";
+
+      sgvizler.option.namespace.npdv = 'http://sws.ifi.uio.no/vocab/npd#';
+
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.go());
+    </script>
+  </head>
+  <body>
+    <div id="main">
+      <div id="logo">
+	<a href="http://dev.data2000.no/sgvizler/">
+	  <img src="http://beta.data2000.no/sgvizler/misc/image/mr.sgvizler.png" alt="mr.sgvizler.png"/>
+	</a><br/>Mr. Sgvizler
+      </div>
+      <h1>Sgvizler</h1>
+    </div>
+    <div id="queryarea">
+      <pre id="sgvzlr_cPrefix"></pre>
+      <textarea id="sgvzlr_cQuery" rows="10" cols="80"></textarea>
+      <form method="get" id="sgvzlr_formQuery">
+	<p>
+	  <input type="hidden" value="" name="query" id="sgvzlr_strQuery"/>
+	  Width:  <input name="width" id="sgvzlr_strWidth" type="text" size="3"/>
+	  Height: <input name="height" id="sgvzlr_strHeight" type="text" size="3"/>
+	  Chart Type: 
+	  <select name="chart" id="sgvzlr_optChart"></select>
+	  <input type="button" value="Reset" onclick="sgvizler.ui.resetPage()"/>
+	  <input type="button" value="GO!" onclick="sgvizler.ui.submitQuery()"/>
+	</p>
+      </form>
+      <div id="sgvzlr_cMessage"></div>
+    </div>
+    <div id="sgvzlr_gchart" style="width:800px; height:400px;"></div>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler</title>
+    <meta charset="UTF-8"/>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="../sgvizler.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {sgvizler.formDraw();});
+    </script>
+    <style type="text/css">
+      div#sgvzlr_logo, div#sgvzlr_footer {
+        font-family: sans-serif;
+      }
+      div#sgvzlr_logo {
+        float: right;
+        text-align: center;
+        font-size: 80%;
+      }
+      div#sgvzlr_footer {
+        font-size: 80%;
+      }
+      div#sgvzlr_footer,
+      div#sgvzlr_footer a {
+        color: #AAA;     
+      }
+      #sgvzlr_logo img {
+        display: block;
+        clear: both;
+      }
+      pre#sgvzlr_cPrefix {
+        font-size: 90%;
+      }
+      form label {
+        margin-left: 5px;
+      }
+      form input {
+        margin-right: 5px;
+      }
+      form p span:after {
+        content: "\a";
+        white-space: pre;
+      }
+
+      /*
+      span#sgvzlr_strEndpointGrp,
+      span#sgvzlr_btnFormatGrp,
+      span#sgvzlr_strSizeGrp,
+      span#sgvzlr_optChartGrp,
+      span#sgvzlr_btnSendGrp
+      {
+        display: none;
+      }
+      */
+    </style>
+  </head>
+  <body>
+  </body>
+</html>

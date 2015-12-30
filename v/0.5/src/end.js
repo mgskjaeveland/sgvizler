@@ -1,0 +1,2 @@
+    global.sgvizler = sgvizler;
+}(window));

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler</title>
+    <meta charset="UTF-8"/>
+    <link rel="shortcut icon" href="http://sgvizler.googlecode.com/svn/www/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="http://sgvizler.googlecode.com/svn/www/sgvizler.css" />
+    <link rel="stylesheet" type="text/css" href="sgvizler.example.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" id="sgvzlr_script" src="../sgvizler.js"></script>
+    <script type="text/javascript" src="sgvizler.example.js"></script>
+    <script type="text/javascript">
+      sgvizler.namespaces['npd'] = 'http://sws.ifi.uio.no/npd/';
+      sgvizler.namespaces['npdv']  = 'http://sws.ifi.uio.no/vocab/npd#';
+
+      $(document).ready(function (){
+        sgvizler.example.copyElementAsText('sgvzl_example_query', 'sgvzl_example_pre');
+        sgvizler.example.copyQuery('sgvzl_example_query', 'sgvzl_example_table');
+        sgvizler.example.copyQuery('sgvzl_example_query', 'sgvzl_example_query_copy1');
+        sgvizler.example.copyQuery('sgvzl_example_query', 'sgvzl_example_query_copy2');
+      });
+
+      //// Leave this as is. Ready, steady, GO!
+      $(document).ready(sgvizler.go());
+    </script>
+  </head>
+  <body>
+    <div id="logo">
+      <a href="http://code.google.com/p/sgvizler/">
+	<img src="http://sgvizler.googlecode.com/svn/www/mr.sgvizler.png" alt="mr.sgvizler.png"/>
+      </a><br/>Mr. Sgvizler
+    </div>
+
+    <h3><code>gPieChart</code>: Who are/have been field operators?</h3>
+    <div id="sgvzl_example_query"
+ 	 data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd"
+	 data-sgvizler-query="SELECT ?name (count(*) AS ?noOfFields)
+			      WHERE{ [] a npdv:Field ;
+			        npdv:hasCompany [ npdv:name ?name ] .
+			      }
+			      GROUP BY ?name
+			      ORDER BY ?name"
+	 data-sgvizler-chart="gPieChart"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:200px;"
+	 ></div>
+
+    <h3>Copy of the &lt;div&gt; element which draws the above chart</h3>
+    <pre id="sgvzl_example_pre"></pre>
+
+    <h3>The results of the query in <code>gTable</code></h3>
+    <div id="sgvzl_example_table"
+	 data-sgvizler-chart="gTable"
+	 data-sgvizler-loglevel="2"
+    ></div>
+
+    <h3>Same query, different charts</h3>
+    <p>Not all charts may be well-suited for displaying this dataset.</p>
+    <h4><code>gBarChart</code></h4>
+    <div id="sgvzl_example_query_copy1"
+	 data-sgvizler-chart="gBarChart"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:200px;"
+    ></div>
+
+    <h4><code>gColumnChart</code></h4>
+    <div id="sgvzl_example_query_copy2"
+	 data-sgvizler-chart="gColumnChart"
+	 data-sgvizler-loglevel="2"
+	 style="width:800px; height:200px;"
+    ></div>
+
+    <div id="footer">
+      <!-- Please leave a link to the Sgvizler homepage --> 
+      <p>
+	Sgvizler visualizes the result of SPARQL SELECT queries using
+	javascript and the Google Visualization API. For more
+	information, see
+	the <a href="http://code.google.com/p/sgvizler/">Sgvizler</a>
+	homepage. (c)
+	2011 <a href="http://folk.uio.no/martige/">Martin
+	G. Skj&#230;veland</a>.
+      </p>
+    </div>
+  </body>
+</html>

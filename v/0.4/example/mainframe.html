@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Sgvizler Examples</title>
+    <meta charset="UTF-8"/>
+    <link rel="shortcut icon" href="http://sgvizler.googlecode.com/svn/www/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="http://sgvizler.googlecode.com/svn/www/sgvizler.css" />
+    <link rel="stylesheet" type="text/css" href="sgvizler.example.css" />
+  </head>
+  <body>
+
+    <div id="logo">
+      <a href="http://code.google.com/p/sgvizler/">
+	<img src="http://sgvizler.googlecode.com/svn/www/mr.sgvizler.png" alt="mr.sgvizler.png"/>
+      </a><br/>Mr. Sgvizler
+    </div>
+    <h1>Sgvizler Examples</h1>
+    <p>
+      Many live examples of
+      using <a href="http://code.google.com/p/sgvizler/">Sgvizler</a>
+      are gathered here. Each example page contains a chart drawn by
+      Sgvizler on page load (some can take a while, so be patient,
+      i.e, a few seconds), a listing of the <code>&lt;div&gt;</code>
+      element which specifies the chart, and the query results in a
+      table. Additionally, some pages may also contain other charts
+      visualizing the exact same query results.
+    </p>
+    <p>
+      If you're not seeing this page as frames there is
+      a <a href="index.html" target="frames">frames version</a> which
+      might be more handy.
+    </p>
+
+    <h2>Examples</h2>    
+    <h3>World</h3>
+    <ul>
+      <li><a href="exampleW1.html" target="main">gBarChart,
+      gColumnChart, gLineChart, gPieChart, gGeoChart, sList</a></li>
+      <li><a href="exampleW2.html" target="main">gMap</a></li>
+      <li><a href="exampleW3.html" target="main">gScatterChart</a></li>
+      <li><a href="exampleW4.html" target="main">gTreeMap</a></li>
+      <li><a href="exampleW5.html" target="main">gGeoMap, gGeoChart</a></li>
+    </ul>
+
+    <h3>Linked Open NPD FactPages</h3>
+    <ul>
+      <li><a href="exampleN1.html" target="main">gColumnChart, gBarChart,
+      gLineChart, gAreaChart</a></li>
+      <li><a href="exampleN2.html" target="main">gColumnChart, gBarChart,
+      gLineChart, gAreaChart</a></li>
+      <li><a href="exampleN3.html" target="main">gPieChart,
+      gBarChart, gColumnChart</a></li>
+      <li><a href="exampleN4.html" target="main">gGeoMap, sMap</a></li>
+      <li><a href="exampleN5.html" target="main">gMotionChart</a></li>
+      <li><a href="exampleN6.html" target="main">gTreeMap</a></li>
+      <li><a href="exampleN7.html" target="main">gOrgChart</a></li>
+      <li><a href="exampleN8.html" target="main">gTimeline</a></li>
+      <li><a href="exampleN9.html" target="main">sMap</a></li>
+      <li><a href="exampleN10.html" target="main">gSparkline</a></li>
+    </ul>
+
+    <h3>DBpedia</h3>
+    <ul>
+      <li><a href="exampleD1.html" target="main">sMap</a></li>
+    </ul>
+
+    <h3>FROM</h3>
+    <ul>
+      <li><a href="exampleF1.html" target="main">sList</a></li>
+    </ul>
+
+    <h2>Datasets</h2>
+    <p>The datasets used in these examples are:</p>
+    <ul>
+      <li>
+	The "world" database
+	  (endpoint <a href="http://sws.ifi.uio.no/sparql/world"><code>http://sws.ifi.uio.no/sparql/world</code></a>)
+	  contains data about the cities, countries, continents, and
+	  so on, of the world. The data is not up do date, but it
+	  serves well as an example database for this purpose. The
+	  data source for this dataset is a world database which ships
+	  with <a href="http://mysql.com">MySQL</a>.
+      </li>
+      <li>
+	<a href="http://sws.ifi.uio.no/project/npd">Linked Open NPD
+	Fact-pages</a>
+	(endpoint <a href="http://sws.ifi.uio.no/sparql/world"><code>http://sws.ifi.uio.no/sparql/world</code></a>)
+	contains data collected from the Norwegian Petroleum
+	Directorate's (NPD) "FactPages", which is a database about the
+	activity on the Norwegian Continental Shelf, e.g. oil fields,
+	wellbores, drilling and production.
+      </li>
+      <li>
+	<a href="http://dbpedia.org">dbpedia.org</a>
+	(endpoint <a href="http://dbpedia.org/sparql"><code>http://dbpedia.org/sparql</code></a>)
+	is probably well-known to you since you read this. Sometimes
+	the dbpedia endpoint is slow to respond.
+      </li>
+      <li>
+	The "FROM" section queries RDF files listed in the same html
+	element as the query. The RDF files may wary from query to
+	query.
+      </li>
+
+  </body>
+</html>

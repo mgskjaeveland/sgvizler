@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+   <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <title>Sgvizler</title>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" type="text/css" href="../examples.css"><script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js"></script><script type="text/javascript" src="https://www.google.com/jsapi"></script><script type="text/javascript" src="../../sgvizler.js"></script><script type="text/javascript">sgvizler.prefix('wd', 'http://sws.ifi.uio.no/d2rq/resource/');
+      sgvizler.prefix('w', 'http://sws.ifi.uio.no/ont/world.owl#');
+      
+	$(document).ready(function() { sgvizler.containerDrawAll(); });
+      </script></head>
+   <body>
+      <div id="logo"><a href="http://dev.data2000.no/sgvizler/"><img src="http://beta.data2000.no/sgvizler/misc/image/mr.sgvizler.png" alt="mr.sgvizler.png"></a><br>Mr. Sgvizler
+         
+      </div>
+      <h3><code>google.visualization.ScatterChart</code>: Life expectancy over Gross National Product
+      </h3>
+      <p></p>
+      <div id="sgvzl_example_query" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/world" data-sgvizler-query="SELECT * WHERE{[] w:hasGNP ?GNP ; w:hasLifeExpectancy ?LifeExpectancy; }" data-sgvizler-chart="google.visualization.ScatterChart" data-sgvizler-chart-options="hAxis.logScale=true|animation.duration=2000|backgroundColor=lightgreen" data-sgvizler-loglevel="2" style="width:800px; height:400px;"></div>
+      <p>The element which draws the above chart:</p><pre id="sgvzl_example_pre">&lt;div id="sgvzl_example_query" 
+   data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/world" 
+   data-sgvizler-query="SELECT * WHERE{[] w:hasGNP ?GNP ; w:hasLifeExpectancy ?LifeExpectancy; }" 
+   data-sgvizler-chart="google.visualization.ScatterChart" 
+   data-sgvizler-chart-options="hAxis.logScale=true|animation.duration=2000|backgroundColor=lightgreen" 
+   data-sgvizler-loglevel="2" 
+   style="width:800px; height:400px;"/&gt;</pre><h3>The results of the query in <code>gTable</code></h3>
+      <div id="sgvzl_example_table" data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/world" data-sgvizler-query="SELECT * WHERE{[] w:hasGNP ?GNP ; w:hasLifeExpectancy ?LifeExpectancy; }" data-sgvizler-chart="google.visualization.Table" data-sgvizler-loglevel="2" style="width:800px; height:200px;"></div>
+      <div id="footer">
+         <!--Please leave a link to the Sgvizler homepage.-->
+         <p>
+            	Sgvizler visualizes the result of SPARQL SELECT queries. For more
+            	information, see the <a href="http://dev.data2000.no/sgvizler/">Sgvizler</a>
+            	homepage. (c) 2011--2013 Martin G. Skjæveland.
+            
+         </p>
+      </div>
+   </body>
+</html>

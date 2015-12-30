@@ -1,0 +1,21 @@
+// Sgvizler - https://dev.data2000.no/sgvizler/
+// (c) 2011--2013 - Martin G. Skjæveland - MIT license
+
+(function (window, undefined) { // trick: safekeep 'undefined', and minify.
+    "use strict";
+
+    /*global window, jQuery */
+    /*jslint todo: true */
+
+    var document = window.document, // trick: minify.
+        S = {}, // local scope sgvizler variable.
+
+        // Used in end. (Odd names such that these variables are not
+        // accidentally accessed by child modules.)
+        globalGetSet,
+        globalDefaultsQuery,
+        globalDefaultsChart;
+
+
+        //// OTHER SOURCE FILES ARE CONCATENATED IN BELOW
+        //// ENDING WITH end.js.part
