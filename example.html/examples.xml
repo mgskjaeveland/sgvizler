@@ -1,0 +1,604 @@
+<root>
+  <endpoints>
+    <endpoint id="npd">
+      <name>NPD</name>
+      <url>http://sws.ifi.uio.no/sparql/npd</url>
+      <namespaces>
+	<namespace>
+	  <prefix>npd</prefix>
+	  <url>http://sws.ifi.uio.no/npd/</url>
+	</namespace>
+	<namespace>
+	  <prefix>npdv</prefix>
+	  <url>http://sws.ifi.uio.no/vocab/npd#</url>
+	</namespace>
+      </namespaces>
+      <description>
+	<a href="http://sws.ifi.uio.no/project/npd">Linked Open NPD
+	Fact-pages</a>
+	(endpoint <a href="http://sws.ifi.uio.no/sparql/world"><code>http://sws.ifi.uio.no/sparql/world</code></a>)
+	contains data collected from the Norwegian Petroleum
+	Directorate's (NPD) "FactPages", which is a database about the
+	activity on the Norwegian Continental Shelf, e.g. oil fields,
+	wellbores, drilling and production.
+      </description>
+    </endpoint>
+
+    <endpoint id="dbp">
+      <name>DBpedia</name>
+      <url>http://dbpedia.org/sparql</url>
+      <namespaces>
+	<namespace>
+	  <prefix>dbpo</prefix>
+	  <url>http://dbpedia.org/ontology/</url>
+	</namespace>
+	<namespace>
+	  <prefix>geo</prefix>
+	  <url>http://www.w3.org/2003/01/geo/wgs84_pos#</url>
+	</namespace>
+	<namespace>
+	  <prefix>dct</prefix>
+	  <url>http://purl.org/dc/terms/</url>
+	</namespace>
+      </namespaces>
+      <description>
+	<a href="http://dbpedia.org">dbpedia.org</a> (endpoint <a
+	href="http://dbpedia.org/sparql"><code>http://dbpedia.org/sparql</code></a>)
+	is probably well-known to you since you read this. Sometimes
+	the dbpedia endpoint is slow to respond.
+      </description>
+    </endpoint>
+
+    <endpoint id="world">
+      <name>World</name>
+      <url>http://sws.ifi.uio.no/sparql/world</url>
+      <namespaces>
+	<namespace>
+	  <prefix>wd</prefix>
+	  <url>http://sws.ifi.uio.no/d2rq/resource/</url>
+	</namespace>
+	<namespace>
+	  <prefix>w</prefix>
+	  <url>http://sws.ifi.uio.no/ont/world.owl#</url>
+	</namespace>
+      </namespaces>
+      <description>
+	The "world" database (endpoint <a
+	href="http://sws.ifi.uio.no/sparql/world"><code>http://sws.ifi.uio.no/sparql/world</code></a>)
+	contains data about the cities, countries, continents, and so
+	on, of the world. The data is not up do date, but it serves
+	well as an example database for this purpose. The data source
+	for this dataset is a world database which ships with <a
+	href="http://mysql.com">MySQL</a>.
+      </description>
+    </endpoint>
+
+
+    <endpoint id="enhetsregisteret">
+      <name>Enhetsregisteret</name>
+      <url>http://sws.ifi.uio.no/sparql/enhetsregisteret</url>
+      <namespaces>
+	<namespace>
+	  <prefix>foaf</prefix>
+	  <url>http://xmlns.com/foaf/0.1/</url>
+	</namespace>
+	<namespace>
+	  <prefix>enhregv</prefix>
+	  <url>http://sws.ifi.uio.no/vocab/enhetsregisteret/</url>
+	</namespace>
+	<namespace>
+	  <prefix>enhreg</prefix>
+	  <url>http://sws.ifi.uio.no/enhetsregisteret/</url>
+	</namespace>
+      </namespaces>
+      <description>
+	
+      </description>
+    </endpoint>
+
+
+    <endpoint id="from">
+      <name>FROM</name>
+      <url>http://sws.ifi.uio.no/sparql/from</url>
+      <description>
+	The "FROM" section queries RDF files listed in the same html
+	element as the query. The RDF files may wary from query to
+	query.
+      </description>
+    </endpoint>
+
+  </endpoints>
+  
+  <examples>
+    <example>
+      <heading>Total production per year on NCS</heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT * WHERE { []
+	  a npdv:NCSProductionPeriod ;
+	  npdv:year ?year ;
+	  npdv:producedNetOilMillSm  ?Oil_millSm ;
+	  npdv:producedNetGasBillSm  ?Gas_billSm ;
+	  npdv:producedNetNGLMillSm3 ?NGL_millSm3 ;
+	  npdv:producedNetCondensateMillSm3 ?Condensate_millSm3 ;
+	  npdv:producedWaterMillSm3  ?Water_millSm3 ;
+	  FILTER (xsd:int(?year) &lt; 2011)
+	  } ORDER BY ?year
+      </query>
+      <chart>google.visualization.ColumnChart</chart>
+      <other>
+	<example>
+	  <chart>google.visualization.BarChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.LineChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.AreaChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.SteppedAreaChart</chart>
+	</example>
+      </other>
+    </example>
+
+    <example>
+      <heading>Total production per year on Ekofisk</heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT ?year ?Oil_millSm3 ?Gas_billSm3 ?NGL_millSm3 ?Condensate_millSm3 ?Water_millSm3
+	WHERE{  ?period a npdv:FieldProductionPeriod ;
+	npdv:hasField &lt;http://sws.ifi.uio.no/npd/field/Ekofisk&gt; ;
+	npdv:year ?year ;
+	npdv:producedNetOilMillSm3 ?Oil_millSm3 ;
+	npdv:producedNetGasBillSm3 ?Gas_billSm3 ;
+	npdv:producedNetNGLMillSm3 ?NGL_millSm3 ;
+	npdv:producedNetCondensateMillSm3 ?Condensate_millSm3 ;
+	npdv:producedWaterMillSm3  ?Water_millSm3 ;
+	OPTIONAL{?period npdv:month ?month} .
+	FILTER (!bound(?month))
+	FILTER (xsd:int(?year) &lt; 2011)
+	} ORDER BY ?year
+      </query>
+      <chart>google.visualization.ColumnChart</chart>
+      <other>
+	<example>
+	  <chart>google.visualization.BarChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.LineChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.AreaChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.SteppedAreaChart</chart>
+	</example>
+      </other>
+    </example>
+
+    <example>
+      <heading>Who are/have been field operators?</heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT ?name (count(*) AS ?noOfFields)
+	WHERE{ [] a npdv:Field ;
+	npdv:hasCompany [ npdv:name ?name ] .
+	}
+	GROUP BY ?name
+	ORDER BY ?name
+      </query>
+      <chart>google.visualization.PieChart</chart>
+      <other>
+	<example>
+	  <chart>google.visualization.BarChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.ColumnChart</chart>
+	</example>
+      </other>
+    </example>
+
+    <example>
+      <heading>Some things which have a <code>totalDepth</code></heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT *
+	WHERE{ [] 
+	npdv:nsDecDeg ?lat ;
+	npdv:ewDecDeg ?long ;
+	npdv:totalDepth ?depth ;
+	FILTER(?lat &gt; 0 &amp;&amp; ?depth &gt; 0)
+	} LIMIT 100
+      </query>
+      <chart>google.visualization.GeoChart</chart>
+      <chartoptions>region=154</chartoptions>
+      <style>width:800px; height:200px;</style>
+      <other>
+	<example>
+	  <chart>google.visualization.GeoMap</chart>
+	  <chartoptions>region=154</chartoptions>
+	</example>
+      </other>
+    </example>
+
+    <example>
+      <heading>Production per year on NCS</heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT ?cat xsd:int(?year) ?value 
+	WHERE{{[]  
+	  a npdv:NCSProductionPeriod ;
+	  npdv:year ?year ;
+	  npdv:producedNetOilMillSm ?value ;
+	  LET(?cat := &quot;OIL&quot;)}
+	UNION {[]  
+	  a npdv:NCSProductionPeriod ;
+	  npdv:year ?year ;
+	  npdv:producedNetGasBillSm ?value ;
+	  LET(?cat := &quot;GAS&quot;)}
+	UNION {[]  
+	  a npdv:NCSProductionPeriod ;
+	  npdv:year ?year ;
+	  npdv:producedNetNGLMillSm3 ?value ;
+	  LET(?cat := &quot;NGL&quot;)}
+	UNION {[]  
+	  a npdv:NCSProductionPeriod ;
+	  npdv:year ?year ;
+	  npdv:producedWaterMillSm3 ?value ;
+	  LET(?cat := &quot;Water&quot;)}}
+      </query>
+      <chart>google.visualization.MotionChart</chart>
+    </example>
+
+    <example>
+      <heading>Draws the structure -&gt; Company -&gt; Field -&gt; ExplorationWellbore, with <code>numberOfDrillingDays</code> deciding the box size and color
+      </heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT DISTINCT ?node ?parent ?value
+	 WHERE{{ 
+	   LET(?node := &quot;ALL&quot;)
+	   LET(?parent := &quot;&quot;)
+	   LET(?value := 0)}  
+	 UNION
+	   {?s npdv:name ?node;
+	   a npdv:Company .
+	   [] a npdv:Field ;
+	   npdv:hasCompany ?s .
+	   LET(?parent := &quot;ALL&quot;)
+	   LET(?value := 0)}
+	 UNION
+	   {?s npdv:name ?node;
+	   a npdv:Field ;
+	   npdv:hasCompany [npdv:name ?parent] .
+	   [] a npdv:ExplorationWellbore ;
+	   npdv:hasField ?s .
+	   LET(?value := 0)}
+	 UNION
+	   {?s npdv:name ?node;
+	   a npdv:ExplorationWellbore ;
+	   npdv:hasField [npdv:name ?parent; npdv:hasCompany [] ] ;
+	   npdv:numberOfDrillingDays ?value;
+	 }}
+      </query>
+      <chart>google.visualization.TreeMap</chart>
+    </example>
+
+    <example>
+      <heading>Draws the structure -> Company -> Field with ExplorationWellbore</heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT DISTINCT ?node ?parent
+	WHERE{ {
+	  LET(?node := &quot;ALL&quot;)
+	  LET(?parent := &quot;&quot;)
+	  LET(?value := 0)}
+	UNION
+	  {?s npdv:name ?node ;
+	  a npdv:Company .
+	  [] a npdv:Field ;
+	  npdv:hasCompany ?s .
+	  LET(?parent := &quot;ALL&quot;)
+	  LET(?value := 0)} 
+	UNION
+	  {?s npdv:name ?node;
+	  a npdv:Field ;
+	  npdv:hasCompany [npdv:name ?parent] .
+	  [] a npdv:ExplorationWellbore ;
+	  npdv:hasField ?s . }}
+      </query>
+      <chart>google.visualization.OrgChart</chart>
+    </example>
+
+
+    <example>
+      <heading>Production oil and gas per month at Ekofisk</heading>
+      <endpoint ref="npd"/>
+      <query>
+	PREFIX fn: &lt;http://www.w3.org/2005/xpath-functions#&gt;
+	SELECT xsd:date(?date) ?Oil_millSm &quot;&quot; &quot;&quot; ?Gas_billSm &quot;&quot; &quot;&quot;
+	WHERE{ 
+	  {[] a npdv:FieldProductionPeriod ;
+	  npdv:hasField &lt;http://sws.ifi.uio.no/npd/field/Ekofisk&gt; ;
+	  npdv:month ?month ;
+	  npdv:year ?year ;
+	  npdv:producedNetOilMillSm3 ?Oil_millSm ;
+	  npdv:producedNetGasBillSm3 ?Gas_billSm ;
+	  LET (?date := fn:concat(fn:concat(fn:concat(?year, &quot;-&quot;), ?month), &quot;-01&quot;))
+	  FILTER (xsd:int(?year) &lt; 2011 &amp;&amp; xsd:int(?month) &gt; 9)}
+	UNION
+	  { [] a npdv:FieldProductionPeriod ;
+	  npdv:hasField &lt;http://sws.ifi.uio.no/npd/field/Ekofisk&gt; ;
+	  npdv:month ?month ;
+	  npdv:year ?year ;
+	  npdv:producedNetOilMillSm3 ?Oil_millSm ;
+	  npdv:producedNetGasBillSm3 ?Gas_billSm ;
+	  LET (?date := fn:concat(fn:concat(fn:concat(?year, &quot;-0&quot;), ?month), &quot;-01&quot;))
+	  FILTER (xsd:int(?year) &lt; 2011 &amp;&amp; xsd:int(?month) &lt; 10)
+	} }ORDER BY xsd:date(?date)
+      </query>
+      <chart>google.visualization.Timeline</chart>
+    </example>
+
+    <example>
+      <heading>Things north of 72.5 degrees north</heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT ?lat ?long ?name &quot;&quot; ?url
+	WHERE 
+	{ ?url npdv:nsDecDeg ?lat ;
+	npdv:ewDecDeg ?long ;
+	npdv:name ?name ;
+	FILTER (?lat &gt; 72.5)
+	}
+      </query>
+      <chart>sgvizler.visualization.Map</chart>
+    </example>
+
+    <example>
+      <heading>Total production per year on Ekofisk: Oil, Gas, NGL, Condensate and Water</heading>
+      <endpoint ref="npd"/>
+      <query>
+	SELECT ?Oil_millSm3 ?Gas_billSm3 ?NGL_millSm3 ?Condensate_millSm3 ?Water_millSm3
+	WHERE{  ?period a npdv:FieldProductionPeriod ;
+	npdv:hasField &lt;http://sws.ifi.uio.no/npd/field/Ekofisk&gt; ;
+	npdv:year ?year ;
+	npdv:producedNetOilMillSm3 ?Oil_millSm3 ;
+	npdv:producedNetGasBillSm3 ?Gas_billSm3 ;
+	npdv:producedNetNGLMillSm3 ?NGL_millSm3 ;
+	npdv:producedNetCondensateMillSm3 ?Condensate_millSm3 ;
+	npdv:producedWaterMillSm3  ?Water_millSm3 ;
+	OPTIONAL{?period npdv:month ?month} .
+	FILTER (!bound(?month))
+	FILTER (xsd:int(?year) &lt; 2011)
+	} ORDER BY ?year
+      </query>
+      <chart>google.visualization.Sparkline</chart>
+    </example>
+
+    <example>
+      <heading>Plot of most of the muncipalities of
+      Rogaland, Norway</heading>
+      <endpoint ref="dbp"/>
+      <query>
+	SELECT ?lat ?long ?name ?text ?url ?image
+	WHERE {
+	?url  a dbpo:AdministrativeRegion ;
+	  dct:subject &lt;http://dbpedia.org/resource/Category:Municipalities_of_Rogaland&gt;  ;
+  	  rdfs:label ?name;
+	  geo:lat  ?lat;
+	  geo:long ?long .
+	  OPTIONAL{ ?url rdfs:comment ?text }
+	  OPTIONAL{ ?url dbpo:thumbnail ?image }
+	  FILTER(lang(?text)=&quot;en&quot;)
+	  FILTER(lang(?name)=&quot;en&quot;)
+	}
+      </query>
+      <chart>sgvizler.visualization.Map</chart>
+      <style>width:800px; height:600px;</style>
+    </example>
+
+    <example>
+      <heading>The 10 largest countries by population</heading>
+      <endpoint ref="world"/>
+      <query>
+	SELECT *
+	WHERE{
+	[] a w:Country ;
+	 w:hasName ?Name ;
+	 w:hasCountryPopulation ?Population ;
+	} ORDER BY DESC(?Population)
+	LIMIT 10
+      </query>
+      <chart>google.visualization.BarChart</chart>
+      <other>
+	<example>
+	  <chart>google.visualization.ColumnChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.LineChart</chart>
+	</example>
+	<example>
+	  <chart>google.visualization.GeoChart</chart>
+	  <style>width:600px; height:250px;</style>
+	</example>
+	<example>
+	  <chart>sgvizler.visualization.List</chart>
+	</example>
+      </other>
+    </example>
+
+
+    <example>
+      <heading>The 10 largest cities by population on a map</heading>
+      <endpoint ref="world"/>
+      <query>
+	SELECT ?Name ?Name
+	WHERE{
+	[] a w:City ;
+	w:hasName ?Name ;
+	w:hasCityPopulation ?Population ;
+	} 
+	ORDER BY DESC(?Population)
+	LIMIT 10
+      </query>
+      <chart>google.visualization.Map</chart>
+      <chartoptions>showTip=true</chartoptions>
+    </example>
+
+    <example>
+      <heading>Life expectancy over Gross National Product</heading>
+      <endpoint ref="world"/>
+      <query>
+	SELECT *
+	WHERE{[] 
+	w:hasGNP ?GNP ;
+	w:hasLifeExpectancy ?LifeExpectancy;
+	}
+      </query>
+      <chart>google.visualization.ScatterChart</chart>
+      <chartoptions>hAxis.logScale=true|animation.duration=2000|backgroundColor=lightgreen</chartoptions>
+    </example>
+
+
+    <example>
+      <heading>Life expectancy over Gross National Product, Size is Population, Color is Continent</heading>
+      <endpoint ref="world"/>
+      <query>
+	SELECT * 
+	WHERE{[] 
+	  w:hasCountryCode ?ID ; 
+	  w:hasGNP ?GNP ; 
+	  w:hasCountryPopulation ?Population ; 
+	  w:isCountryInContinent [ rdfs:label ?Continent ] ; 
+	  w:hasLifeExpectancy ?LifeExpectancy ; }
+      </query>
+      <chart>google.visualization.BubbleChart</chart>
+      <chartoptions>vAxis.logScale=true|hAxis.logScale=true|bubble.textStyle.fontSize=6</chartoptions>
+    </example>
+
+
+    <example>
+      <heading>The population of the world, sized in boxes per area category</heading>
+      <endpoint ref="world"/>
+      <query>
+	SELECT ?a ?b xsd:int(?c)
+	WHERE{			  
+	{ ?a w:isCountryInRegion ?b ;
+	w:hasCountryPopulation ?c }
+	UNION
+	{ ?a w:isRegionInContinent ?b ;
+	LET(?c := 0) }
+	UNION
+	{ ?a a w:Continent;
+	LET(?b := &quot;World&quot;)
+	LET(?c := 0) }
+	UNION
+	{ LET(?a := &quot;World&quot;) 
+	LET(?b := &quot;&quot;)  
+	LET(?c := 0) }
+	}
+      </query>
+      <chart>google.visualization.TreeMap</chart>
+    </example>
+
+    <example>
+      <heading>The population of South America per country</heading>
+      <endpoint ref="world"/>
+      <query>
+	SELECT ?Country ?Population
+	WHERE{
+	[] w:hasName ?Country ;
+	w:hasCountryPopulation ?Population;
+	w:isCountryInContinent [ rdfs:label &quot;South America&quot; ] ;
+	}
+	ORDER BY DESC(?Population)
+      </query>
+      <chart>google.visualization.GeoMap</chart>
+      <chartoptions>title=South America|region=005</chartoptions>
+      <other>
+	<example>
+	  <chart>google.visualization.GeoChart</chart>
+	  <chartoptions>region=005</chartoptions>
+	  <style>width:600px; height:300px;</style>
+	</example>
+	<example>
+	  <chart>google.visualization.PieChart</chart>
+	</example>
+      </other>
+    </example>
+
+    <example>
+      <heading>The population of South America per country</heading>
+      <description>The graph (well, it's a tree.) draws the structure
+      Asia -> part of continent -> country. The colors represents the
+      different continents, the size the population of the country.
+      The animation is very snappy in Chrome, and not so snappy in
+      other browsers.
+      </description>
+      <endpoint ref="world"/>
+      <query>
+	SELECT ?node ?parent  ?size ?color
+	WHERE{			  
+	{ [rdfs:label ?node ] w:isCountryInRegion [rdfs:label ?parent] ;
+	w:isCountryInRegion ?color ;
+	w:isCountryInContinent [rdfs:label &quot;Asia&quot;] ;
+	w:hasCountryPopulation ?size }
+	UNION
+	{ [rdfs:label ?node] w:isRegionInContinent [rdfs:label &quot;Asia&quot;,?parent] ;
+	w:isRegionInContinent ?color }
+	} ORDER BY ?size
+      </query>
+      <chart>sgvizler.visualization.D3ForceGraph</chart>
+    </example>
+
+    <example>
+      <heading>The roles of the persons in the board of Akershus Arbeiderparti</heading>
+      <description>
+      </description>
+      <endpoint ref="enhetsregisteret"/>
+      <query>
+	SELECT ?sourceURI ?sourceLabel ?targetURI ?targetLabel ?edgeLabel ?sourceColor ?targetColor 
+	WHERE { 
+	  { ?sourceURI enhregv:enhetsnavn ?sourceLabel . 
+	    LET (?sourceURI := &lt;http://sws.ifi.uio.no/enhetsregisteret/enhet/971100087&gt;) .
+	    LET (?sourceColor := &quot;green&quot;) .
+	  } 	
+	  UNION 
+	  { &lt;http://sws.ifi.uio.no/enhetsregisteret/enhet/971100087&gt; enhregv:rolle 
+	      [ enhregv:agent ?sourceURI ] . 
+	    ?sourceURI foaf:name ?sourceLabel ; 
+	      enhregv:verv ?edge . 
+	    ?edge enhregv:enhet ?targetURI ; 
+	      rdfs:label ?edgeLabel . 
+	    ?targetURI enhregv:enhetsnavn ?targetLabel . 
+	    LET (?sourceColor := &quot;yellow&quot;) . 
+	    LET (?targetColor := &quot;pink&quot;) . 
+	  } 
+	}
+      </query>
+      <chart>sgvizler.visualization.DraculaGraph</chart>
+      <style>width:1200px; height:500px;</style>
+    </example>
+
+    <example>
+      <heading>The friends of Martin and Martin and Kjetil</heading>
+      <endpoint ref="from"/>
+      <rdf>http://folk.uio.no/martige/foaf|http://folk.uio.no/martingi/foaf.rdf|http://www.kjetil.kjernsmo.net/foaf#me</rdf>
+      <query>
+	PREFIX geo: &lt;http://www.w3.org/2003/01/geo/wgs84_pos#&gt;
+	PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&gt;
+	SELECT ?i ?friend
+	WHERE { ?i foaf:knows ?friend }      
+      </query>
+      <chart>sgvizler.visualization.D3ForceGraph</chart>
+      <other>
+	<example>
+	  <chart>sgvizler.visualization.List</chart>
+	</example>
+      </other>
+    </example>
+
+  </examples>
+</root>
