@@ -1,0 +1,32 @@
+
+<html>
+  <head>
+    <title>MWE</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>
+    <script>
+         sgvizler
+             .prefix("ex", "http://example.org#")
+             .defaultEndpointURL("http://dbpedia.org/sparql")
+             .defaultQuery("SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7")
+             .defaultChartFunction("sgvizler.visualization.Table")
+             .defaultChartWidth(500)
+             .defaultChartHeight(500);
+      $(document).ready(
+          function (){ sgvizler.containerDraw("myExample"); }
+      );
+    </script>
+  </head>
+  <body>
+  <div id="myExample"
+       data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd"
+       data-sgvizler-query="SELECT ?class (count(?instance) AS ?noOfInstances)
+  			  WHERE{ ?instance a ?class }
+  			  GROUP BY ?class
+  			  ORDER BY ?class"
+       data-sgvizler-chart="google.visualization.PieChart"
+       data-sgvizler-chart-options="is3D=true|title=Number of instances"
+       style="width:800px; height:400px;"></div>
+  </body>
+</html>

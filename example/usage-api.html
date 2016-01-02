@@ -1,0 +1,32 @@
+
+<html>
+  <head>
+    <title>MWE</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>
+    <script>
+         sgvizler
+             .prefix("ex", "http://example.org#")
+             .defaultEndpointURL("http://dbpedia.org/sparql")
+             .defaultQuery("SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7")
+             .defaultChartFunction("sgvizler.visualization.Table")
+             .defaultChartWidth(500)
+             .defaultChartHeight(500);
+    </script>
+  </head>
+  <body>
+    <script>
+    var Q = new sgvizler.Query();                           // Create a Query instance.
+    
+    // Values may also be set in the sgvizler object---but will be
+    // overwritten here.
+    Q.query("SELECT * {?s ?p ?o} LIMIT 10")
+        .endpointURL("http://dbpedia.org/sparql")
+        .endpointOutputFormat("json")                      // Possible values 'xml', 'json', 'jsonp'.
+        .chartFunction("google.visualization.Table")       // The name of the function to draw the chart.
+        .draw("myElementID");                              // Draw the chart in the designated HTML element.
+    </script>
+    <div id="myElementID"></div>
+  </body>
+</html>

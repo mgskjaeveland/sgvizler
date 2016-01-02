@@ -1,0 +1,56 @@
+
+<html>
+  <head>
+    <title>MWE</title>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>
+    <script>
+      var MyOwnNamespace = {};
+      
+      MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
+          // 1. arg: module.
+          "MyOwnNamespace",
+          // 2. arg: function name.
+          "HelloWorld",
+          // 3. arg: visualisation function.
+          function (datatable, chartOptions) {
+      	    // collect from numbers from the datatable:
+      	var c, noColumns = datatable.getNumberOfColumns(),
+      	    r, noRows    = datatable.getNumberOfRows(),
+      	    // set default values for chart options
+      	    opt = $.extend({ word: 'Hello World' }, chartOptions),
+      	    tablecontents = "";
+      
+      	for (r = 0; r < noRows; r += 1) {
+      	    tablecontents += '<tr>';
+      	    for (c = 0; c < noColumns; c += 1) {
+      		tablecontents += '<td>' + opt.word + '</td>';
+      	    }
+      	    tablecontents += '</tr>';
+      	}
+      
+      	$(this.container)
+      	    .empty()
+      	    .html(tablecontents);
+      
+      	// Using an external library, loaded by the dependencies (arg. 4)
+      	new Tablesort(this.container);
+          },
+          // 4. arg: dependencies. 'Tablesort' is the function we need.
+          { Tablesort: "//cdnjs.cloudflare.com/ajax/libs/tablesort/1.6.1/tablesort.min.js" }
+      );
+      $(document).ready(
+          function (){ sgvizler.containerDrawAll(); }
+      );
+    </script>
+  </head>
+  <body>
+  <table id="example" style="border: 1px solid brown;"
+       data-sgvizler-endpoint="http://dbpedia.org/sparql"
+       data-sgvizler-query="SELECT * { ?s ?p ?o, ?o2 } LIMIT 6"
+       data-sgvizler-chart="MyOwnNamespace.HelloWorld"
+       data-sgvizler-chart-options="word=Hi World">
+  </table>
+  </body>
+</html>
