@@ -1,26 +1,11 @@
-.PHONY:
-
-##ROOT = ~/repo/sgvizler
 
 UGLIFY = uglifyjs
-#../node_modules/uglify-js/bin/uglifyjs
-##--jscomp_off externsValidation \--externs lib/raphael-dracula.pack.js \--externs lib/jquery.min.js
-GCLOSURE = java -jar tool/google-closure/compiler.jar \
-	--compilation_level SIMPLE_OPTIMIZATIONS \
-	--js
 MINIFIER = $(UGLIFY)
-#MINIFIER = $(GCLOSURE)
-
 XSLT = java -jar /home/martige/repo/sgvizler/bin/saxon9he.jar
-
-##JSDOCROOT = tool/jsdoc2
-##JSDOC = $ java -jar $(JSDOCROOT)/jsrun.jar $(JSDOCROOT)/app/run.js
-
 
 JS_FILES = \
 	sgvizler.js \
 	lib/raphael-dracula.pack.js
-
 
 ## Dependencies
 #  util.js:       [none]
@@ -79,12 +64,12 @@ lib/raphael-dracula.pack.js: lib/raphael-1.3.1-min.js lib/dracula.js
 	$(MINIFIER) $< > $@
 
 
-EXAMPLES = $(wildcard example.html/ex*.html)
+EXAMPLES = $(wildcard example/ex*.html)
 
-example.html: example.html/examples.xml example.html/examples.xsl
-	cd example.html; $(XSLT) -s:examples.xml -xsl:examples.xsl
+example: example/examples.xml example/examples.xsl
+	cd example; $(XSLT) -s:examples.xml -xsl:examples.xsl
 
-example.html/%.html: example
+example/%.html: example
 
 docs: yuidoc.json sgvizler.pack.js
 	rm -fR $@/*
@@ -99,4 +84,4 @@ all: \
 	$(JS_FILES) \
 	$(JS_FILES:.js=.min.js) \
 	docs \
-	example.html
+	example

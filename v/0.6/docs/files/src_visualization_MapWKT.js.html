@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/visualization/MapWKT.js - Sgvizler</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="http://beta.data2000.no/misc/image/mr.sgvizler.png" title="Sgvizler"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.6.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/sgvizler.html">sgvizler</a></li>
+                                <li><a href="../classes/sgvizler.charts.html">sgvizler.charts</a></li>
+                                <li><a href="../classes/sgvizler.charts.Chart.html">sgvizler.charts.Chart</a></li>
+                                <li><a href="../classes/sgvizler.container.html">sgvizler.container</a></li>
+                                <li><a href="../classes/sgvizler.core.html">sgvizler.core</a></li>
+                                <li><a href="../classes/sgvizler.datatable.html">sgvizler.datatable</a></li>
+                                <li><a href="../classes/sgvizler.datatables.html">sgvizler.datatables</a></li>
+                                <li><a href="../classes/sgvizler.defaults.html">sgvizler.defaults</a></li>
+                                <li><a href="../classes/sgvizler.form.html">sgvizler.form</a></li>
+                                <li><a href="../classes/sgvizler.loader.html">sgvizler.loader</a></li>
+                                <li><a href="../classes/sgvizler.logger.html">sgvizler.logger</a></li>
+                                <li><a href="../classes/sgvizler.namespace.html">sgvizler.namespace</a></li>
+                                <li><a href="../classes/sgvizler.parser.html">sgvizler.parser</a></li>
+                                <li><a href="../classes/sgvizler.Query.html">sgvizler.Query</a></li>
+                                <li><a href="../classes/sgvizler.registry.html">sgvizler.registry</a></li>
+                                <li><a href="../classes/sgvizler.util.html">sgvizler.util</a></li>
+                                <li><a href="../classes/sgvizler.visualization.D3ForceGraph.html">sgvizler.visualization.D3ForceGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DefList.html">sgvizler.visualization.DefList</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DraculaGraph.html">sgvizler.visualization.DraculaGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.List.html">sgvizler.visualization.List</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Map.html">sgvizler.visualization.Map</a></li>
+                                <li><a href="../classes/sgvizler.visualization.MapWKT.html">sgvizler.visualization.MapWKT</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Table.html">sgvizler.visualization.Table</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Text.html">sgvizler.visualization.Text</a></li>
+                                <li><a href="../classes/sgvizler.visualization.util.html">sgvizler.visualization.util</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: src/visualization/MapWKT.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+        /**
+         * @class sgvizler.visualization.MapWKT
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @since 0.6.0
+         **/
+
+        /**
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.6.0
+         */
+        C.MapWKT = charts.add(modSC, &quot;MapWKT&quot;,
+            function (data, chartOpt) {
+                /*global google, OpenLayers */
+                var //c,
+                    noColumns = data.getNumberOfColumns(),
+                    r, noRows = data.getNumberOfRows(),
+                    //that = this,
+                    opt = $.extend(
+                        {
+                            zoom: 5,
+                            centerLat: 62,
+                            centerLong: 2,
+                            //mapTypeId: google.maps.MapTypeId.TERRAIN,
+                            //douglasPeuckerKink: 5000,
+                            geoDatumIn: &quot;EPSG:4326&quot;,//&quot;EPSG:4230&quot;,
+                            geoDatumOut: &quot;EPSG:4326&quot;
+                        },
+                        chartOpt
+                    ),
+
+                    mapOptions = {
+                        projection: opt.geoDatumOut,
+                        layers: [
+                            new OpenLayers.Layer.OSM(),
+                            // new OpenLayers.Layer.WMS(
+                            //     &quot;OpenLayers WMS&quot;,
+                            //     &quot;http://vmap0.tiles.osgeo.org/wms/vmap0?&quot;, {layers: &#x27;basic&#x27;}
+                            // ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Physical&quot;,
+                                {type: google.maps.MapTypeId.TERRAIN}
+                            ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Streets&quot;,
+                                {numZoomLevels: 20}
+                            ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Hybrid&quot;,
+                                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+                            ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Satellite&quot;,
+                                {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
+                            )
+                        ],
+                        controls: [
+                            new OpenLayers.Control.Navigation(),
+                            new OpenLayers.Control.PanZoomBar(),
+                            new OpenLayers.Control.LayerSwitcher({ ascending: false }),
+                            new OpenLayers.Control.Permalink(),
+                            new OpenLayers.Control.ScaleLine(),
+                            new OpenLayers.Control.MousePosition(),
+                            new OpenLayers.Control.OverviewMap(),
+                            new OpenLayers.Control.KeyboardDefaults()
+                        ],
+                        center: new OpenLayers.LonLat(opt.centerLong, opt.centerLat),
+                        zoom: 5
+                    },
+                    mapBounds,
+                    map = new OpenLayers.Map(this.container, mapOptions),
+
+                    formatterWKT = new OpenLayers.Format.WKT(
+                        {
+                            internalProjection: map.baseLayer.projection,
+                            externalProjection: new OpenLayers.Projection(opt.geoDatumIn)
+                        }
+                    ),
+
+                    resultLayer = new OpenLayers.Layer.Vector(
+                        &quot;Results&quot;,
+                        {
+                            styleMap: new OpenLayers.StyleMap(
+                                {
+                                    &#x27;default&#x27;: new OpenLayers.Style(
+                                        {
+                                            fillColor: &quot;#33CC00&quot;,
+                                            fillOpacity: 0.2,
+                                            strokeColor: &quot;#000000&quot;,
+                                            strokeWidth: 1
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                    ),
+                    labelLayer = new OpenLayers.Layer.Vector(
+                        &quot;Labels&quot;,
+                        {
+                            eventListeners: {
+                                featureselected: function (evt) {
+                                    var feature = evt.feature,
+                                        popup = new OpenLayers.Popup.FramedCloud(
+                                            &quot;popup&quot;,
+                                            OpenLayers.LonLat.fromString(feature.geometry.toShortString()),
+                                            null,
+                                            &quot;&lt;div style=&#x27;font-size:.8em&#x27;&gt;&quot;
+                                                + &quot;&lt;b&gt;&quot; + feature.attributes.name + &quot;&lt;/b&gt;&lt;br/&gt;&quot;
+                                                + C.util.linkify2String(feature.attributes.uri) + &quot;&lt;br/&gt;&quot;
+                                                + feature.attributes.description
+                                                + &quot;&lt;/div&gt;&quot;,
+                                            null,
+                                            true
+                                        );
+                                    feature.popup = popup;
+                                    map.addPopup(popup);
+                                },
+                                featureunselected: function (evt) {
+                                    var feature = evt.feature;
+                                    map.removePopup(feature.popup);
+                                    feature.popup.destroy();
+                                    feature.popup = null;
+                                }
+                            },
+                            styleMap: new OpenLayers.StyleMap(
+                                {
+                                    &quot;default&quot;: new OpenLayers.Style(
+                                        {
+                                            strokeColor: &quot;#FF0000&quot;,
+                                            strokeOpacity: 1,
+                                            strokeWidth: 5,
+                                            fillColor: &quot;#FF0000&quot;,
+                                            fillOpacity: 0.5,
+                                            pointRadius: 2,
+                                            //pointerEvents: &quot;visiblePainted&quot;,
+
+                                            label : &quot;${name}&quot;,
+                                            fontSize: &quot;10px&quot;,
+                                            fontFamily: &quot;Arial&quot;,
+                                            labelAlign: &quot;l&quot;,
+                                            labelOutlineColor: &quot;white&quot;,
+                                            labelOutlineWidth: 1,
+                                            labelXOffset : 7
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                    ),
+
+                    selector = new OpenLayers.Control.SelectFeature(
+                        labelLayer,
+                        {
+                            click: true,
+                            autoActivate: true
+                        }
+                    ),
+
+                    wktFeature,
+                    labelFeature,
+
+                    addWKT = function (layer, valueWKT) {
+                        var features = formatterWKT.read(valueWKT),
+                            i;
+
+                        if (features) {
+                            if (!util.isArray(features.constructor)) {
+                                features = [features];
+                            }
+                            for (i = 0; i &lt; features.length; i += 1) {
+                                if (!mapBounds) {
+                                    mapBounds = features[i].geometry.getBounds();
+                                } else {
+                                    mapBounds.extend(features[i].geometry.getBounds());
+                                }
+                            }
+                            layer.addFeatures(features);
+                        }
+                        return features;
+                    };
+
+                //Proj4js.defs[&quot;EPSG:4230&quot;] = &quot;+proj=longlat +ellps=intl +no_defs&quot;;
+
+                //////////////////////////////////////////////////////////////////////
+
+                for (r = 0; r &lt; noRows; r += 1) {
+                    // add WKT
+                    wktFeature = addWKT(resultLayer, data.getValue(r, 0));
+
+                    // add Label
+                    labelFeature = new OpenLayers.Feature.Vector(wktFeature[0].geometry.getCentroid());
+
+                    labelFeature.attributes.name =
+                        (noColumns &gt; 1 &amp;&amp; data.getValue(r, 1)) ? data.getValue(r, 1) : &quot;&quot;;
+                    labelFeature.attributes.uri =
+                        (noColumns &gt; 2 &amp;&amp; data.getValue(r, 2)) ? data.getValue(r, 2) : &quot;&quot;;
+                    labelFeature.attributes.description =
+                        (noColumns &gt; 3 &amp;&amp; data.getValue(r, 3)) ? data.getValue(r, 3) : &quot;&quot;;
+
+                    labelLayer.addFeatures([labelFeature]);
+                }
+
+                map.addLayer(resultLayer);
+                map.addLayer(labelLayer);
+
+                map.addControl(selector);
+
+                map.zoomToExtent(mapBounds);
+
+                this.fireListener(&#x27;ready&#x27;);
+
+            },
+            // Dependencies. { function: what-to-load }
+            {
+                &#x27;google.maps.Map&#x27;: &#x27;google.maps.Map&#x27;,
+                &#x27;OpenLayers&#x27;: &#x27;//cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/OpenLayers.min.js&#x27;
+                //&#x27;GDouglasPeucker&#x27;: &#x27;http://www.bdcc.co.uk/Gmaps/GDouglasPeuker.js&#x27;,
+                //&#x27;Proj4js&#x27;: &#x27;http://localhost/sgvizler/trunk/lib/proj4js-compressed.js&#x27;
+            }
+            );
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

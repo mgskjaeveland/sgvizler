@@ -1,0 +1,1120 @@
+#+TITLE: Sgvizler 0.6
+#+OPTIONS: H:4 num:nil toc:1 ^:nil
+#+LANGUAGE: en
+#+OPTIONS: html-postamble:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="sgvizler-www.css" />
+
+* Introduction
+  :PROPERTIES:
+  :CUSTOM_ID: intro
+  :END:
+
+  Sgvizler is a JavaScript library which renders the result of SPARQL
+  SELECT queries into charts or HTML elements; see [[#screenshots]] for
+  examples.
+
+  Charts may be included directly into your web pages simply by adding
+  HTML elements of the following form to your page, using
+  ~data-sgvizler-~ prefixed HTML attributes to specify the SPARQL
+  endpoint, SPARQL query and chart function (More options and usages
+  are available, see [[#using-sgvizler]]):
+  #+NAME: sgvizler-quick-start-example
+  #+BEGIN_SRC html
+  <div id="example"
+       data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd"
+       data-sgvizler-query="SELECT ?class (count(?instance) AS ?noOfInstances)
+			    WHERE{ ?instance a ?class }
+			    GROUP BY ?class
+			    ORDER BY ?class"
+       data-sgvizler-chart="google.visualization.PieChart"
+       style="width:800px; height:400px;"></div>
+  #+END_SRC
+  The above block will render into the following pie chart (here shown
+  as a static, scaled down screenshot).  A minimal working example of
+  this is found at [[./example/quick-start.html]].
+  #+attr_html: :width 400px :border 1 :style padding:0;margin:0;
+  [[./image/gPieChart.png]]
+
+
+  In brief, Sgvizler draws a chart by:
+  1. Given a SPARQL query and a SPARQL endpoint, querying the
+     endpoint for the result set, which must be in either [[http://www.w3.org/TR/rdf-sparql-XMLres/][SPARQL Query
+     Results XML Format]] or [[http://www.w3.org/TR/rdf-sparql-json-res/][SPARQL Query Results in JSON format]].
+  2. The results are then parsed into the [[http://code.google.com/apis/chart/interactive/docs/datatables_dataviews.html#javascriptliteral][JSON format that Google
+     prefers]].
+  3. While the result set is collected and parsed, the designated
+     visualisation function, e.g., simple DOM manipulation, a Google
+     chart, or other external visualisation library (e.g., [[http://d3js.org/][D3]]), is
+     loaded.
+  4. When the query result set and visualisation function are ready,
+     the result set is visualised.
+
+  Sgvizler supports all the major chart types offered by the [[http://code.google.com/apis/chart/][Google
+  Visualization API]]. Additionally, Sgvizler is extended with a set of
+  functions for drawing graphs---using external javascript libraries,
+  and functions for building basic HTML structures, like tables, lists
+  and text blocks. The same extension mechanism is available to
+  Sgvizler's users, meaning [[#user-defined-functions][user-defined visualisation functions]] may
+  easily be added to Sgvizler's repertoire.
+
+  If you use Sgvizler in your academic work, please cite the following
+  paper (There is also a [[paper/eswc2012poster.pdf][poster]] available):
+  #+BEGIN_QUOTE
+  Martin G. Skjæveland. [[http://2012.eswc-conferences.org/sites/default/files/eswc2012_submission_303.pdf][Sgvizler: A JavaScript Wrapper for Easy
+  Visualization of SPARQL Result Sets]]. In: 9th Extended Semantic Web
+  Conference (ESWC 2012), workshop and demo proceedings. Heraklion,
+  Crete, Greece, 2015.
+  #+END_QUOTE
+
+  The name and tool relies on and/or is inspired by [[http://www.w3.org/TR/rdf-sparql-query/][SPARQL]], [[http://code.google.com/apis/chart/][Google
+  Visualization API]], [[http://www.sparql.org/query.html][SPARQLer]], [[http://dbpedia.org/snorql/][Snorql]] and [[http://km.aifb.kit.edu/sites/spark/][Spark]].
+
+  This page describes version 0.6 of Sgvizler. For earlier versions
+  consult the old Sgvizler site: http://dev.data2000.no/sgvizler/.
+
+* Setup
+  :PROPERTIES:
+  :CUSTOM_ID: setup
+  :END:
+
+  To set up Sgvizler on your own site you will need to include a few
+  javascripts to your pages and configure Sgvizler to fit your SPARQL
+  endpoints and dataset---for the latter see [[#using-sgvizler]].
+
+  To include the Sgvizler script, either
+
+  - [[#download][Download]] a copy of Sgvizler and run a local copy on your webserver,
+  - +use cdnjs+ (not yet available, #39),
+  - or use one of the following URI (possibly slow):
+    - http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.min.js ::
+	 Minified version.
+    - http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js ::
+	 Not minified, and including comments. Use for testing and bug
+         reporting.
+
+  The following libraries must also be included:
+
+  - [[https://developers.google.com/chart/interactive/docs/reference][Google Visualization API]] :: Includes many chart types and the
+       `DataTable` object, which is the input to the visualisation
+       functions and a handy object for manipulating the result set.
+
+  - [[http://jquery.com][jQuery]] :: Used for communicating with the SPARQL endpoint and to
+              manipulate the DOM.
+
+  Below is a working example for including the necessary javascripts:
+#+NAME: sgvizler-js-import
+#+BEGIN_SRC html
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>
+#+END_SRC
+
+* Using
+  :PROPERTIES:
+  :CUSTOM_ID: using-sgvizler
+  :END:
+
+  There are three intended ways to use Sgvizler:
+  1. Put SPARQL queries directly in HTML containers
+  2. Use a HTML form to query SPARQL endpoints
+  3. Use Sgvizler's JavaScript API
+
+  In all cases you may want to setup Sgvizler with a your own default
+  values.  Your Sgvizler instance is probably best configured by a
+  series of functions defined on the ~sgvizler~ object, setting
+  prefixes, the default endpoint, default chart, default chart size
+  and so on; see the documentation for the complete list:
+  [[./doc/0.6/classes/sgvizler.html]]---these options are similar to the
+  available [[#sgvizler-attributes][sgvizler attributes described below]]. Settings given for a
+  specific HTML container or on a ~Query~ object instance, as
+  explained below, will override the values set on the ~sgvizler~
+  object.
+
+  This javascript block exemplifies how to set a few values which will
+  be used for all future queries issues by Sgvizler, unless the values
+  are later reset. This example setup is used for all the live
+  examples this section.
+#+NAME: sgvizler-setup
+#+BEGIN_SRC js
+   sgvizler
+       .prefix("ex", "http://example.org#")
+       .defaultEndpointURL("http://dbpedia.org/sparql")
+       .defaultQuery("SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7")
+       .defaultChartFunction("sgvizler.visualization.Table")
+       .defaultChartWidth(500)
+       .defaultChartHeight(500);
+#+END_SRC
+
+
+** 1. Query stored in HTML container
+
+   Add =<div>= elements, or other suitable HTML containers, and
+   include special (HTML5 compatible) =data-sgvizler-= prefixed
+   "sgvizler attributes", to get HTML of the following format:
+#+NAME: sgvizler-usage-html-container
+#+BEGIN_SRC html
+<div id="myExample"
+     data-sgvizler-endpoint="http://sws.ifi.uio.no/sparql/npd"
+     data-sgvizler-query="SELECT ?class (count(?instance) AS ?noOfInstances)
+			  WHERE{ ?instance a ?class }
+			  GROUP BY ?class
+			  ORDER BY ?class"
+     data-sgvizler-chart="google.visualization.PieChart"
+     data-sgvizler-chart-options="is3D=true|title=Number of instances"
+     style="width:800px; height:400px;"></div>
+#+END_SRC
+
+   Sgvizler must also be told to draw the chart. This is normally
+   easiest done by loading all such HTML "sgvizler containers" on page
+   load with the following javascript call (See
+   [[./example/usage-container-drawall.html]] for a live example which
+   draws the above chart):
+
+#+NAME: sgvizler-js-drawAll
+#+BEGIN_SRC js
+$(document).ready(
+    function (){ sgvizler.containerDrawAll(); }
+);
+#+END_SRC
+
+   Individual containers can be drawn with the call ...
+#+NAME: sgvizler-js-drawOne
+#+BEGIN_SRC js
+$(document).ready(
+    function (){ sgvizler.containerDraw("myExample"); }
+);
+#+END_SRC
+   ... where =myExample= is the =id= attribute value of the container
+   to be drawn. (See [[./example/usage-container-drawone.html]] for a live
+   example)
+
+   See the [[./doc/0.6/][documentation]], of the =sgvizler= and =Query= objects
+   especially, for the description of these and other functions.
+
+*** Sgvizler HTML attributes
+    :PROPERTIES:
+    :CUSTOM_ID: sgvizler-attributes
+    :END:
+   The list below explains the HTML attributes that Sgvizler require
+   and recognise (Required attributes are marked by *).
+
+   - *id** ::
+	     Some identifying string, e.g., =myExample=. The
+             identifier for the HTML container to put the
+             visualisation results. The value must be unique to all
+             elements on the same page.
+
+   - *data-sgvizler-query** ::
+	A SPARQL query string. The SPARQL SELECT query specifying a
+        query result to fit the visualisation function. The query
+        result set (number of columns and datatypes) must fit the
+        format required by the selected visualisation function; find
+        the chart and description here [wiki:Sgvizler/Chart].
+
+   - *data-sgvizler-endpoint* ::
+	A URL string to a SPARQL endpoint, e.g., =http://dbpedia.org/sparql=.
+
+   - *data-sgvizler-endpoint_output* ::
+	The format Sgvizler shall ask the endpoint to return query
+        results as. Possible values are =json=, =jsonp= or =xml=, the
+        default is =json=.
+
+   - *data-sgvizler-rdf* ::
+	List of URLs to RDF files. The list must be separated by
+        =|=-characters. This is just a shorthand way of telling
+        Sgvizler to include a list of FROMs in the query. The
+        configured endpoint reads the RDF files and executes the query
+        over them; this means that the files must be accessible to the
+        endpoint and the endpoint must allow =FROM= in queries.
+
+   - *data-sgvizler-chart* ::
+	The visualisation function to use. The value is the name of
+        the chart object, e.g., =google.visualization.LineChart= or
+        =sgvizler.visualization.Table=. Find the value for the chart
+        you want on its [wiki:Sgvizler/Chart] page.
+
+   - *data-sgvizler-chart-options* ::
+       A list of options which are sent to the chart function. Each
+        option is given as ~option=value~ and each option-value-pair
+        is separated with a vertical bar,
+        e.g. ~option1=value1|option2=value2~. See the relevant
+        [wiki:Sgvizler/Chart] page for available options.
+
+   - *data-sgvizler-loglevel* ::
+	To what extent Sgvizler shall give feedback to the user. /This
+        feature is not yet implemented./
+
+   - *style* ::
+	       This is just the normal way of adding css style to your
+               elements, but =width= and =height= will also be picked
+               up by Sgvizler to determine the size of the chart. The
+               default values are respectively 800px and 400px.
+
+   - *data-sgvizler-endpoint_query_url* ::
+	Part of a URL to append to SPARQL endpoint URL such that this,
+        together with the SPARQL query forms a link that will print
+        the results of the query, i.e., (SPARQL endpoint URL) + (this
+        variable) + (query) = (query results (in a web
+        browser)). Default is ~?output=text&amp;query=~. This is used
+        when an error occurs and allows the users to check if the
+        query results are as expected, directly from the endpoint.
+
+   - *data-sgvizler-validator_query_url* ::
+	URL to some SPARQL validator such that this URL plus the
+        SPARQL query forms a link that will validate the given query,
+        i.e., (the value of this attribute) + (query) = (a url to the
+        validation results for query). Default value is
+        ~http://www.sparql.org/query-validator?languageSyntax=SPARQL&amp;outputFormat=sparql&amp;linenumbers=true&amp;query=~.
+
+
+** 2. Query Form
+
+   Add an HTML form with input fields for SPARQL query, SPARQL
+   endpoint and chart function.  The form closely resembles the query
+   forms of [[http://www.sparql.org/query.html][SPARQLer]] and [[http://dbpedia.org/snorql/][Snorql]].
+
+   Add the form to your site by using the function
+   =sgvizler.drawForm(elementID)=, where =elementID= is the HTML
+   element ID of where to put the form---if no argument is provided,
+   then the =body= element is used.
+
+#+NAME: sgvizler-query-form
+#+BEGIN_SRC html 
+<div id="myForm"></div>
+<script type="text/javascript">
+  $(document).ready(function() { sgvizler.formDraw("myForm"); });
+</script>
+#+END_SRC
+
+   An example of the above code and form is found here:
+   [[./example/usage-query-form.html]].
+
+** 3. Using Sgvizler's API
+
+   Use the available public functions for the =sgvizler= and =Query=
+   object when you need a different configuration than the two
+   above. See the [[http://doc.data2000.no/sgvizler/0.6/][documentation]] and give attention to [[http://doc.data2000.no/sgvizler/0.6/classes/sgvizler.Query.html][Query
+   object]]. Here is an example of how to use the API to draw charts,
+   the live version is here: [[./example/usage-api.html]].
+
+#+NAME: sgvizler-api-example
+#+BEGIN_SRC html
+<script>
+var Q = new sgvizler.Query();                           // Create a Query instance.
+
+// Values may also be set in the sgvizler object---but will be
+// overwritten here.
+Q.query("SELECT * {?s ?p ?o} LIMIT 10")
+    .endpointURL("http://dbpedia.org/sparql")
+    .endpointOutputFormat("json")                      // Possible values 'xml', 'json', 'jsonp'.
+    .chartFunction("google.visualization.Table")       // The name of the function to draw the chart.
+    .draw("myElementID");                              // Draw the chart in the designated HTML element.
+</script>
+<div id="myElementID"></div>
+#+END_SRC
+
+   If you want to directly access and manipulate the query results, use
+   the function =Query.getDataTable(success, fail)= and register
+   functions that are applied to the resulting query results'
+   [[https://developers.google.com/chart/interactive/docs/reference#DataTable][datatable]] on success and on failure.  The function =getDataTable=
+   does not ''return'' a datatable (but instead registers functions)
+   since retrieving the query results from the SPARQL endpoint is done
+   asynchronously.
+
+
+#+BEGIN_SRC js
+var Q = new sgvizler.Query(),
+    mySuccessFunc = function (datatable) {
+      /* Do what you want with the datatable */
+    },
+    myFailFunc = function (datatable) {
+      /* Handle the failure */
+    };
+
+Q.query("SELECT * {?s ?p ?o} LIMIT 10")
+    .endpointURL("http://dbpedia.org/sparql")
+    .getDataTable(mySuccessFunc, myFailFunc);
+#+END_SRC
+
+* Charts
+  :PROPERTIES:
+  :CUSTOM_ID: charts
+  :END:
+
+  When designing your SPARQL query for visualisation with Sgvizler the
+  order and the datatypes of the variables in the SPARQL SELECT block
+  is crucial. Check the specification of each of the visualisation
+  functions below.
+
+  Live examples are found here: [[./v/0.6/example/]]
+
+  Datatypes are decided only on the basis of the XSD datatype of the
+  values. =xsd:int=, =xsd:long=, =xsd:integer=, =xsd:float=,
+  =xsd:double=, =xsd:decimal= are typed as the javascript =number=
+  datatype", =xsd:boolean= as =boolean=; =xsd:date= and =xsd:dateTime=
+  as =Date= object; and =xsd:time= as a "timeofday" Array. The rest,
+  especially string, untyped literals and resources, are typed as
+  "string". Many of the charts expect certain columns to be of
+  datatype number; you may want to [[./FAQ.html#casting-datatype][cast the results]].  *NB:* Sgvizler
+  sets the datatype for each column by looking at the first row of
+  results only.
+
+  It is also possible to preprocess the query results before they are
+  passed on to the visualisation function, see [[#datatables]].
+
+  The chart functions may have many different options, e.g., setting
+  colour, controlling axis and dimensions. Consult Google's page for
+  the options for their visualisations functions. The
+  ~sgvizler.visualisation~ functions are documented below. Feel free
+  to fork and improve these functions; they are found here:
+  [[https://github.com/mgskjaeveland/sgvizler/tree/master/src/visualization][github: src/visualization]]
+  
+** Chart types
+
+    | Name                 | Chart function                                           |
+    |----------------------+----------------------------------------------------------|
+    | [[#LineChartAreaChartSteppedAreaChartColumnChartBarChart][Line Chart]]           | google.visualization.LineChart                           |
+    | [[#LineChartAreaChartSteppedAreaChartColumnChartBarChart][Area Chart]]           | google.visualization.AreaChart                           |
+    | [[#LineChartAreaChartSteppedAreaChartColumnChartBarChart][Area Chart]]           | google.visualization.SteppedAreaChart                    |
+    | [[#LineChartAreaChartSteppedAreaChartColumnChartBarChart][Column Chart]]         | google.visualization.ColumnChart                         |
+    | [[#LineChartAreaChartSteppedAreaChartColumnChartBarChart][Bar Chart]]            | google.visualization.BarChart                            |
+    | [[#Sparkline][Sparkline]]            | google.visualization.ImageSparkLine                      |
+    | [[#ScatterChart][Scatter Chart]]        | google.visualization.ScatterChart                        |
+    | [[#BubbleChart][Bubble Chart]]         | google.visualization.BubbleChart                         |
+    | [[#PieChart][Pie Chart]]            | google.visualization.PieChart                            |
+    | [[#CandlestickChart][Candlestick Chart]]    | google.visualization.CandlestickChart                    |
+    | [[#Gauge][Gauge]]                | google.visualization.Gauge                               |
+    | [[#OrgChart][Org Chart]]            | google.visualization.OrgChart                            |
+    | [[#TreeMap][Tree Map]]             | google.visualization.TreeMap                             |
+    | [[#MotionChart][Motion Chart]]         | google.visualization.MotionChart                         |
+    | [[#Timeline][Timeline]]             | google.visualization.AnnotatedTimeLine                   |
+    | [[#GeoChart][Geo Chart]]            | google.visualization.GeoChart                            |
+    | [[#GeoMap][Geo Map]]              | google.visualization.GeoMap                              |
+    | [[#Map][Map]], [[#Map+][Map+]]            | google.visualization.Map, sgvizler.visualization.Map     |
+    | [[#Table][Table]]                | google.visualization.Table, sgvizler.visualization.Table |
+    | [[#Force-directedGraph][Force-directed Graph]] | sgvizler.visualization.D3ForceGraph                      |
+    | [[#Graph][Graph]]                | sgvizler.visualization.DraculaGraph                      |
+    | [[#List][List]]                 | sgvizler.visualization.List                              |
+    | [[#DefinitionList][Definition List]]      | sgvizler.visualization.DefList                           |
+    | [[Text][Text]]                 | sgvizler.visualization.Text                              |
+
+*** Line Chart, Area Chart, Stepped Area Chart, Column Chart, Bar Chart
+    :PROPERTIES:
+    :CUSTOM_ID: LineChartAreaChartSteppedAreaChartColumnChartBarChart
+    :END:
+
+    #+CAPTION: Line chart
+    [[./image/gLineChart.png]]
+
+    Format: 2--N columns:
+    1. The category label, i.e., the x-axis. Any datatype(?)
+    2. 2nd.--Nth. column: each column represents a separate y-axis
+       series. Datatype: number.
+
+    These chart types are very similar and have the same data format
+    requirements. Line charts represents the relationship between the
+    x-series and each y-series as a line. An area chart colours the area
+    below this line. A column chart represents the relationship with
+    vertical bars, and bar charts using horizontal bars.
+  
+*** Sparkline
+    :PROPERTIES:
+    :CUSTOM_ID: Sparkline
+    :END:
+
+    #+CAPTION: Sparkline
+    [[./image/gSparkline2.png]]
+
+    Format: 1--N columns: each column represents a separate y-axis
+    series. Datatype: number.
+
+    Minimalistic line chart showing only the line, no labels or
+    axis. Rendered as an image.
+
+*** Scatter Chart
+    :PROPERTIES:
+    :CUSTOM_ID: ScatterChart
+    :END:
+
+    #+CAPTION: Scatter chart
+    [[./image/gScatterChart.png]]
+
+    Format: 2--N columns: ([[http://code.google.com/apis/chart/interactive/docs/gallery/scatterchart.html#Data_Format][Google's description]])
+    1. The x-axis. Datatype: number.
+    2. 2nd.--Nth. column: each column represents a separate y-axis
+       series. Datatype: number.
+
+*** Bubble Chart
+    :PROPERTIES:
+    :CUSTOM_ID: BubbleChart
+    :END:
+
+    #+CAPTION: Bubble chart
+    [[./image/gBubbleChart.png]]
+
+    Similar to scatter plot, but can represent additional dimensions
+    using marker size and colour. See [[http://code.google.com/apis/chart/interactive/docs/gallery/bubblechart.html#Data_Format][Google's description]].
+
+*** Pie Chart
+    :PROPERTIES:
+    :CUSTOM_ID: PieChart
+    :END:
+
+    #+CAPTION: Pie chart
+    [[./image/gPieChart.png]]
+
+    Format: 2 columns: ([[http://code.google.com/apis/chart/interactive/docs/gallery/piechart.html#Data_Format][Google's description]])
+
+    1. The pie slice label. Datatype: any?
+    2. The pie slice value. Datatype: number.
+
+*** Candlestick Chart
+    :PROPERTIES:
+    :CUSTOM_ID: CandlestickChart
+    :END:
+
+    See the [[http://code.google.com/apis/chart/interactive/docs/gallery/candlestickchart.html#Data_Format][description at Google]] for the data format description and
+    an example.
+
+*** Gauge
+    :PROPERTIES:
+    :CUSTOM_ID: Gauge
+    :END:
+
+    #+CAPTION: Gauge
+    [[./image/gGauge.png]]
+
+    Format: 2 columns: ([[http://code.google.com/apis/chart/interactive/docs/gallery/gauge.html#Data_Format][Google's description]])
+
+    1. Value of gauge. Datatype: number.
+    2. Name of gauge. Datatype: string.
+
+*** Org Chart
+    :PROPERTIES:
+    :CUSTOM_ID: OrgChart
+    :END:
+
+    #+CAPTION: Org chart
+    [[./image/gOrgChart.png]]
+
+    Format: 1--3 columns: ([[http://code.google.com/apis/chart/interactive/docs/gallery/orgchart.html#Data_Format][Google's description]])
+
+    1. ID of node. Datatype: any.
+    2. ID of parent. Datatype: any.
+    3. Tool-tip text to show, when a user hovers over this node.
+
+    Draws trees representing the child-parent relation. See also Tree
+    Map if you want to represent values of your node, and draw boxes
+    and not trees.
+
+*** Tree Map
+    :PROPERTIES:
+    :CUSTOM_ID: TreeMap
+    :END:
+
+    #+CAPTION: Tree map
+    [[./image/gTreeMap.png]]
+
+    Format: 3--4 columns: ([[http://code.google.com/apis/chart/interactive/docs/gallery/treemap.html#Data_Format][Google's description]])
+
+    1. ID of node. Datatype: string.
+    2. ID of parent. Datatype: string.
+    3. A value which determines the size of the node. Datatype: number, must be positive.
+    4. A value which determines the colour of the node. Datatype: number.
+
+    Draws a tree structure as a partitioned box. The size of the box
+    is determined by the value of the third argument. The colour of the
+    box of the fourth argument. Only the values of child nodes
+    matter. Parents' value is the sum of its children values. Zoom in
+    with left-clicks, zoom out with right-clicks. See Org Chart if you
+    want trees and not boxes.
+
+*** Motion Chart
+    :PROPERTIES:
+    :CUSTOM_ID: MotionChart
+    :END:
+
+    [[./image/gMotionChart.png]]
+
+    Format: 3--N columns: ([[http://code.google.com/apis/chart/interactive/docs/gallery/treemap.html#Data_Format][Google's description]])
+
+    1. ID of the thing. Datatype: string.
+    2. Timestamp for value. Datatype: different time formats, see Google's page.
+    3. 3rd--Nth. column: Values. Datatype: string or number.
+
+    A complex chart type with animation and many different charts in
+    one. Shows values for things over time. Value series can be turned
+    on or off.
+
+*** Timeline
+    :PROPERTIES:
+    :CUSTOM_ID: Timeline
+    :END:
+
+    #+CAPTION: Timeline
+    [[./image/gTimeline.png]]
+
+    Draws an interactive diagram with dates or timestamps on the
+    x-axis and the y-axis series as line charts. Scroll back and
+    forth, and zoom in time. Somewhat difficult data format, see
+    [[http://code.google.com/apis/chart/interactive/docs/gallery/annotatedtimeline.html#Data_Format][Google's description]] for a description. Drawn using
+    Flash. Requires that the size of the html container element is
+    explicitly set.
+
+*** Geo Chart
+    :PROPERTIES:
+    :CUSTOM_ID: GeoChart
+    :END:
+
+    See [[http://code.google.com/apis/chart/interactive/docs/gallery/geochart.html][Google's description]] for more information.
+
+*** Geo Map
+    :PROPERTIES:
+    :CUSTOM_ID: GeoMap
+    :END:
+
+    #+CAPTION: Geo map
+    [[./image/gGeoMap.png]]
+
+    Format: 2--4 columns: ([[http://code.google.com/apis/chart/interactive/docs/gallery/geomap.html#Data_Format][Google's description]])
+
+    1. Latitude. Datatype: number.
+    2. Longitude. Datatype: number.
+    3. Value to display at the given position. Datatype: number.
+    4. Label for the position. Datatype: string.
+
+    Draws a map and lays out the values of the 3rd column as circles
+    of size and colour according to the size of the value. This chart
+    offers few zooming and panning options. 
+
+*** Map
+    :PROPERTIES:
+    :CUSTOM_ID: Map
+    :END:
+
+    Format: 1--3 columns, the two first columns specify a geographical
+    point, the optional third a name for the point.  (See [[http://code.google.com/apis/chart/interactive/docs/gallery/map.html#Data_Format][Google's
+    description]] for details.) See also the chart type Map+
+    below. Displays markers on a Google Map. Max. 400 markers.
+
+*** Map+
+    :PROPERTIES:
+    :CUSTOM_ID: Map+
+    :END:
+
+    #+CAPTION: Map
+    [[./image/sMap.png]]
+
+    This is a custom-made function which produces nicely formatted
+    html boxes to place on the markers of a Google Map Chart. If there
+    are less than four columns this chart behaves just like Map. All
+    options are passed through to Google's Map Chart, hence Map+
+    accepts the same options as Map does, except Map+ operates only in
+    ~dataMode=markers~ mode.
+
+    Format 2--6 columns:
+    1. Latitude. Datatype: number.
+    2. Longitude. Datatype: number.
+    3. Heading. Datatype: any.
+    4. Paragraph text. Datatype: any.
+    5. Link. Datatype: any, but should be a URL.
+    6. Image. Datatype: any, but should be a link to a small image.
+
+*** Table
+    :PROPERTIES:
+    :CUSTOM_ID: Table
+    :END:
+
+    #+CAPTION: Table
+    [[./image/gTable.png]]
+
+    The ~google.visualisation.Table~ shows the result set as a table,
+    including some formatting features, e.g., rows can be sorted by
+    clicking on columns. ([[http://code.google.com/apis/chart/interactive/docs/gallery/table.html#Data_Format][Google's description]]).
+    
+    The ~sgvizler.visualisation.Table~ function similarly shows the
+    results as a table, but uses plain HTML: ~<table>, <tr>, <th>,
+    <td>~.
+
+*** Force-directed Graph
+    :PROPERTIES:
+    :CUSTOM_ID: Force-directedGraph
+    :END:
+
+    #+CAPTION: Force-directed graph
+    [[./image/dForceGraph.png]]
+
+    Format 2--4 columns:
+    1. ID of source. Datatype: any.
+    2. ID of target. Datatype: any.
+    3. A value which determines the size of the node. Datatype: number, must be positive.
+    4. A value which determines the colour of the node. Datatype: any.
+
+    This chart type function is written using the [[http://mbostock.github.com/d3/][D3]] JavaScript
+    library. There are tons of possibilities for formatting the graph
+    with this library, but only a few available through
+    Sgvizler.
+
+    Chart options:
+    | Name             | Default value |
+    |------------------+---------------|
+    | directed         | false         |
+    | noderadius       | 0.5           |
+    | nodefontsize     | "10px"        |
+    | nodeheight       | 20            |
+    | nodestrokewidth  | "1px"         |
+    | nodecornerradius | "1px"         |
+    | nodepadding      | 7             |
+    | nodecolor        | "green"       |
+    | edgestroke       | "blue"        |
+    | edgefill         | "blue"        |
+    | edgestrokewidth  | 1             |
+    | edgefontsize     | "10px"        |
+    | edgeseparator    | ", "          |
+
+*** Graph
+    :PROPERTIES:
+    :CUSTOM_ID: Graph
+    :END:
+
+    #+CAPTION: Graph
+    [[./image/rdGraph.png]]
+
+    Format 4--7 columns:
+    1. ID of source. Datatype: any, should be a URL.
+    2. Label of source.
+    3. ID of target. Datatype: any, should be a URL.
+    4. Label of target.
+    5. Label of edge between source and target. Multiple edges between
+       same source and target are concatenated.
+    6. Colour of source node.
+    7. Colour of target node.
+
+    Chart options:
+    | Name             | Default value |
+    |------------------+---------------|
+    | noderadius       | 0.5           |
+    | nodefontsize     | "10px"        |
+    | nodeheight       | 20            |
+    | nodestrokewidth  | "1px"         |
+    | directed         | false         |
+    | nodecornerradius | "1px"         |
+    | nodepadding      | 7             |
+    | nodecolor        | "green"       |
+    | edgestroke       | "blue"        |
+    | edgefill         | "blue"        |
+    | edgestrokewidth  | 1             |
+    | edgefontsize     | "10px"        |
+    | edgeseparator    | ", "          |
+
+*** List
+    :PROPERTIES:
+    :CUSTOM_ID: List
+    :END:
+
+    #+CAPTION: List
+    [[./image/sList.png]]
+
+    This is a custom-made function which produces a simple html
+    list. It can be either numbered or bullets.
+
+    Format is any number of columns. All columns are treated as text.
+
+    Chart options:
+    | Name         | Default        | Description                                                                                    |
+    |--------------+----------------+------------------------------------------------------------------------------------------------|
+    | ~list~       | ~ul~           | Specifies the list type, should be either ~ul~ (unordered/bullets) or ~ol~ (ordered/numbered). |
+    | ~cellSep~    | ", "           | The glue between cells in each row. Can be html.                                               |
+    | ~rowPrefix~  | (empty string) | String to prefix each row with. Can be html.                                                   |
+    | ~rowPostfix~ | (empty string) | String to postfix each row with. Can be html.                                                  |
+
+
+*** Definition List
+    :PROPERTIES:
+    :CUSTOM_ID: DefinitionList
+    :END:
+
+    #+CAPTION: Definition list
+    [[./image/sDefList.png]]
+    
+    Similar to List, but creates a html definition list.
+
+    Format two or more columns. All columns are treated as text. First
+    column contains the terms to be defined, the rest contains the
+    definition.
+
+    Chart options:
+    | Name                | Default        | Description                                          |
+    |---------------------+----------------+------------------------------------------------------|
+    | ~cellSep~           | ", "           | The glue between cells in each row. Can be html.     |
+    | ~termPrefix~        | (empty string) | String to prefix each term with. Can be html.        |
+    | ~termPostfix~       | ~:~            | String to postfix each row with. Can be html.        |
+    | ~definitionPrefix~  | (empty string) | String to prefix each definition with. Can be html.  |
+    | ~definitionPostfix~ | (empty string) | String to postfix each definition with. Can be html. |
+
+*** Text
+    :PROPERTIES:
+    :CUSTOM_ID: Text
+    :END:
+
+    #+CAPTION: Text
+    [[./image/sText.png]]
+
+    A generic text producer.
+
+    Any number of columns. The default treats the results as a block of
+    text, each cell is a sequence of words, each row a paragraph.
+
+    Chart options:
+    | Name             | Default        | Description                                            |
+    |------------------+----------------+--------------------------------------------------------|
+    | ~cellSep~        | ", "           | The glue between cells in each row. Can be html.       |
+    | ~cellPrefix~     | (empty string) | String to prefix each cell with. Can be html.          |
+    | ~cellPostfix~    | (empty string) | String to postfix each cell with. Can be html.         |
+    | ~rowPrefix~      | ~<p>~          | String to prefix each row with. Can be html.           |
+    | ~rowPostfix~     | ~</p>~         | String to postfix each row with. Can be html.          |
+    | ~resultsPrefix~  | ~<div>~        | String to prefix the whole results with. Can be html.  |
+    | ~resultsPostfix~ | ~</div>~       | String to postfix the whole results with. Can be html. |
+
+* Datatables
+  :PROPERTIES:
+  :CUSTOM_ID: datatables
+  :END:
+
+  It is possible to manipulate the data collected from the endpoint
+  before is it passed on to the visualisation function. This can come
+  in handy when certain functions are too complex or cumbersome to
+  formulate as a SPARQL query. These functions takes as input and
+  returns an object of type [[https://developers.google.com/chart/interactive/docs/reference#DataTable][google.visualisation.DataTable]], and are
+  applied after the query results have been parsed into a datatable
+  and before the datatable is sent to the visualization function.
+
+** Example
+
+  A simple example of such a function is
+  =sgvizler.visualization.prefixify=, which replaces all namespaces
+  with a prefix, using the =namespace.prefixify= function available in
+  the [[./doc/0.6/classes/sgvizler.namespace.html][sgvizler.namespace]] object.
+
+#+INCLUDE: "./v/0.6/src/datatable/prefixify.js" src js
+
+* Extending
+  :PROPERTIES:
+  :CUSTOM_ID: user-defined-functions
+  :END:
+
+  Sgvizler is built to be extended with user-defined functions.
+
+  To create your own visualisation or datatable function use the
+  function =sgvizler.chartsAdd= or =sgvizler.datatablesAdd=, see the
+  [[./doc/0.6/classes/sgvizler.html][documentation]] for details. These functions have
+  has four input parameters:
+
+  - =module= :: The javascript namespace to where the function to be
+		created belongs, e.g., =MyOwnNamespace=
+  - =name= :: The name of the function, e.g., =HelloWorld=
+  - =func= :: The function, i.e., the function that does all the
+              work. For =chartsAdd=, this function should take two
+              arguments: =function (datatable, chartOpt)=, where
+              =data= is a Google DataTable object and =chartOpt= is an
+              object of options for the chart function.  For
+              =datatablesAdd= the function must take a single argument
+              of type =google.visualization.DataTable=, as explained
+              in [[#datatables]].
+  - =dependencies= :: An object of dependencies that function
+		      requires, typically external javascript
+		      libraries. Each attribute name of the object
+		      must be a function name that is contained in the
+		      javascript to be loaded.
+
+** Example
+
+   This is a simple (and useless) Hello World example, which displays
+   a table where all cells contain as default the value =Hello World=,
+   i.e., /all/ values are replaced with this value. The default value
+   may be changed with the option =word=.
+
+   More real examples are found in src/visualization/.
+
+*** Chart function
+
+#+NAME: MyOwnNamespace.HelloWorld
+#+BEGIN_SRC js
+var MyOwnNamespace = {};
+
+MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
+    // 1. arg: module.
+    "MyOwnNamespace",
+    // 2. arg: function name.
+    "HelloWorld",
+    // 3. arg: visualisation function.
+    function (datatable, chartOptions) {
+	    // collect from numbers from the datatable:
+	var c, noColumns = datatable.getNumberOfColumns(),
+	    r, noRows    = datatable.getNumberOfRows(),
+	    // set default values for chart options
+	    opt = $.extend({ word: 'Hello World' }, chartOptions),
+	    tablecontents = "";
+
+	for (r = 0; r < noRows; r += 1) {
+	    tablecontents += '<tr>';
+	    for (c = 0; c < noColumns; c += 1) {
+		tablecontents += '<td>' + opt.word + '</td>';
+	    }
+	    tablecontents += '</tr>';
+	}
+
+	$(this.container)
+	    .empty()
+	    .html(tablecontents);
+
+	// Using an external library, loaded by the dependencies (arg. 4)
+	new Tablesort(this.container);
+    },
+    // 4. arg: dependencies. 'Tablesort' is the function we need.
+    { Tablesort: "//cdnjs.cloudflare.com/ajax/libs/tablesort/1.6.1/tablesort.min.js" }
+);
+#+END_SRC
+
+*** Result
+
+    With the function MyOwnNamespace.HelloWorld defined as above, the
+    result of the following HTML can be found in
+    [[./example/hello-world.html]].  Note that we change the default value
+    in the options attribute to "Hi World".
+
+#+NAME: sgvizler-hello-world-example
+#+BEGIN_SRC js
+<table id="example" style="border: 1px solid brown;"
+     data-sgvizler-endpoint="http://dbpedia.org/sparql"
+     data-sgvizler-query="SELECT * { ?s ?p ?o, ?o2 } LIMIT 6"
+     data-sgvizler-chart="MyOwnNamespace.HelloWorld"
+     data-sgvizler-chart-options="word=Hi World">
+</table>
+#+END_SRC
+
+* Screenshots
+  :PROPERTIES:
+  :CUSTOM_ID: screenshots
+  :END:
+
+  Samples of many of the chart types and renderings that Sgvizler can
+  produce. The caption gives the function name. Click the caption for
+  a larger image.
+
+  #+CAPTION:  [[./image/gAreaChart.png][google.visualization.AreaChart]]
+  [[./image/gAreaChart.png]]
+  #+CAPTION:  [[./image/gBarChart.png][google.visualization.BarChart]]
+  [[./image/gBarChart.png]]
+  #+CAPTION:  [[./image/gBubbleChart.png][google.visualization.BubbleChart]]
+  [[./image/gBubbleChart.png]]
+  #+CAPTION:  [[./image/gGauge.png][google.visualization.Gauge]]
+  [[./image/gGauge.png]]
+  #+CAPTION:  [[./image/gGeoChart.png][google.visualization.GeoChart]]
+  [[./image/gGeoChart.png]]
+  #+CAPTION:  [[./image/gGeoMap.png][google.visualization.GeoMap]]
+  [[./image/gGeoMap.png]]
+  #+CAPTION:  [[./image/gLineChart.png][google.visualization.LineChart]]
+  [[./image/gLineChart.png]]
+  #+CAPTION:  [[./image/gMotionChart.png][google.visualization.MotionChart]]
+  [[./image/gMotionChart.png]]
+  #+CAPTION:  [[./image/gOrgChart.png][google.visualization.OrgChart]]
+  [[./image/gOrgChart.png]]
+  #+CAPTION:  [[./image/gPieChart.png][google.visualization.PieChart]]
+  [[./image/gPieChart.png]]
+  #+CAPTION:  [[./image/gScatterChart.png][google.visualization.ScatterChart]]
+  [[./image/gScatterChart.png]]
+  #+CAPTION:  [[./image/gSparkline.png][google.visualization.ImageSparkLine]]
+  [[./image/gSparkline.png]]
+  #+CAPTION:  [[./image/gSteppedAreaChart.png][google.visualization.SteppedAreaChart]]
+  [[./image/gSteppedAreaChart.png]]
+  #+CAPTION:  [[./image/gTable.png][google.visualization.Table]]
+  [[./image/gTable.png]]
+  #+CAPTION:  [[./image/gTimeline.png][google.visualization.AnnotatedTimeLine]]
+  [[./image/gTimeline.png]]
+  #+CAPTION:  [[./image/gTreeMap.png][google.visualization.TreeMap]]
+  [[./image/gTreeMap.png]]
+  #+CAPTION:  [[./image/sDefList.png][sgvizler.visualization.DefList]]
+  [[./image/sDefList.png]]
+  #+CAPTION:  [[./image/sList.png][sgvizler.visualization.List]]
+  [[./image/sList.png]]
+  #+CAPTION:  [[./image/sMap.png][sgvizler.visualization.Map]]
+  [[./image/sMap.png]]
+  #+CAPTION:  [[./image/sText.png][sgvizler.visualization.Text]]
+  [[./image/sText.png]]
+  #+CAPTION:  [[./image/dForceGraph.png][sgvizler.visualization.D3ForceGraph]]
+  [[./image/dForceGraph.png]]
+  #+CAPTION:  [[./image/rdGraph.png][sgvizler.visualization.DraculaGraph]]
+  [[./image/rdGraph.png]]
+  #+CAPTION:  [[./image/sMapWKT.png][sgvizler.visualization.MapWKT]]
+  [[./image/sMapWKT.png]]
+
+* Downloads
+  :PROPERTIES:
+  :CUSTOM_ID: download
+  :END:
+
+  The downloads contain "compiled" and minified library, source code,
+  documentation, tests, and examples.
+
+  - [[./download/0.6/sgvizler-0.6.0.zip][Version 0.6.0]]
+
+* Links
+  :PROPERTIES:
+  :CUSTOM_ID: links
+  :END:
+
+** Sgvizler at other sites
+
+  - [[http://github.com/mgskjaeveland/sgvizler][Sgvizler on github]]
+  - [[http://www.w3.org/2001/sw/wiki/Sgvizler][Sgvizler's page]] on the Semantic Web Standards wiki.
+
+** Sites using Sgvizler
+
+   -  [[http://www.slideshare.net/anjeve/visualizing-web-data-query-results][Visualizing Web Data Query Results WWW2012 tutorial]]
+   -  [[http://sws.ifi.uio.no/sgvizler/npd/][Linked Open NPD FactPages]]. [[http://sws.ifi.uio.no/project/npd/][Project homepage]].
+   -  [[http://sws.ifi.uio.no/sgvizler/gulliste/][Byantikvarens gule liste]]. [[http://sws.ifi.uio.no/gulside/][Project homepage]] in Norwegian.
+
+** Other SPARQL visualisers
+
+   Links to other folks who do something similar:
+
+  - [[http://www.jenitennison.com/blog/node/113][Jeni Tennison]] describes how to convert the SPARQL XML results with
+    XSLT to the format that the Google Visualization ''Query'' object
+    is able to read.
+  - [[http://data-gov.tw.rpi.edu/wiki/How_to_render_SPARQL_results_using_Google_Visualization_API][The Data-gov Wiki]] seems to use exactly this (i.e. the bullet
+    above) approach.
+  - [[http://km.aifb.kit.edu/sites/spark/][Spark]] "is a !JavaScript library that allows the simple integration
+    of data from all over the Web in any HTML page, using a rich set
+    of visualisations."
+* FAQ
+  :PROPERTIES:
+  :CUSTOM_ID: faq
+  :END:
+
+  See [[./FAQ.html][FAQ]]. 
+* Contact
+  :PROPERTIES:
+  :CUSTOM_ID: contact
+  :END:
+
+  If your reason for contact relates to a running instance of
+  Sgvizler, please provide a link to the page and explain the steps
+  necessary to reproduce the situation that the question is about.
+
+  For bugs, suggestions/improvements, etc., file an issue at github:
+  https://github.com/mgskjaeveland/sgvizler/issues
+
+  If you have a question which does not fit the format of an issue,
+  please use the mailing list =sgvizler@list.data2000.no=. Only
+  members of the list can post messages; to become a member, go here:
+  [[http://list.data2000.no/listinfo.cgi/sgvizler-data2000.no]]. The
+  mailinglist has an open archive:
+  [[http://list.data2000.no/pipermail/sgvizler-data2000.no/]]
+
+  To contact the developer of Sgvizler directly, use
+  =m.g.skjaeveland@gmail.com=, but please only when it is not possible
+  to use the other channels.
+* Code
+  :PROPERTIES:
+  :CUSTOM_ID: examples
+  :END:
+
+  This section contains the complete listings of the examples found in
+  [[./example/]].
+
+** snippets							   :noexport:
+#+NAME: html-head-start
+#+BEGIN_SRC html :noweb yes :exports none
+<html>
+  <head>
+    <title>MWE</title>
+    <<sgvizler-js-import>>
+#+END_SRC
+
+#+NAME: html-head-end
+#+BEGIN_SRC html :exports none
+  </head>
+  <body>
+#+END_SRC
+
+#+NAME: html-footer
+#+BEGIN_SRC html :exports none
+  </body>
+</html>
+#+END_SRC
+
+** ~quick-start.html~
+
+#+BEGIN_SRC html :noweb yes :tangle example/quick-start.html
+<<html-head-start>>
+    <script>
+      <<sgvizler-js-drawAll>>
+    </script>
+<<html-head-end>>
+  <<sgvizler-quick-start-example>>
+<<html-footer>>
+#+END_SRC
+
+** ~hello-world.html~
+
+#+BEGIN_SRC html :noweb yes :tangle example/hello-world.html
+<<html-head-start>>
+    <script>
+      <<MyOwnNamespace.HelloWorld>>
+      <<sgvizler-js-drawAll>>
+    </script>
+<<html-head-end>>
+  <<sgvizler-hello-world-example>>
+<<html-footer>>
+#+END_SRC
+
+** ~usage-container-drawall.html~
+
+#+BEGIN_SRC html :noweb yes :tangle example/usage-container-drawall.html
+<<html-head-start>>
+    <script>
+      <<sgvizler-setup>>
+      <<sgvizler-js-drawAll>>
+    </script>
+<<html-head-end>>
+  <<sgvizler-usage-html-container>>
+<<html-footer>>
+#+END_SRC
+
+** ~usage-container-drawone.html~
+
+#+BEGIN_SRC html :noweb yes :tangle example/usage-container-drawone.html
+<<html-head-start>>
+    <script>
+      <<sgvizler-setup>>
+      <<sgvizler-js-drawOne>>
+    </script>
+<<html-head-end>>
+  <<sgvizler-usage-html-container>>
+<<html-footer>>
+#+END_SRC
+
+** ~usage-query-form.html~
+
+#+BEGIN_SRC html :noweb yes :tangle example/usage-query-form.html
+<<html-head-start>>
+    <script>
+      <<sgvizler-setup>>
+    </script>
+<<html-head-end>>
+  <<sgvizler-query-form>>
+<<html-footer>>
+#+END_SRC
+
+** ~usage-api.html~
+
+#+BEGIN_SRC html :noweb yes :tangle example/usage-api.html
+<<html-head-start>>
+    <script>
+      <<sgvizler-setup>>
+    </script>
+<<html-head-end>>
+    <<sgvizler-api-example>>
+<<html-footer>>
+#+END_SRC

@@ -1,0 +1,133 @@
+#+TITLE: FAQ
+#+OPTIONS: H:4 num:nil toc:1
+#+LANGUAGE: en
+#+OPTIONS: html-postamble:nil
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="sgvizler-www.css" />
+
+* SPARQL
+
+** HTML encode characters
+   
+   Note that special characters like quotes and angle brackets in the
+   SPARQL query must be HTML encoded.
+
+   (Insert example using PREFIX, less than and quotes)
+
+** CASTing to correct datatype
+   :PROPERTIES:
+   :CUSTOM_ID: casting-datatype
+   :END:
+
+   Many visualisation functions expect certain columns to be of a
+   specific datatype, e.g., number. If your data is not of the correct
+   type, you may want to try to cast the results into the required
+   type, e.g., 
+
+#+BEGIN_SRC 
+   SELECT ?name (xsd:int(?untyped_value) as ?age) { 
+      ?name a :Person ;
+           :age ?untyped_value .
+   }
+#+END_SRC
+
+   SPARQL standard reference:
+   http://www.w3.org/TR/2013/REC-sparql11-query-20130321/#FunctionMapping
+
+* Browser support
+
+In short, Sgvizler is supported by all modern browsers. Sgvizler uses
+the jQuery javascript library, so check out their
+[[http://docs.jquery.com/Browser_compatibility browser compatibility]],
+and of course the charts rendered using the Google Visualization API
+relies on it to work. Some of these charts require Flash, and SVG
+technology to work, see Google's
+[[http://code.google.com/apis/chart/interactive/docs/ introduction to
+Using Chart Tools]].
+
+In general JavaScript has to abide by the [[http://en.wikipedia.org/wiki/Same_origin_policy][same origin policy]], which
+means that making ajax calls to external sites (which Sgvizler does if
+it collects data from endpoints located at a different domain or port)
+simply won't work. However, newer browsers, in this case Firefox 3.5,
+Safari 4, Chrome 3 and IE 8, support all or enough of [[http://www.w3.org/TR/cors/][Cross-Origin
+Resource Sharing]] (CORS), which is a specification for such
+communication, to make Sgvizler work as expected.
+
+A way to circumvent the the origin policy is to use JSONP. Data
+retrieved as JSONP is returned as a function call on the data in JSON
+format, thus exploiting that the HTML {{{<script>}}} tag is not
+required to respect the same origin policy. This, of course, requires
+that the endpoint can return data in JSONP format, which many do.
+
+** Known problem browsers
+
+ - '''Android web browser, !WebKit/533.1''': The following charts does
+   not work, but are displayed as a text string only: gPieChart,
+   gBarChart, gAreaChart, gColumnChart, gLineChart, sScatterChart,
+   gTreeMap. The following charts seems to work: gGeoMap,
+   gMotionChart, gOrgChart, gTimeline, sMap, gTable, sList, sDefList,
+   sText.
+
+** CORS support
+
+Quoting ssokolow from http://dev.opera.com/forums/topic/693452, which
+is not inconsistent with what I've found:
+
+ - Anything based on Gecko 1.9.1 or newer should support CORS (Firefox 3.5+).
+ - Anything based on a modern !WebKit should support CORS (Safari 4+, Chrome 5+, and Midori 0.2.7 tested OK).
+ - Internet Explorer 8 provides support via the XDomainRequest object but doesn't support credentialed requests.
+ - Opera 10.61 has no support for CORS. (Feature detection reports unsupported. The API isn't present.)
+ - Camino 2.0.5 (current) doesn't support CORS because it's based on Gecko 1.9.0 (Firefox 3.0's engine).
+ - Arora 0.10.2 (!QtWebKit) should support CORS, but it's broken due to a bug. (The API is there, so feature detection reports "supported", but requests fail.)
+
+** Tests
+
+| '''Browser'''       | '''SOS''' | '''CORS''' | '''JSONP''' | '''Tested'''                                                        |
+|---------------------+-----------+------------+-------------+---------------------------------------------------------------------|
+| Firefox 3.6         | Yes       | Yes        | Yes         | 3.6.22                                                              |
+| Chrome 12           | Yes       | Yes        | Yes         | Chromium 12.0.742.112 (90304) Ubuntu 10.04                          |
+| Opera 11.51         | Yes       | '''No'''   | Yes         | Opera/9.80 (X11; Linux i686; U; en-GB) Presto/2.9.168 Version/11.51 |
+| Internet Explorer 8 | Yes       | Yes        | Yes         | 8.0.7600.16385                                                      |
+| Safari 5.1          | Yes       | Yes        | Yes         | 5.1 (6534.50)                                                       |
+
+(Legend: "SOS" = "Sgvizler same origin support", "CORS" = "Sgvizler CORS support".)
+
+* Server support
+
+In order to CORS to work, in addition to browser support, the endpoint
+server needs to be ''CORS enabled''.  This means that it must include
+a parameter {{{Access-Control-Allow-Origin}}} in the response header
+with a value matching the address from which the request was sent---or
+a wildcard {{{*}}}, see
+e.g. https://developer.mozilla.or/En/HTTP_access_control#Access-Control-Allow-Origin. You
+can use e.g. [[http://getfirebug.com/ Firebug]] to inspect the response
+header to see if the server you are using is enabled.
+
+If you administer an endpoint server, you should consider
+[[http://enable-cors.org/ enabling it for CORS]]. This link also contains
+a list over resources which have CORS enabled.
+
+** Enabling CORS on Joseki
+
+Joseki has not enabled CORS ([[http://tech.groups.yahoo.com/group/jena-dev/message/45793][Read more in this thread]].), but it is
+quite easy to do so. Find the file
+{{{org/joseki/http/ResponseHttp.java}}} and the method {{{output}}},
+and add the line marked {{{// INSERT}}} in the code block below.
+
+#+BEGIN_SRC java
+private void output(String contentType, String charset, OutputContent proc)  throws IOException
+    {
+        ser.setHttpResponse(httpRequest, httpResponse, contentType, charset);
+        httpResponse.setStatus(HttpServletResponse.SC_OK) ;
+        httpResponse.setHeader(Joseki.httpHeaderField, Joseki.httpHeaderValue);
+	httpResponse.setHeader("Access-Control-Allow-Origin", "*");              // INSERT
+        ServletOutputStream out = httpResponse.getOutputStream() ;
+        proc.output(out) ;
+        out.flush() ;
+        httpResponse.flushBuffer();
+    }
+#+END_SRC
+
+** Proxy
+
+A workaround is to set up a proxy for your endpoint; php seems to be a
+popular language for this.

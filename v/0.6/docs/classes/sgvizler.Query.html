@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sgvizler.Query - Sgvizler</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="http://beta.data2000.no/misc/image/mr.sgvizler.png" title="Sgvizler"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.6.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/sgvizler.html">sgvizler</a></li>
+                                <li><a href="../classes/sgvizler.charts.html">sgvizler.charts</a></li>
+                                <li><a href="../classes/sgvizler.charts.Chart.html">sgvizler.charts.Chart</a></li>
+                                <li><a href="../classes/sgvizler.container.html">sgvizler.container</a></li>
+                                <li><a href="../classes/sgvizler.core.html">sgvizler.core</a></li>
+                                <li><a href="../classes/sgvizler.datatable.html">sgvizler.datatable</a></li>
+                                <li><a href="../classes/sgvizler.datatables.html">sgvizler.datatables</a></li>
+                                <li><a href="../classes/sgvizler.defaults.html">sgvizler.defaults</a></li>
+                                <li><a href="../classes/sgvizler.form.html">sgvizler.form</a></li>
+                                <li><a href="../classes/sgvizler.loader.html">sgvizler.loader</a></li>
+                                <li><a href="../classes/sgvizler.logger.html">sgvizler.logger</a></li>
+                                <li><a href="../classes/sgvizler.namespace.html">sgvizler.namespace</a></li>
+                                <li><a href="../classes/sgvizler.parser.html">sgvizler.parser</a></li>
+                                <li><a href="../classes/sgvizler.Query.html">sgvizler.Query</a></li>
+                                <li><a href="../classes/sgvizler.registry.html">sgvizler.registry</a></li>
+                                <li><a href="../classes/sgvizler.util.html">sgvizler.util</a></li>
+                                <li><a href="../classes/sgvizler.visualization.D3ForceGraph.html">sgvizler.visualization.D3ForceGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DefList.html">sgvizler.visualization.DefList</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DraculaGraph.html">sgvizler.visualization.DraculaGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.List.html">sgvizler.visualization.List</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Map.html">sgvizler.visualization.Map</a></li>
+                                <li><a href="../classes/sgvizler.visualization.MapWKT.html">sgvizler.visualization.MapWKT</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Table.html">sgvizler.visualization.Table</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Text.html">sgvizler.visualization.Text</a></li>
+                                <li><a href="../classes/sgvizler.visualization.util.html">sgvizler.visualization.util</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>sgvizler.Query Class</h1>
+<div class="box meta">
+
+
+        <div class="foundat">
+            Defined in: <a href="../files/src_Query.js.html#l2"><code>src&#x2F;Query.js:2</code></a>
+        </div>
+
+
+        <p>Available since 0.5</p>
+</div>
+
+
+<div class="box intro">
+    <p>Important class. Runs SPARQL query against SPARQL
+endpoints.</p>
+<p>Dependencies:</p>
+<ul>
+<li>sgvizler.util</li>
+<li>sgvizler.namespace</li>
+<li>sgvizler.registry</li>
+<li>sgvizler.parser</li>
+<li>sgvizler.loader</li>
+<li>sgvizler.logger</li>
+<li>sgvizler.defaults</li>
+<li>jQuery</li>
+<li>google.visualization</li>
+</ul>
+<p>Example of how to use the Query class:</p>
+<pre class="code prettyprint"><code>var sparqlQueryString = &quot;SELECT * {?s ?p ?o} LIMIT 10&quot;,
+    containerID = &quot;myElementID&quot;,
+    Q = new sgvizler.Query();
+
+// Note that default values may be set in the sgvizler object.
+Q.query(sparqlQueryString)
+    .endpointURL(&quot;http://dbpedia.org/sparql&quot;)
+    .endpointOutputFormat(&quot;json&quot;)                    // Possible values 'xml', 'json', 'jsonp'.
+    .chartFunction(&quot;google.visualization.BarChart&quot;)  // The name of the function to draw the chart.
+    .draw(containerID);                              // Draw the chart in the designated HTML element.</code></pre>
+
+</div>
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_sgvizler.Query" class="method item">
+            <h3 class="name"><code>sgvizler.Query</code></h3>
+        
+                <div class="args">
+                    <span class="paren">(</span><ul class="args-list inline commas">
+                        <li class="arg">
+                                <code>queryOptions</code>
+                        </li>
+                        <li class="arg">
+                                <code>chartOptions</code>
+                        </li>
+                    </ul><span class="paren">)</span>
+                </div>
+        
+        
+        
+        
+        
+        
+        
+        
+            <div class="meta">
+                        <p>
+                        Defined in
+                <a href="../files/src_Query.js.html#l2"><code>src&#x2F;Query.js:2</code></a>
+                </p>
+        
+        
+        
+                    <p>Available since 0.5</p>
+            </div>
+        
+            <div class="description">
+                
+            </div>
+        
+                <div class="params">
+                    <h4>Parameters:</h4>
+        
+                    <ul class="params-list">
+                        <li class="param">
+                                <code class="param-name">queryOptions</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        
+        
+                            <div class="param-description">
+                                 
+                            </div>
+        
+                        </li>
+                        <li class="param">
+                                <code class="param-name">chartOptions</code>
+                                <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+        
+        
+                            <div class="param-description">
+                                 
+                            </div>
+        
+                        </li>
+                    </ul>
+                </div>
+        
+        
+        
+        </div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method public">
+                                <a href="#method_addFrom">addFrom</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_addListener">addListener</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_chartFunction">chartFunction</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_chartFunction">chartFunction</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_chartHeight">chartHeight</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_chartHeight">chartHeight</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_chartWidth">chartWidth</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_chartWidth">chartWidth</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_clearFroms">clearFroms</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_datatableFunction">datatableFunction</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_datatableFunction">datatableFunction</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_draw">draw</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_endpointOutputFormat">endpointOutputFormat</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_endpointOutputFormat">endpointOutputFormat</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_endpointURL">endpointURL</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_endpointURL">endpointURL</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_fireListener">fireListener</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_getDataTable">getDataTable</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_getEncodedQuery">getEncodedQuery</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_getGoogleJSON">getGoogleJSON</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_getResultRowCount">getResultRowCount</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_insertFrom">insertFrom</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_query">query</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_query">query</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_saveDataTable">saveDataTable</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_saveQueryResults.">saveQueryResults.</a>
+
+                            </li>
+                            <li class="index-item method private">
+                                <a href="#method_sendQuery">sendQuery</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_validatorURL">validatorURL</a>
+
+                            </li>
+                            <li class="index-item method public">
+                                <a href="#method_validatorURL">validatorURL</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                            <li class="index-item property private">
+                                <a href="#property_chartOptions">chartOptions</a>
+
+                            </li>
+                            <li class="index-item property private">
+                                <a href="#property_dataTable">dataTable</a>
+
+                            </li>
+                            <li class="index-item property public">
+                                <a href="#property_noOfResults">noOfResults</a>
+
+                            </li>
+                            <li class="index-item property private">
+                                <a href="#property_queryOptions">queryOptions</a>
+
+                            </li>
+                            <li class="index-item property private">
+                                <a href="#property_queryResult">queryResult</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_addFrom" class="method item public">
+    <h3 class="name"><code>addFrom</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>url</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l138"><code>src&#x2F;Query.js:138</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Add a url as an RDF source to be included in the SPARQL
+query in the <code>FROM</code> block.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">url</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_addListener" class="method item private">
+    <h3 class="name"><code>addListener</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>name</code>
+                </li>
+                <li class="arg">
+                        <code>func</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l419"><code>src&#x2F;Query.js:419</code></a>
+        </p>
+
+
+
+            <p>Available since 0.6.0</p>
+    </div>
+
+    <div class="description">
+        <p>Add a function which is to be fired when the
+listener named <code>name</code> is fired.</p>
+<p>See <code>fireListener</code></p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The name of the listener.</p>
+
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">func</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                        <p>The function to fire.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>addListener(&quot;ready&quot;, function () { console.log(&quot;Ready!&quot;) });</code></pre>
+
+            </div>
+        </div>
+</div>
+<div id="method_chartFunction" class="method item public">
+    <h3 class="name"><code>chartFunction</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>functionName</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l294"><code>src&#x2F;Query.js:294</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Set the name of chart function. The function should be
+availble in the global object, or registered with
+dependencies in Sgvizler's registry; see TODO</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">functionName</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_chartFunction" class="method item public">
+    <h3 class="name"><code>chartFunction</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l287"><code>src&#x2F;Query.js:287</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get the name of chart function.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_chartHeight" class="method item public">
+    <h3 class="name"><code>chartHeight</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l308"><code>src&#x2F;Query.js:308</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get the height of the chart container.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_chartHeight" class="method item public">
+    <h3 class="name"><code>chartHeight</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>height</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l315"><code>src&#x2F;Query.js:315</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Set the height of the chart container.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">height</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_chartWidth" class="method item public">
+    <h3 class="name"><code>chartWidth</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>width</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l334"><code>src&#x2F;Query.js:334</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Set the width of the chart container.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">width</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_chartWidth" class="method item public">
+    <h3 class="name"><code>chartWidth</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l327"><code>src&#x2F;Query.js:327</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get the width of the chart container.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_clearFroms" class="method item public">
+    <h3 class="name"><code>clearFroms</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l150"><code>src&#x2F;Query.js:150</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Remove all registered FROMs.</p>
+<p>See also <code>addFrom</code>.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_datatableFunction" class="method item public">
+    <h3 class="name"><code>datatableFunction</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l265"><code>src&#x2F;Query.js:265</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get the name of datatable preprocessing function.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_datatableFunction" class="method item public">
+    <h3 class="name"><code>datatableFunction</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>functionName</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l272"><code>src&#x2F;Query.js:272</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Set the name of datatable preprocessing function. The
+function should be availble in the global object, or
+registered with dependencies in Sgvizler's registry;
+see TODO</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">functionName</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_draw" class="method item public">
+    <h3 class="name"><code>draw</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>containerId</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l610"><code>src&#x2F;Query.js:610</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Draws the result of the query in a given container.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">containerId</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The elementId of the
+container to draw the result of the query.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_endpointOutputFormat" class="method item public">
+    <h3 class="name"><code>endpointOutputFormat</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l207"><code>src&#x2F;Query.js:207</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get endpoint output format.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_endpointOutputFormat" class="method item public">
+    <h3 class="name"><code>endpointOutputFormat</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>format</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l214"><code>src&#x2F;Query.js:214</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Set endpoint output format. Legal values are <code>'xml'</code>,
+<code>'json'</code>, <code>'jsonp'</code>.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">format</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_endpointURL" class="method item public">
+    <h3 class="name"><code>endpointURL</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l185"><code>src&#x2F;Query.js:185</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get endpoint URL.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_endpointURL" class="method item public">
+    <h3 class="name"><code>endpointURL</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>url</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l192"><code>src&#x2F;Query.js:192</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Set endpoint URL.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">url</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>sgvizler.endpointURL('http://sparql.dbpedia.org');
+</code></pre>
+<p>sets this Query object's endpoint to DBpedia.</p>
+
+            </div>
+        </div>
+</div>
+<div id="method_fireListener" class="method item private">
+    <h3 class="name"><code>fireListener</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>name</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l442"><code>src&#x2F;Query.js:442</code></a>
+        </p>
+
+
+
+            <p>Available since 0.6.0</p>
+    </div>
+
+    <div class="description">
+        <p>Fires (runs, executes) all functions registered
+on the listener <code>name</code>.</p>
+<p>See <code>addListener</code>.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">name</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                        <p>The name of the listener.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_getDataTable" class="method item public">
+    <h3 class="name"><code>getDataTable</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>success</code>
+                </li>
+                <li class="arg">
+                        <code>fail</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+
+        <span class="flag async">async</span>
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l694"><code>src&#x2F;Query.js:694</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">success</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">fail</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_getEncodedQuery" class="method item public">
+    <h3 class="name"><code>getEncodedQuery</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l346"><code>src&#x2F;Query.js:346</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get the query string with prefixes added and encoded
+for URL insertion.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getGoogleJSON" class="method item private">
+    <h3 class="name"><code>getGoogleJSON</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>data</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">JSON</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l397"><code>src&#x2F;Query.js:397</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Converts &quot;raw&quot; query results into Google JSON, using
+sgvizler.parser.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">data</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+                    <div class="param-description">
+                        <p>Query result set</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">JSON</span>:
+                    <p>JSON edable by google.visualization.DataTable</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getResultRowCount" class="method item private">
+    <h3 class="name"><code>getResultRowCount</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>dataTable</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l377"><code>src&#x2F;Query.js:377</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Sets and returns <code>noOfResults</code>, i.e., the number of
+rows in the query result.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">dataTable</code>
+                        <span class="type">google.visualization.DataTable</span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_insertFrom" class="method item private">
+    <h3 class="name"><code>insertFrom</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l358"><code>src&#x2F;Query.js:358</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Extends the query string by including the urls in
+<code>from</code> as <code>FROM</code> statements in the (SPARQL) <code>query</code>.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_query" class="method item public">
+    <h3 class="name"><code>query</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>queryString</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l172"><code>src&#x2F;Query.js:172</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Set query string.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">queryString</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_query" class="method item public">
+    <h3 class="name"><code>query</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l166"><code>src&#x2F;Query.js:166</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Get query string.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_saveDataTable" class="method item private">
+    <h3 class="name"><code>saveDataTable</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">jQuery.Promise</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+        <span class="flag async">async</span>
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l557"><code>src&#x2F;Query.js:557</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Converts the the query result set into a
+google.visualization.DataTable, and if specified,
+applies datatable preprocessing function, and saves
+the datatable in the private property
+<code>dataTable</code>.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">jQuery.Promise</span>:
+                    <p>A Promise which resolves when
+the datatable is saved.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_saveQueryResults." class="method item private">
+    <h3 class="name"><code>saveQueryResults.</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">jQuery.Promise</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+        <span class="flag async">async</span>
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l517"><code>src&#x2F;Query.js:517</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Saves the query result set in the private property
+<code>results</code>. Works like a wrapper for sendQuery().</p>
+<p>See also saveDataTable().</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">jQuery.Promise</span>:
+                    <p>A Promise which resolves when
+the results are saved.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_sendQuery" class="method item private">
+    <h3 class="name"><code>sendQuery</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">jQuery.Promise</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+        <span class="flag async">async</span>
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l461"><code>src&#x2F;Query.js:461</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Sends query to endpoint using AJAX. &quot;Low level&quot; method,
+consider using <code>saveQueryResults()</code>.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">jQuery.Promise</span>:
+                    <p>A Promise containing the query results.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_validatorURL" class="method item public">
+    <h3 class="name"><code>validatorURL</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+        </span>
+
+
+        <span class="flag public">public</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l232"><code>src&#x2F;Query.js:232</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Get URL to online SPARQL query validator.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_validatorURL" class="method item public">
+    <h3 class="name"><code>validatorURL</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>url</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag public">public</span>
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/src_Query.js.html#l239"><code>src&#x2F;Query.js:239</code></a>
+        </p>
+
+
+
+            <p>Available since 0.5</p>
+    </div>
+
+    <div class="description">
+        <p>Set URL to online SPARQL query validator. Appending a
+SPARQL query to the end of this URL should give a page
+which validates the given query.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">url</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+        <div class="example">
+            <h4>Example:</h4>
+
+            <div class="example-content">
+                <pre class="code prettyprint"><code>TODO</code></pre>
+
+            </div>
+        </div>
+</div>
+            </div>
+
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+                    <div id="property_chartOptions" class="property item private">
+                        <h3 class="name"><code>chartOptions</code></h3>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+                    
+                            <span class="flag private">private</span>
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_Query.js.html#l78"><code>src&#x2F;Query.js:78</code></a>
+                            </p>
+                    
+                    
+                                <p>Available since 0.5</p>
+                        </div>
+                    
+                        <div class="description">
+                            <p>Contains properties relevant for chart drawing
+                    business. Get and set values using get/setter
+                    functions.</p>
+                    <p>Default values are found in sgvizler.defaults (these
+                    may be get/set with the get/setter function on the
+                    sgvizler class) and are loaded on construction---and
+                    get overwritten by properties in the constructed
+                    parameter.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_dataTable" class="property item private">
+                        <h3 class="name"><code>dataTable</code></h3>
+                        <span class="type">google.visualization.DataTable</span>
+                    
+                    
+                            <span class="flag private">private</span>
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_Query.js.html#l98"><code>src&#x2F;Query.js:98</code></a>
+                            </p>
+                    
+                    
+                                <p>Available since 0.5</p>
+                        </div>
+                    
+                        <div class="description">
+                            <p>DataTable query results.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_noOfResults" class="property item public">
+                        <h3 class="name"><code>noOfResults</code></h3>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                    
+                    
+                            <span class="flag public">public</span>
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_Query.js.html#l116"><code>src&#x2F;Query.js:116</code></a>
+                            </p>
+                    
+                    
+                                <p>Available since 0.5</p>
+                        </div>
+                    
+                        <div class="description">
+                            <p>The number of rows in the query results.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_queryOptions" class="property item private">
+                        <h3 class="name"><code>queryOptions</code></h3>
+                        <span class="type"><a href="https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+                    
+                    
+                            <span class="flag private">private</span>
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_Query.js.html#l62"><code>src&#x2F;Query.js:62</code></a>
+                            </p>
+                    
+                    
+                                <p>Available since 0.5</p>
+                        </div>
+                    
+                        <div class="description">
+                            <p>Contains properties relevant for query business. Get
+                    and set values using get/setter functions.</p>
+                    <p>Default values are found in sgvizler.defaults (these
+                    may be get/set with the get/setter function on the
+                    sgvizler class) and are loaded on construction---and
+                    get overwritten by properties in the constructed
+                    parameter.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+                    <div id="property_queryResult" class="property item private">
+                        <h3 class="name"><code>queryResult</code></h3>
+                        <span class="type">Object either XML or JSON</span>
+                    
+                    
+                            <span class="flag private">private</span>
+                    
+                    
+                    
+                        <div class="meta">
+                                    <p>
+                                    Defined in
+                            <a href="../files/src_Query.js.html#l107"><code>src&#x2F;Query.js:107</code></a>
+                            </p>
+                    
+                    
+                                <p>Available since 0.5</p>
+                        </div>
+                    
+                        <div class="description">
+                            <p>The raw results as retuned by the endpoint.</p>
+                    
+                        </div>
+                    
+                    
+                    
+                    </div>
+            </div>
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

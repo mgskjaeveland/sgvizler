@@ -1,0 +1,3691 @@
+{
+    "project": {
+        "name": "Sgvizler",
+        "description": "",
+        "version": "0.6.0",
+        "url": "http://dev.data2000.no/sgvizler/",
+        "logo": "http://beta.data2000.no/misc/image/mr.sgvizler.png"
+    },
+    "files": {
+        "src/datatable/pivot.js": {
+            "name": "src/datatable/pivot.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/datatable/prefixify.js": {
+            "name": "src/datatable/prefixify.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/datatable/start.js.part": {
+            "name": "src/datatable/start.js.part",
+            "modules": {},
+            "classes": {
+                "sgvizler.datatable": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/D3ForceGraph.js": {
+            "name": "src/visualization/D3ForceGraph.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.D3ForceGraph": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/DefList.js": {
+            "name": "src/visualization/DefList.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.DefList": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/DraculaGraph.js": {
+            "name": "src/visualization/DraculaGraph.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.DraculaGraph": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/List.js": {
+            "name": "src/visualization/List.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.List": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/Map.js": {
+            "name": "src/visualization/Map.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.Map": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/MapWKT.js": {
+            "name": "src/visualization/MapWKT.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.MapWKT": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/Table.js": {
+            "name": "src/visualization/Table.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.Table": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/Text.js": {
+            "name": "src/visualization/Text.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.Text": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/start.js.part": {
+            "name": "src/visualization/start.js.part",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/visualization/util.js": {
+            "name": "src/visualization/util.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.visualization.util": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/Query.js": {
+            "name": "src/Query.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.Query": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/charts.js": {
+            "name": "src/charts.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.charts": 1,
+                "sgvizler.charts.Chart": 1
+            },
+            "fors": {
+                "sgvizler": 1
+            },
+            "namespaces": {}
+        },
+        "src/container.js": {
+            "name": "src/container.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.container": 1
+            },
+            "fors": {
+                "sgvizler": 1
+            },
+            "namespaces": {}
+        },
+        "src/core.js": {
+            "name": "src/core.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.core": 1
+            },
+            "fors": {
+                "sgvizler": 1
+            },
+            "namespaces": {}
+        },
+        "src/datatables.js": {
+            "name": "src/datatables.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.datatables": 1
+            },
+            "fors": {
+                "sgvizler": 1
+            },
+            "namespaces": {}
+        },
+        "src/defaults.js": {
+            "name": "src/defaults.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.defaults": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/end.js.part": {
+            "name": "src/end.js.part",
+            "modules": {},
+            "classes": {
+                "sgvizler": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/form.js": {
+            "name": "src/form.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.form": 1
+            },
+            "fors": {
+                "sgvizler": 1
+            },
+            "namespaces": {}
+        },
+        "src/loader.js": {
+            "name": "src/loader.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.loader": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/logger.js": {
+            "name": "src/logger.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.logger": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/namespace.js": {
+            "name": "src/namespace.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.namespace": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/parser.js": {
+            "name": "src/parser.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.parser": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/registry.js": {
+            "name": "src/registry.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.registry": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "src/util.js": {
+            "name": "src/util.js",
+            "modules": {},
+            "classes": {
+                "sgvizler.util": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "sgvizler.datatable": {
+            "name": "sgvizler.datatable",
+            "shortname": "sgvizler.datatable",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/datatable/start.js.part",
+            "line": 2,
+            "description": "Contains functions for datatable manipulation.",
+            "static": 1
+        },
+        "sgvizler.visualization.D3ForceGraph": {
+            "name": "sgvizler.visualization.D3ForceGraph",
+            "shortname": "sgvizler.visualization.D3ForceGraph",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/D3ForceGraph.js",
+            "line": 2,
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ],
+            "beta": 1
+        },
+        "sgvizler.visualization.DefList": {
+            "name": "sgvizler.visualization.DefList",
+            "shortname": "sgvizler.visualization.DefList",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/DefList.js",
+            "line": 2,
+            "description": "Make a html dt list.\n\nFormat, 2--N columns:\n1. Term\n2--N. Definition",
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ]
+        },
+        "sgvizler.visualization.DraculaGraph": {
+            "name": "sgvizler.visualization.DraculaGraph",
+            "shortname": "sgvizler.visualization.DraculaGraph",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/DraculaGraph.js",
+            "line": 2,
+            "description": "Draws a graph with clickable and movable nodes.\n\nInput format:\n\n - 7 columns, last three are optional.\n - each row represents a source node, a target node and an edge from source to target.\n - the URIs are the id's for the nodes, and make the nodes clickable.\n\nColumns:\n\n 1. sourceURI\n 2. sourceLabel\n 3. targetURI\n 4. targetLabel\n 5. edgeLabel\n 6. sourceColor\n 7. targetColor",
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ],
+            "beta": 1,
+            "author": "Magnus Stuhr, Martin G. Skjæveland"
+        },
+        "sgvizler.visualization.List": {
+            "name": "sgvizler.visualization.List",
+            "shortname": "sgvizler.visualization.List",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/List.js",
+            "line": 2,
+            "description": "Make a html list, either numbered (ol) or bullets\n(ul). Each row becomes a list item.\n\nAny number of columns in any format. Everything is\ndisplayed as text.",
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.3.0"
+        },
+        "sgvizler.visualization.Map": {
+            "name": "sgvizler.visualization.Map",
+            "shortname": "sgvizler.visualization.Map",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/Map.js",
+            "line": 3,
+            "description": "Extends google.visualization.Map in markers dataMode. Draws\ntextboxes with heading, paragraph, link and image. \n\nData Format 2--6 columns:\n\n  1. lat\n  2. long\n  3. name  (optional)\n  4. text  (optional)\n  5. link  (optional)\n  6. image (optional)\n\n- If < 4 columns, then behaves just as gMap\n- Only 6 columns will be read, columns > 6 are ignored.",
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.3.0"
+        },
+        "sgvizler.visualization.MapWKT": {
+            "name": "sgvizler.visualization.MapWKT",
+            "shortname": "sgvizler.visualization.MapWKT",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/MapWKT.js",
+            "line": 2,
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.6.0"
+        },
+        "sgvizler.visualization.Table": {
+            "name": "sgvizler.visualization.Table",
+            "shortname": "sgvizler.visualization.Table",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/Table.js",
+            "line": 2,
+            "description": "Make a standard simple html table.",
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.5.1"
+        },
+        "sgvizler.visualization.Text": {
+            "name": "sgvizler.visualization.Text",
+            "shortname": "sgvizler.visualization.Text",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/Text.js",
+            "line": 1,
+            "description": "Write text.\n\nAny number of columns. Everything is displayed as text.",
+            "extends": "sgvizler.charts.Chart",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.3.0"
+        },
+        "sgvizler.visualization.util": {
+            "name": "sgvizler.visualization.util",
+            "shortname": "sgvizler.visualization.util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/visualization/util.js",
+            "line": 2,
+            "description": "Utility functions for chart functions.\n\n.visualization",
+            "static": 1
+        },
+        "sgvizler.Query": {
+            "name": "sgvizler.Query",
+            "shortname": "sgvizler.Query",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/Query.js",
+            "line": 2,
+            "description": "Important class. Runs SPARQL query against SPARQL\nendpoints.\n\nDependencies:\n\n  - sgvizler.util\n  - sgvizler.namespace\n  - sgvizler.registry\n  - sgvizler.parser\n  - sgvizler.loader\n  - sgvizler.logger\n  - sgvizler.defaults\n  - jQuery\n  - google.visualization\n\n\nExample of how to use the Query class:\n\n    var sparqlQueryString = \"SELECT * {?s ?p ?o} LIMIT 10\",\n        containerID = \"myElementID\",\n        Q = new sgvizler.Query();\n\n    // Note that default values may be set in the sgvizler object.\n    Q.query(sparqlQueryString)\n        .endpointURL(\"http://dbpedia.org/sparql\")\n        .endpointOutputFormat(\"json\")                    // Possible values 'xml', 'json', 'jsonp'.\n        .chartFunction(\"google.visualization.BarChart\")  // The name of the function to draw the chart.\n        .draw(containerID);                              // Draw the chart in the designated HTML element.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "queryOptions",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.5"
+        },
+        "sgvizler.charts": {
+            "name": "sgvizler.charts",
+            "shortname": "sgvizler.charts",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/charts.js",
+            "line": 2,
+            "description": "Factory for creating new chart types. Ensures that chart types\ncorrectly inherit methods from the inner class Chart.\n\nDependencies:\n\n - sgvizler.util\n - sgvizler.registry",
+            "static": 1
+        },
+        "sgvizler": {
+            "name": "sgvizler",
+            "shortname": "sgvizler",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/end.js.part",
+            "line": 16,
+            "description": "The sgvizler javascript reveals properties (attributes) and methods\n(functions) through the what in this documentation is known as the\nclass `sgvizler`. This is also why there is both a module and a\nclass called `sgvizler`. The other class which offers a public API\nis the `sgvizler.Query` class. All other classes in the\ndocumentation are private.\n\nMembers which internally are \"public\", i.e., available to other\nclasses within the sgvizler package, are marked\n`@protected`. Members which are only available within its class are\nmarked `@private`.",
+            "static": 1
+        },
+        "sgvizler.charts.Chart": {
+            "name": "sgvizler.charts.Chart",
+            "shortname": "sgvizler.charts.Chart",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/charts.js",
+            "line": 63,
+            "description": "Inner class which all chart types created by\nsgvizler.charts inherit from, i.e., don't create new charts\nfrom this class, but use sgvizler.charts.create() instead.",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "container",
+                    "description": "The container element where the\nchart will be drawn.",
+                    "type": "Object"
+                }
+            ]
+        },
+        "sgvizler.container": {
+            "name": "sgvizler.container",
+            "shortname": "sgvizler.container",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/container.js",
+            "line": 2,
+            "description": "Draws charts specified in HTML containers, here we call them\n\"sgvizler-containers\".\n\nExample of use: The following sgvizler-container will be\nselected by sgvizler due to the use of designated\nattributes. The result is a pie chart (draw with\n`google.visualization.PieChart`) showing the number of instance\nper class in the endpoint at\n`http://sws.ifi.uio.no/sparql/ndp`.\n\n    <div id=\"ex1\"\n         data-sgvizler-endpoint=\"http://sws.ifi.uio.no/sparql/npd\"\n         data-sgvizler-query=\"SELECT ?class (count(?instance) AS ?noOfInstances)\n                              WHERE{ ?instance a ?class }\n                              GROUP BY ?class\n                              ORDER BY ?class\"\n         data-sgvizler-chart=\"google.visualization.PieChart\"\n         style=\"width:800px; height:400px;\"></div>\n\nThese container must have an id attribute (or else sgvizler\nwill not know where to put the chart) and a query attribute (or\nelse the container will be ignored by sgvizler).\n\nDependencies:\n\n - sgvizler.util\n - sgvizler.loader\n - sgvizler.logger\n - sgvizler.Query\n - jQuery",
+            "static": 1
+        },
+        "sgvizler.core": {
+            "name": "sgvizler.core",
+            "shortname": "sgvizler.core",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/core.js",
+            "line": 2,
+            "description": "Holds central constants."
+        },
+        "sgvizler.datatables": {
+            "name": "sgvizler.datatables",
+            "shortname": "sgvizler.datatables",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/datatables.js",
+            "line": 2,
+            "description": "Factory for creating new datatypes functions.\n\nDependencies:\n\n - sgvizler.registry",
+            "static": 1
+        },
+        "sgvizler.defaults": {
+            "name": "sgvizler.defaults",
+            "shortname": "sgvizler.defaults",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/defaults.js",
+            "line": 2,
+            "description": "A set of default values used mostly, if not only, by the\nsgvizler.Query class. These values may be get and set by the\nget-setters of the sgvizler class.\n\nDependencies:\n\n  - sgvizler.registry",
+            "static": 1
+        },
+        "sgvizler.form": {
+            "name": "sgvizler.form",
+            "shortname": "sgvizler.form",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/form.js",
+            "line": 2,
+            "description": "Handles all UI business for the HTML form for writing, issuing\nand drawing sgvizler queries.\n\nDependencies:\n\n - sgvizler.util\n - sgvizler.namespace\n - sgvizler.registry\n - sgvizler.Query",
+            "static": 1
+        },
+        "sgvizler.loader": {
+            "name": "sgvizler.loader",
+            "shortname": "sgvizler.loader",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/loader.js",
+            "line": 2,
+            "description": "Loads dependencies for external functions.\n\nDependencies:\n\n  - sgvizler.util\n  - sgvizler.logger\n  - sgvizler.registry\n  - jQuery\n  - google.load",
+            "static": 1
+        },
+        "sgvizler.logger": {
+            "name": "sgvizler.logger",
+            "shortname": "sgvizler.logger",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/logger.js",
+            "line": 2,
+            "description": "Handles all logging, either to console or designated HTML\ncontainer.\n\nNeeds more work.",
+            "static": 1
+        },
+        "sgvizler.namespace": {
+            "name": "sgvizler.namespace",
+            "shortname": "sgvizler.namespace",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/namespace.js",
+            "line": 2,
+            "description": "Static class for handling prefixes and namespaces. Use for\nstoring prefixes used in SPARQL queries and for formatting\nresult sets, i.e., replacing namespaces with prefixes, which\nmany chart functions automatically do.\n\nAlready defined prefixes are `rdf`, `rdfs`, `owl` and `xsd`.\n\nDependencies:\n\n  - sgvizler.util",
+            "static": 1
+        },
+        "sgvizler.parser": {
+            "name": "sgvizler.parser",
+            "shortname": "sgvizler.parser",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/parser.js",
+            "line": 2,
+            "description": "Parses a SPARQL result set, assumed to be in either W3C's\n[XML](http://www.w3.org/TR/rdf-sparql-XMLres/) or\n[JSON](http://www.w3.org/TR/rdf-sparql-json-res/) format, into\n[Google\nJSON](https://developers.google.com/chart/interactive/docs/reference#DataTable)\nwhich is the JSON format that the\n`google.visualization.DataTable` class accepts.\n\nVariable notation: xtable, xcol(s), xrow(s) -- x is 's'(parql)\nor 'g'(oogle).\n\nDependencies:\n  - `sgvizler.namespace`\n  - jQuery - for xml \"browsing\".",
+            "static": 1
+        },
+        "sgvizler.registry": {
+            "name": "sgvizler.registry",
+            "shortname": "sgvizler.registry",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/registry.js",
+            "line": 4,
+            "description": "Static class for handling functions used for drawing charts,\nmainpulating datacharts, and what their dependencies are.\n\nDependencies:\n\n - sgvizler.util\n\nSee also:\n\n  - sgvizler.charts, sgvizler.datatables (classes for creating new such functions)\n  - sgvizler.loader (class for loading dependencies)",
+            "static": 1
+        },
+        "sgvizler.util": {
+            "name": "sgvizler.util",
+            "shortname": "sgvizler.util",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/util.js",
+            "line": 2,
+            "description": "A helpful set of static utility functions: type checking\nvariables, generic get-setter, get-setting values in\nhierarchial objects, array functions, DOM manipulation, and\ninheritance.\n\nDependencies:\n\n  - jQuery",
+            "static": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "src/datatable/pivot.js",
+            "line": 1,
+            "description": "This function is a modified version of\nhttp://jsfiddle.net/asgallant/HkjDe/ A discussion is here\nhttps://groups.google.com/forum/?fromgroups=#!topic/google-visualization-api/jl_5JpODmw8\n\npivot gets in input a Google DataTable. Table must have 3\ncolumns.  Pivoting the table will swap all the rows of the\nfirst colum as columns for the new table and all the rows\nof the second column as the rows of the new table. The\naggregate function is the sum.  So, borrowing data form the\ndiscussion above:\n\n    Equipment   Location  Count \n    e1          c1        6\n    e2          c1        2\n    e3          c1        1\n    e4          c1        3\n    e1          c2        7\n    e2          c2        3\n    e1          c3        8\n    e2          c3        4\n\n        E1  E2  E3  E4\n    C1  XX  xx  xx  xx\n    C2  xx  xx   0  xx\n    C3   0  xx  xx  xx",
+            "itemtype": "method",
+            "name": "pivot",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "google.visualization.DataTable"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.datatable"
+        },
+        {
+            "file": "src/datatable/prefixify.js",
+            "line": 2,
+            "description": "Walks through all cells of columns with datatype string and\nruns prefixify, which replaces namespace with its prefix.",
+            "itemtype": "method",
+            "name": "prefixify",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "google.visualization.DataTable"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.datatable"
+        },
+        {
+            "file": "src/visualization/D3ForceGraph.js",
+            "line": 11,
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.5.0",
+            "class": "sgvizler.visualization.D3ForceGraph"
+        },
+        {
+            "file": "src/visualization/DefList.js",
+            "line": 16,
+            "description": "Available options:\n\n - 'cellSep'   :  string (can be html) to separate cells in definition columns. (default: ' ')\n - 'termPrefix  :  string (can be html) to prefix each term with. (default: '')\n - 'termPostfix :  string (can be html) to postfix each term with. (default: ':')\n - 'definitionPrefix  :  string (can be html) to prefix each definition with. (default: '')\n - 'definitionPostfix :  string (can be html) to postfix each definition with. (default: '')",
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.3.0",
+            "class": "sgvizler.visualization.DefList"
+        },
+        {
+            "file": "src/visualization/DraculaGraph.js",
+            "line": 30,
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.5.1",
+            "class": "sgvizler.visualization.DraculaGraph"
+        },
+        {
+            "file": "src/visualization/List.js",
+            "line": 17,
+            "description": "Available options:\n\n - 'list'      :  \"ol\" / \"ul\"  (default: \"ul\")\n - 'cellSep'   :  string (can be html) to separate cells in row. (default: ', ')\n - 'rowPrefix  :  string (can be html) to prefix each row with. (default: '')\n - 'rowPostfix :  string (can be html) to postfix each row with. (default: '')",
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.3.0",
+            "class": "sgvizler.visualization.List"
+        },
+        {
+            "file": "src/visualization/Map.js",
+            "line": 27,
+            "description": "Same options available as for google.visualization.Map.",
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.3.0",
+            "class": "sgvizler.visualization.Map"
+        },
+        {
+            "file": "src/visualization/MapWKT.js",
+            "line": 11,
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.visualization.MapWKT"
+        },
+        {
+            "file": "src/visualization/Table.js",
+            "line": 13,
+            "description": "Available options:\n - 'headings'   :  \"true\" / \"false\"  (default: \"true\")",
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.5.1",
+            "class": "sgvizler.visualization.Table"
+        },
+        {
+            "file": "src/visualization/Text.js",
+            "line": 14,
+            "description": "Available options:\n\n - 'cellSep'       :  string (can be html) to separate cells in each column. (default: ', ')\n - 'cellPrefix     :  string (can be html) to prefix each cell with. (default: '')\n - 'cellPostfix    :  string (can be html) to postfix each cell  with. (default: '')\n - 'rowPrefix      :  string (can be html) to prefix each row with. (default: '<p>')\n - 'rowPostfix     :  string (can be html) to postfix each row with. (default: '</p>')\n - 'resultsPrefix  :  string (can be html) to prefix the results with. (default: '<div>')\n - 'resultsPostfix :  string (can be html) to postfix the results with. (default: '</div>')",
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                },
+                {
+                    "name": "chartOptions",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true
+                }
+            ],
+            "since": "0.3.0",
+            "class": "sgvizler.visualization.Text"
+        },
+        {
+            "file": "src/visualization/start.js.part",
+            "line": 1,
+            "description": ".visualization",
+            "mainName": "sgvizler.visualization",
+            "tag": "main",
+            "itemtype": "main",
+            "_main": true,
+            "class": "sgvizler.visualization.util"
+        },
+        {
+            "file": "src/visualization/util.js",
+            "line": 13,
+            "description": "Converts a url into a prefixified link.",
+            "itemtype": "method",
+            "name": "linkify",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The url to linkify.",
+                    "type": "String"
+                },
+                {
+                    "name": "arraySyntax",
+                    "description": "Flag if results should\nbe rendered in array syntax (true), or as an HTML\nstring (false).",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "sgvizler.visualization.util"
+        },
+        {
+            "file": "src/visualization/util.js",
+            "line": 59,
+            "description": "Converts a url into a <a href=\"\"> element with the\nlink prefixified.",
+            "itemtype": "method",
+            "name": "linkify2String",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The url to linkify.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "sgvizler.visualization.util"
+        },
+        {
+            "file": "src/visualization/util.js",
+            "line": 70,
+            "description": "Converts a url into a `<a href=\"url\">link</a>` element with the\nlink prefixified. Returns an array on the format\ndescribed in `sgvizler.util.createHTMLElement`.",
+            "itemtype": "method",
+            "name": "linkify2String",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The url to linkify.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Array"
+            },
+            "class": "sgvizler.visualization.util"
+        },
+        {
+            "file": "src/visualization/util.js",
+            "line": 83,
+            "description": "Loads the css file `sgvizler.charts.css`.",
+            "itemtype": "method",
+            "name": "loadCSS",
+            "access": "protected",
+            "tagname": "",
+            "injects": {
+                "description": ""
+            },
+            "class": "sgvizler.visualization.util"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 62,
+            "description": "Contains properties relevant for query business. Get\nand set values using get/setter functions.\n\nDefault values are found in sgvizler.defaults (these\nmay be get/set with the get/setter function on the\nsgvizler class) and are loaded on construction---and\nget overwritten by properties in the constructed\nparameter.",
+            "itemtype": "property",
+            "name": "queryOptions",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 78,
+            "description": "Contains properties relevant for chart drawing\nbusiness. Get and set values using get/setter\nfunctions.\n\nDefault values are found in sgvizler.defaults (these\nmay be get/set with the get/setter function on the\nsgvizler class) and are loaded on construction---and\nget overwritten by properties in the constructed\nparameter.",
+            "itemtype": "property",
+            "name": "chartOptions",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 98,
+            "description": "DataTable query results.",
+            "itemtype": "property",
+            "name": "dataTable",
+            "type": "google.visualization.DataTable",
+            "access": "private",
+            "tagname": "",
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 107,
+            "description": "The raw results as retuned by the endpoint.",
+            "itemtype": "property",
+            "name": "queryResult",
+            "type": "Object either XML or JSON",
+            "access": "private",
+            "tagname": "",
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 116,
+            "description": "The number of rows in the query results.",
+            "itemtype": "property",
+            "name": "noOfResults",
+            "type": "number",
+            "access": "public",
+            "tagname": "",
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 138,
+            "description": "Add a url as an RDF source to be included in the SPARQL\nquery in the `FROM` block.",
+            "itemtype": "method",
+            "name": "addFrom",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 150,
+            "description": "Remove all registered FROMs.\n\nSee also `addFrom`.",
+            "itemtype": "method",
+            "name": "clearFroms",
+            "access": "public",
+            "tagname": "",
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 166,
+            "description": "Get query string.",
+            "itemtype": "method",
+            "name": "query",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 172,
+            "description": "Set query string.",
+            "itemtype": "method",
+            "name": "query",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "queryString",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 185,
+            "description": "Get endpoint URL.",
+            "itemtype": "method",
+            "name": "endpointURL",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 192,
+            "description": "Set endpoint URL.",
+            "itemtype": "method",
+            "name": "endpointURL",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n    sgvizler.endpointURL('http://sparql.dbpedia.org');\n  sets this Query object's endpoint to DBpedia."
+            ],
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 207,
+            "description": "Get endpoint output format.",
+            "itemtype": "method",
+            "name": "endpointOutputFormat",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 214,
+            "description": "Set endpoint output format. Legal values are `'xml'`,\n`'json'`, `'jsonp'`.",
+            "itemtype": "method",
+            "name": "endpointOutputFormat",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "format",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 232,
+            "description": "Get URL to online SPARQL query validator.",
+            "itemtype": "method",
+            "name": "validatorURL",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 239,
+            "description": "Set URL to online SPARQL query validator. Appending a\nSPARQL query to the end of this URL should give a page\nwhich validates the given query.",
+            "itemtype": "method",
+            "name": "validatorURL",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.5",
+            "example": [
+                "\n    TODO"
+            ],
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 265,
+            "description": "Get the name of datatable preprocessing function.",
+            "itemtype": "method",
+            "name": "datatableFunction",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 272,
+            "description": "Set the name of datatable preprocessing function. The\nfunction should be availble in the global object, or\nregistered with dependencies in Sgvizler's registry;\nsee TODO",
+            "itemtype": "method",
+            "name": "datatableFunction",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "functionName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 287,
+            "description": "Get the name of chart function.",
+            "itemtype": "method",
+            "name": "chartFunction",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 294,
+            "description": "Set the name of chart function. The function should be\navailble in the global object, or registered with\ndependencies in Sgvizler's registry; see TODO",
+            "itemtype": "method",
+            "name": "chartFunction",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "functionName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 308,
+            "description": "Get the height of the chart container.",
+            "itemtype": "method",
+            "name": "chartHeight",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 315,
+            "description": "Set the height of the chart container.",
+            "itemtype": "method",
+            "name": "chartHeight",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "height",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 327,
+            "description": "Get the width of the chart container.",
+            "itemtype": "method",
+            "name": "chartWidth",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 334,
+            "description": "Set the width of the chart container.",
+            "itemtype": "method",
+            "name": "chartWidth",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 346,
+            "description": "Get the query string with prefixes added and encoded\nfor URL insertion.",
+            "itemtype": "method",
+            "name": "getEncodedQuery",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 358,
+            "description": "Extends the query string by including the urls in\n`from` as `FROM` statements in the (SPARQL) `query`.",
+            "itemtype": "method",
+            "name": "insertFrom",
+            "access": "private",
+            "tagname": "",
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 377,
+            "description": "Sets and returns `noOfResults`, i.e., the number of\nrows in the query result.",
+            "itemtype": "method",
+            "name": "getResultRowCount",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "dataTable",
+                    "description": "",
+                    "type": "google.visualization.DataTable"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 397,
+            "description": "Converts \"raw\" query results into Google JSON, using\nsgvizler.parser.",
+            "itemtype": "method",
+            "name": "getGoogleJSON",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "data",
+                    "description": "Query result set",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "JSON edable by google.visualization.DataTable",
+                "type": "JSON"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 419,
+            "description": "Add a function which is to be fired when the\nlistener named `name` is fired.\n\nSee `fireListener`",
+            "itemtype": "method",
+            "name": "addListener",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the listener.",
+                    "type": "String"
+                },
+                {
+                    "name": "func",
+                    "description": "The function to fire.",
+                    "type": "Function"
+                }
+            ],
+            "example": [
+                "\n    addListener(\"ready\", function () { console.log(\"Ready!\") });"
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 442,
+            "description": "Fires (runs, executes) all functions registered\non the listener `name`.\n\nSee `addListener`.",
+            "itemtype": "method",
+            "name": "fireListener",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the listener.",
+                    "type": "String"
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 461,
+            "description": "Sends query to endpoint using AJAX. \"Low level\" method,\nconsider using `saveQueryResults()`.",
+            "itemtype": "method",
+            "name": "sendQuery",
+            "access": "private",
+            "tagname": "",
+            "async": 1,
+            "return": {
+                "description": "A Promise containing the query results.",
+                "type": "jQuery.Promise"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 517,
+            "description": "Saves the query result set in the private property\n`results`. Works like a wrapper for sendQuery().\n\nSee also saveDataTable().",
+            "todo": [
+                ": also put the results in the promise object---and\nhow to get them out?"
+            ],
+            "itemtype": "method",
+            "name": "saveQueryResults.",
+            "access": "private",
+            "tagname": "",
+            "async": 1,
+            "return": {
+                "description": "A Promise which resolves when\nthe results are saved.",
+                "type": "jQuery.Promise"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 557,
+            "description": "Converts the the query result set into a\n google.visualization.DataTable, and if specified,\n applies datatable preprocessing function, and saves\n the datatable in the private property\n `dataTable`.",
+            "todo": [
+                ": also put the results in the promise object---and\nhow to get them out?"
+            ],
+            "itemtype": "method",
+            "name": "saveDataTable",
+            "access": "private",
+            "tagname": "",
+            "async": 1,
+            "return": {
+                "description": "A Promise which resolves when\nthe datatable is saved.",
+                "type": "jQuery.Promise"
+            },
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 610,
+            "description": "Draws the result of the query in a given container.",
+            "itemtype": "method",
+            "name": "draw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "containerId",
+                    "description": "The elementId of the\ncontainer to draw the result of the query.",
+                    "type": "String"
+                }
+            ],
+            "since": "0.5",
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/Query.js",
+            "line": 694,
+            "itemtype": "method",
+            "name": "getDataTable",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "success",
+                    "description": "",
+                    "type": "Function"
+                },
+                {
+                    "name": "fail",
+                    "description": "",
+                    "type": "Function"
+                }
+            ],
+            "async": 1,
+            "beta": 1,
+            "class": "sgvizler.Query"
+        },
+        {
+            "file": "src/charts.js",
+            "line": 27,
+            "description": "Create new Chart type.",
+            "itemtype": "method",
+            "name": "chartsAdd",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "module",
+                    "description": "The module/namespace name to\nwhich the function belongs.",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The name of the function.",
+                    "type": "String"
+                },
+                {
+                    "name": "draw",
+                    "description": "The function which will be the\n`draw()` function of the new chart type.",
+                    "type": "Function"
+                },
+                {
+                    "name": "dependencies",
+                    "description": "The list of dependencies\nfor the chart type: function name -- google\npackage/javascript URL pairs.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The chart type.",
+                "type": "Object"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/charts.js",
+            "line": 80,
+            "description": "Add a function which is to be fired when the\nlistener named `name` is fired.\n\nSee `fireListener`",
+            "itemtype": "method",
+            "name": "addListener",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the listener.",
+                    "type": "String"
+                },
+                {
+                    "name": "func",
+                    "description": "The function to fire.",
+                    "type": "Function"
+                }
+            ],
+            "example": [
+                "\n    addListener(\"ready\", function () { console.log(\"Ready!\") });"
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.charts.Chart"
+        },
+        {
+            "file": "src/charts.js",
+            "line": 103,
+            "description": "Fires (runs, executes) all functions registered\non the listener `name`.\n\nSee `addListener`.",
+            "itemtype": "method",
+            "name": "fireListener",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the listener.",
+                    "type": "String"
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.charts.Chart"
+        },
+        {
+            "file": "src/container.js",
+            "line": 49,
+            "description": "The prefix of attributes which values designated for\nsgvizler should be given. Currently `data-sgvizler-`.\n\nNote that `data-` prefixed attribute names is valid\nHTML5.",
+            "itemtype": "property",
+            "name": "PREFIX",
+            "type": "string",
+            "final": 1,
+            "access": "private",
+            "tagname": "",
+            "since": "0.2",
+            "class": "sgvizler.container"
+        },
+        {
+            "file": "src/container.js",
+            "line": 63,
+            "description": "The prefix of attributes which values designated for\nsgvizler and which are sent to the chart function\nshould be given. Currently\n`data-sgvizler-chart-options`.",
+            "itemtype": "property",
+            "name": "PREFIXCHART",
+            "type": "string",
+            "final": 1,
+            "access": "private",
+            "tagname": "",
+            "since": "0.2",
+            "class": "sgvizler.container"
+        },
+        {
+            "file": "src/container.js",
+            "line": 77,
+            "description": "In attributes where multiple values may be given the\nproperties VALUEASSIGN and VALUESPILT decides how to\nparse the attribute value into multiple name--value\npairs.",
+            "itemtype": "property",
+            "name": "VALUEASSIGN",
+            "type": "string",
+            "final": 1,
+            "access": "private",
+            "tagname": "",
+            "since": "0.2",
+            "class": "sgvizler.container"
+        },
+        {
+            "file": "src/container.js",
+            "line": 90,
+            "description": "In attributes where multiple values may be given the\nproperties VALUEASSIGN and VALUESPILT decides how to\nparse the attribute value into multiple name--value\npairs.",
+            "itemtype": "property",
+            "name": "VALUESPILT",
+            "type": "string",
+            "final": 1,
+            "access": "private",
+            "tagname": "",
+            "since": "0.2",
+            "class": "sgvizler.container"
+        },
+        {
+            "file": "src/container.js",
+            "line": 104,
+            "description": "Collects values designated for sgvizler in the given\nelement---by element id.\n\nSee also property PREFIX.",
+            "itemtype": "method",
+            "name": "getQueryAttributes",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "The ID for which the attributes should be collected.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "List of name--value pairs.",
+                "type": "Object"
+            },
+            "since": "0.2",
+            "class": "sgvizler.container"
+        },
+        {
+            "file": "src/container.js",
+            "line": 128,
+            "description": "Collects values designated for sgvizler, and which are\noptions to the chart function, in the given\nelement---by element id.\n\nSee also property CHARTPREFIX.",
+            "itemtype": "method",
+            "name": "getChartAttributes",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "The ID for which the attributes should be collected.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "List of name--value pairs.",
+                "type": "Object"
+            },
+            "since": "0.2",
+            "class": "sgvizler.container"
+        },
+        {
+            "file": "src/container.js",
+            "line": 170,
+            "description": "Finds all sgvizler-containers on the page and loads\ntheir dependencies in one go.",
+            "itemtype": "method",
+            "name": "loadDependenciesOnPage",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "strFunctions",
+                    "description": "Array (or just a\nsingle string) of function names to get in addition to\nthe functions specifies in sgvizler-containers.",
+                    "type": "Array|string",
+                    "optional": true
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.container"
+        },
+        {
+            "file": "src/container.js",
+            "line": 191,
+            "description": "Draws the sgvizler-containers with the given element id.",
+            "itemtype": "method",
+            "name": "containerDraw",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/container.js",
+            "line": 213,
+            "description": "Draws all sgvizler-containers on page.",
+            "itemtype": "method",
+            "name": "containerDrawAll",
+            "access": "public",
+            "tagname": "",
+            "since": "0.3",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/core.js",
+            "line": 13,
+            "description": "The version number of this sgvizler.",
+            "itemtype": "property",
+            "name": "VERSION",
+            "type": "String",
+            "final": 1,
+            "access": "public",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/core.js",
+            "line": 23,
+            "description": "sgvizler's homepage.",
+            "itemtype": "property",
+            "name": "HOMEPAGE",
+            "type": "String",
+            "final": 1,
+            "access": "public",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/datatables.js",
+            "line": 17,
+            "description": "Create new Chart type.",
+            "itemtype": "method",
+            "name": "datatablesAdd",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "module",
+                    "description": "The module/namespace name to\nwhich the function belongs.",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "The name of the function.",
+                    "type": "String"
+                },
+                {
+                    "name": "func",
+                    "description": "The datatable processing function.",
+                    "type": "Function"
+                },
+                {
+                    "name": "dependencies",
+                    "description": "The list of dependencies\nfor the chart type: function name -- google\npackage/javascript URL pairs.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The datatable processing function.",
+                "type": "Function"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/defaults.js",
+            "line": 62,
+            "description": "Collects query option default values. Should only be\nused if you want to edit this values persistently\n(passed by reference). If you want a copy of these\nvalues, use method `getQueryOptions`.",
+            "itemtype": "property",
+            "name": "query",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.defaults"
+        },
+        {
+            "file": "src/defaults.js",
+            "line": 75,
+            "description": "Collects chart option default values. Should only be\nused if you want to edit this values persistently\n(passed by reference). If you want a copy of these\nvalues, use method `getChartOptions`.",
+            "itemtype": "property",
+            "name": "chart",
+            "type": "Object",
+            "access": "protected",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.defaults"
+        },
+        {
+            "file": "src/defaults.js",
+            "line": 88,
+            "itemtype": "method",
+            "name": "getQueryOptions",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "A copy of the query default options.",
+                "type": "Object"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.defaults"
+        },
+        {
+            "file": "src/defaults.js",
+            "line": 98,
+            "itemtype": "method",
+            "name": "getChartOptions",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "A copy of the chart default options.",
+                "type": "Object"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.defaults"
+        },
+        {
+            "file": "src/defaults.js",
+            "line": 108,
+            "itemtype": "method",
+            "name": "getChartSpecificOptions",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "chart",
+                    "description": "The function name to retrieve options for, e.g., `'google.visualization.Map'`.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "A copy of the chart specific default options.",
+                "type": "Object"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.defaults"
+        },
+        {
+            "file": "src/defaults.js",
+            "line": 119,
+            "itemtype": "method",
+            "name": "setChartSpecificOption",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "chart",
+                    "description": "The function name to set the option for, e.g., `'google.visualization.Map'`.",
+                    "type": "String"
+                },
+                {
+                    "name": "option",
+                    "description": "The name of the option to set.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "The value to set.",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n    setChartSpecificOption('google.visualization.Map', 'dataMode', 'markers');\n  sets the `'dataMode'` option for the\n  `'google.visualization.Map'` function to the value\n  `'markers'`."
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.defaults"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 66,
+            "description": "Get the namespace for a prefix.",
+            "itemtype": "method",
+            "name": "prefix",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "prefix",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The namespace recorded for the given prefix.",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 74,
+            "description": "Set the prefix for a namespace.",
+            "itemtype": "method",
+            "name": "prefix",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "prefix",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "namespace",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 90,
+            "description": "Get Base URL.",
+            "itemtype": "method",
+            "name": "defaultBaseURL",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "Returns an empty string if base URL is not set.",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 97,
+            "description": "Set Base URL.",
+            "itemtype": "method",
+            "name": "defaultBaseURL",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 112,
+            "description": "Get default query string.",
+            "itemtype": "method",
+            "name": "defaultQuery",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 119,
+            "description": "Set default query string.",
+            "itemtype": "method",
+            "name": "defaultQuery",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "queryString",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 131,
+            "description": "Get default list of FROMs set to be included in SPARQL query.",
+            "itemtype": "method",
+            "name": "defaultFroms",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "An array of strings.",
+                "type": "Array"
+            },
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 139,
+            "description": "Set default list of FROMs to be included in SPARQL query.",
+            "itemtype": "method",
+            "name": "defaultFroms",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "froms",
+                    "description": "An array of strings.",
+                    "type": "Array"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 155,
+            "description": "Get default endpoint URL.",
+            "itemtype": "method",
+            "name": "defaultEndpointURL",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 162,
+            "description": "Set default endpoint URL.",
+            "itemtype": "method",
+            "name": "defaultEndpointURL",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "endpointURL",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "example": [
+                "\n    sgvizler.defaultEndpointURL('http://sparql.dbpedia.org');\n  sets the default endpoint to DBpedia's."
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 177,
+            "description": "Get default endpoint output format.",
+            "itemtype": "method",
+            "name": "defaultEndpointOutputFormat",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 184,
+            "description": "Set default endpoint output format. Legal values are `'xml'`, `'json'`, `'jsonp'`.",
+            "itemtype": "method",
+            "name": "defaultEndpointOutputFormat",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "format",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 201,
+            "description": "Get URL to online SPARQL query validator.",
+            "itemtype": "method",
+            "name": "defaultValidatorURL",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 208,
+            "description": "Set URL to online SPARQL query validator. Appending a\nSPARQL query to the end of this URL should give a page\nwhich validates the given query.",
+            "itemtype": "method",
+            "name": "defaultValidatorURL",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 228,
+            "description": "These are the java ones, taken from [the\njavadocs](http://docs.oracle.com/javase/1.4.2/docs/api/java/util/logging/Level.html):\n\nPermissible values are:\n\n  - SEVERE (highest value)\n  - WARNING\n  - INFO\n  - CONFIG\n  - FINE\n  - FINER\n  - FINEST (lowest value)",
+            "itemtype": "method",
+            "name": "defaultLoglevel",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 247,
+            "description": "Get the name of the default datatable preprocessing\nfunction.",
+            "itemtype": "method",
+            "name": "defaultDatatableFunction",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 255,
+            "description": "Set the name of the default datatable preprocessing function. The\nfunction should be available in the global object, or\nregistered with dependencies in Sgvizler's registry;\nsee sgvizler.datatablesAdd()",
+            "itemtype": "method",
+            "name": "defaultDatatableFunction",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "functionName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 270,
+            "description": "Get the name of the default chart function.",
+            "itemtype": "method",
+            "name": "defaultChartFunction",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 277,
+            "description": "Set the name of the default chart function. The\nfunction should be availble in the global object, or\nregistered with dependencies in Sgvizler's registry;\nsee sgvizler.chartsAdd()",
+            "itemtype": "method",
+            "name": "defaultChartFunction",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "functionName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 292,
+            "description": "Get the default height of chart containers.",
+            "itemtype": "method",
+            "name": "defaultChartHeight",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 299,
+            "description": "Set the default height of chart containers.",
+            "itemtype": "method",
+            "name": "defaultChartHeight",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "height",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 311,
+            "description": "Get the default width of chart containers.",
+            "itemtype": "method",
+            "name": "defaultChartWidth",
+            "access": "public",
+            "tagname": "",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 318,
+            "description": "Set the default width of chart containers.",
+            "itemtype": "method",
+            "name": "defaultChartWidth",
+            "access": "public",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "width",
+                    "description": "",
+                    "type": "Number"
+                }
+            ],
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/end.js.part",
+            "line": 330,
+            "description": "TODO",
+            "itemtype": "method",
+            "name": "defaultChartSpecificOption",
+            "access": "public",
+            "tagname": "",
+            "chainable": 1,
+            "since": "0.6.0",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/form.js",
+            "line": 26,
+            "description": "Approx. 15 properties giving name to HTML elements\nwhich appear in the form.",
+            "itemtype": "property",
+            "name": "idXs",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "since": "0.2",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 56,
+            "description": "Contains groups of elements which make out the\nform. Described using the array syntax edible by\nsgvizler.util.createHTMLElement.",
+            "itemtype": "property",
+            "name": "html",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 70,
+            "description": "The heading for the form: \"Sgvizler\".",
+            "itemtype": "property",
+            "name": "html.heading",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 79,
+            "description": "Logo pointing to homepage.",
+            "itemtype": "property",
+            "name": "html.logo",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 102,
+            "description": "The form.",
+            "itemtype": "property",
+            "name": "html.main",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 236,
+            "description": "Container for holding the chart.",
+            "itemtype": "property",
+            "name": "html.chart",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 251,
+            "description": "The footer",
+            "itemtype": "property",
+            "name": "html.footer",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 276,
+            "description": "A list of permissible URL parameters. The parameter\nname must be in this list to be read by the form.",
+            "itemtype": "property",
+            "name": "permissible_urlparams",
+            "type": "Array",
+            "access": "private",
+            "tagname": "",
+            "since": "0.3.1",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 292,
+            "description": "Tests if there really is an element with the give\nelement id.",
+            "itemtype": "method",
+            "name": "isElement",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "The element Id",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "Returns true iff the element with\nthis element id exists.",
+                "type": "Boolean"
+            },
+            "since": "0.5",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 306,
+            "description": "Set a value for a given element. Is used to set the\nvalue of form input fields.  Uses `jQuery.val`.",
+            "itemtype": "method",
+            "name": "setElementValue",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "The element id of the element to set value for.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "The value to set.",
+                    "type": "Primitive"
+                }
+            ],
+            "since": "0.5",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 321,
+            "description": "Set the text for a given element. Is used to set the\ntext contents of containers.  Uses `jQuery.text`.",
+            "itemtype": "method",
+            "name": "setElementText",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "The element id of the element to set value for.",
+                    "type": "String"
+                },
+                {
+                    "name": "text",
+                    "description": "The value to set.",
+                    "type": "String"
+                }
+            ],
+            "since": "0.5",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 349,
+            "description": "Displays the prefixes set in `sgvizler.namespace` as\nSPARQL prefix declarations in the designated container.",
+            "itemtype": "method",
+            "name": "displayPrefixes",
+            "access": "private",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 360,
+            "description": "Displays query information in the form input fields,\ne.g., the query string, query format, chart dimensions,\nset in the input parameter.",
+            "itemtype": "method",
+            "name": "displayUserInput",
+            "params": [
+                {
+                    "name": "query",
+                    "description": "",
+                    "type": "sgvizler.Query"
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 378,
+            "description": "Populates the drop-down menu of available chart types\nwith the registered chart types found in the\n`sgvizler.registry`, grouped by modules.",
+            "itemtype": "method",
+            "name": "displayChartTypesMenu",
+            "access": "private",
+            "tagname": "",
+            "since": "0.2",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 424,
+            "description": "Draws an intitially empty form on page. If elementID is\nprovided only the form and container for chart is\ndrawn; otherwise, a complete page, with header, logo\nand footer, is draw directly in the body element.",
+            "itemtype": "method",
+            "name": "createPage",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "body"
+                },
+                {
+                    "name": "UItype",
+                    "description": "values: 'result', 'form' or 'page'.",
+                    "type": "String"
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 473,
+            "description": "Displays prefix information, query information and\nselections in the form, using other `displayX` methods.",
+            "itemtype": "method",
+            "name": "displayUI",
+            "access": "private",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 486,
+            "description": "Parses the current URL for parameters. Permissible\nparameters are, if present, those listed in the input\nof this method, or in the array\n`permissible_urlparams`.",
+            "itemtype": "method",
+            "name": "getUrlParams",
+            "params": [
+                {
+                    "name": "urlparams",
+                    "description": "",
+                    "type": "Array",
+                    "optional": true
+                }
+            ],
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "A list of parameter--value pairs.",
+                "type": "Object"
+            },
+            "since": "0.1",
+            "class": "sgvizler.form"
+        },
+        {
+            "file": "src/form.js",
+            "line": 514,
+            "description": "\"Button method\" used to clear the form and load default\nvalues. Does this by simply reloading the page without\nany URL parameters.",
+            "itemtype": "method",
+            "name": "formReset",
+            "access": "public",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/form.js",
+            "line": 527,
+            "description": "\"Button method\" used to submit the form.",
+            "itemtype": "method",
+            "name": "formSubmit",
+            "access": "public",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/form.js",
+            "line": 539,
+            "description": "Main method. Draws the form, gets possible URL\nparameters, populates form with data, and, if\nrequested, sends a query and draws the chart in the\nchart container.",
+            "itemtype": "method",
+            "name": "formDraw",
+            "params": [
+                {
+                    "name": "elementID",
+                    "description": "",
+                    "type": "String",
+                    "optional": true,
+                    "optdefault": "body"
+                }
+            ],
+            "access": "public",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 27,
+            "description": "Contains a list of dependency loaders: function\nname--deferred pairs. Keeps track of dependencies which\nhave already been asked for (but possibly not been\nloaded yet).",
+            "itemtype": "property",
+            "name": "loaders",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 40,
+            "itemtype": "method",
+            "name": "loadGVizScript",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "packages",
+                    "description": "List of\n`google.visualization` packages to load.",
+                    "type": "Array",
+                    "optional": true
+                },
+                {
+                    "name": "loadLib",
+                    "description": "True if\n`google.visualization` should be loaded even if\n`packages` array is empty. This is needed in order to\nload the `DataTable` class, which belongs to no\npackage.",
+                    "type": "Boolean",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Promise object which resolves\nthe loading of the given packages/library.",
+                "type": "jQuery.Promise"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 83,
+            "itemtype": "method",
+            "name": "loadGMapScript",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "Promise object which resolves\nthe loading of google.maps.",
+                "type": "jQuery.Promise"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.loader"
+        },
+        {
+            "file": "src/loader.js",
+            "line": 106,
+            "description": "Load the dependencies of all the given function\nnames---as specified in `sgvizler.registry`.",
+            "itemtype": "method",
+            "name": "loadDependencies",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "functions",
+                    "description": "A list of function\nnames (or just a single function name) to load\ndependencies for.",
+                    "type": "Array|string"
+                }
+            ],
+            "return": {
+                "description": "A promise object which\nresolves the loading of all function dependencies.",
+                "type": "jQuery.Promise"
+            },
+            "example": [
+                " loadDependencies('google.visualization.Map');\n    returns deferred which will load the dependencies\n    for the `google.visualization.Map` function as\n    specified by `sgvizler.registry`."
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.loader"
+        },
+        {
+            "file": "src/logger.js",
+            "line": 18,
+            "description": "The timestamp for the load start of the current running\nversion of sgvizler. Used to calculate time elapse of\nfuture events.",
+            "itemtype": "property",
+            "name": "start",
+            "type": "number",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.logger"
+        },
+        {
+            "file": "src/logger.js",
+            "line": 29,
+            "itemtype": "method",
+            "name": "timeElapsed",
+            "access": "private",
+            "tagname": "",
+            "return": {
+                "description": "The number of seconds elapsed since\nthis sgvizler got loaded.",
+                "type": "Number"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.logger"
+        },
+        {
+            "file": "src/logger.js",
+            "line": 40,
+            "itemtype": "property",
+            "name": "waitingCharts",
+            "type": "number",
+            "access": "private",
+            "tagname": "",
+            "beta": 1,
+            "class": "sgvizler.logger"
+        },
+        {
+            "file": "src/logger.js",
+            "line": 50,
+            "description": "Logs a message.",
+            "itemtype": "method",
+            "name": "log",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "message",
+                    "description": "The message to log.",
+                    "type": "String"
+                }
+            ],
+            "beta": 1,
+            "class": "sgvizler.logger"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 23,
+            "description": "Stores prefix--namespace pairs.",
+            "itemtype": "property",
+            "name": "nss",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 37,
+            "itemtype": "property",
+            "name": "baseURL",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 50,
+            "description": "Get a namespace.\n\nSee also set.",
+            "itemtype": "method",
+            "name": "get",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "prefix",
+                    "description": "The prefix to get the namespace for.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The namespace set for 'prefix';\nundefined if 'prefix' does not exist.",
+                "type": "String"
+            },
+            "example": [
+                "\n    get('xsd');  // returns \"http://www.w3.org/2001/XMLSchema#\""
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 68,
+            "description": "Set a namespace.\n\nSee also get.",
+            "itemtype": "method",
+            "name": "set",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "prefix",
+                    "description": "The prefix to set.",
+                    "type": "String"
+                },
+                {
+                    "name": "namespace",
+                    "description": "The namespace to set.",
+                    "type": "String"
+                }
+            ],
+            "example": [
+                "\n    set('foaf', \"http://xmlns.com/foaf/0.1/\");\n  sets `'foaf'` as prefix for the FOAF namespace."
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 86,
+            "description": "Get Base URL value.\n\nSee also setBaseURL.",
+            "itemtype": "method",
+            "name": "getBaseURL",
+            "return": {
+                "description": "The base URL.",
+                "type": "String"
+            },
+            "access": "protected",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 99,
+            "description": "Set Base URL value.\n\nSee also setBaseURL.",
+            "itemtype": "method",
+            "name": "getBaseURL",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "The base URL.",
+                    "type": "String"
+                }
+            ],
+            "access": "protected",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 113,
+            "description": "Get all prefixes in SPARQL format.",
+            "itemtype": "method",
+            "name": "prefixesSPARQL",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "An SPARQL formatted prefix declaration\ntext block containing all set prefixes.",
+                "type": "String"
+            },
+            "since": "0.1",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 132,
+            "description": "Replace a namespace with its prefix, for string which\nstarts with a namespace. Typically used for URLs of\nresources.\n\nLeaves other strings untouched.\n\nSee also unprefixify.",
+            "itemtype": "method",
+            "name": "prefixify",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "url",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "example": [
+                "\n    prefixify(\"http://www.w3.org/2002/07/owl#Class\");  // returns \"owl:Class\"\n    prefixify(\"Hello World!\");   // returns \"Hello World!\""
+            ],
+            "since": "0.3.3",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/namespace.js",
+            "line": 163,
+            "description": "Replace a prefix with its namespace, for string which\nstarts with a prefix: Typically used for prefixed URLs\n(QNames) of resources.\n\nLeaves other strings untouched.\n\nSee also prefixify.",
+            "itemtype": "method",
+            "name": "unprefixify",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "qname",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "example": [
+                "\n    unprefixify(\"owl:Class\");     // returns \"http://www.w3.org/2002/07/owl#Class\"\n    unprefixify(\"Hello World!\");  // returns \"Hello World!\""
+            ],
+            "since": "0.3.3",
+            "class": "sgvizler.namespace"
+        },
+        {
+            "file": "src/parser.js",
+            "line": 29,
+            "description": "Convertion table for turning XSD datatypes into the\n\"javascript\" datatypes which the\n`google.visualization.DataTable` accepts, which is: `string`,\n`number`, `boolean`, `date`, `datetime`, `timeofday`.",
+            "itemtype": "property",
+            "name": "datatypeXSD2JS",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.1",
+            "class": "sgvizler.parser"
+        },
+        {
+            "file": "src/parser.js",
+            "line": 56,
+            "description": "Converts XSD datatypes into Google JSON datatypes. \n\nSee also property `datatypeXSD2JS`.",
+            "itemtype": "method",
+            "name": "getGoogleJsonDatatype",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "sdatatype",
+                    "description": "An XSD datatype, full URL.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "gdatatype, defaults to `string`",
+                "type": "String"
+            },
+            "since": "0.1",
+            "class": "sgvizler.parser"
+        },
+        {
+            "file": "src/parser.js",
+            "line": 70,
+            "description": "according to the Google JSON datatype, i.e., values\nother than strings and booleans need special\ntreatment. If the value is an URL, we \"prefixify\" it.\n\nSee also `sgvizler.namespace.prefixify`",
+            "itemtype": "method",
+            "name": "getGoogleJsonValue",
+            "access": "private",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "value",
+                    "description": "The value from the SPARQL result set.",
+                    "type": "String|number|boolean"
+                },
+                {
+                    "name": "gdatatype",
+                    "description": "The Google JSON datatype.",
+                    "type": "String"
+                },
+                {
+                    "name": "stype",
+                    "description": "The `type` of the value in the\n SPARQL endpoint, e.g. `uri` or `literal`.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "The converted value.",
+                "type": "Date|number|string"
+            },
+            "since": "0.1",
+            "class": "sgvizler.parser"
+        },
+        {
+            "file": "src/parser.js",
+            "line": 122,
+            "description": "Converts a SPARQL XML result set into \"Google JSON\",\nsee\nhttps://developers.google.com/chart/interactive/docs/reference#DataTable.",
+            "itemtype": "method",
+            "name": "convertXML",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "sxml",
+                    "description": "The SPARQL XML result set.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Object literal ready for\n`google.visualization.DataTable` consumption.",
+                "type": "Object"
+            },
+            "since": "0.2.2",
+            "class": "sgvizler.parser"
+        },
+        {
+            "file": "src/parser.js",
+            "line": 186,
+            "description": "Converts a SPARQL JSON result set into \"Google JSON\",\nsee\nhttps://developers.google.com/chart/interactive/docs/reference#DataTable.",
+            "itemtype": "method",
+            "name": "convertJSON",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "stable",
+                    "description": "The SPARQL JSON result set.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Object literal ready for\n`google.visualization.DataTable` consumption.",
+                "type": "Object"
+            },
+            "since": "0.1",
+            "class": "sgvizler.parser"
+        },
+        {
+            "file": "src/parser.js",
+            "line": 242,
+            "description": "Returns number of results, SPARQL XML.",
+            "itemtype": "method",
+            "name": "countXML",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "sxml",
+                    "description": "The SPARQL XML result set.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The number of result set rows.",
+                "type": "Number"
+            },
+            "since": "0.2.2",
+            "class": "sgvizler.parser"
+        },
+        {
+            "file": "src/parser.js",
+            "line": 254,
+            "description": "Returns number of results, SPARQL JSON.",
+            "itemtype": "method",
+            "name": "countJSON",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "stable",
+                    "description": "The SPARQL JSON result set.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "The number of result set rows.",
+                "type": "Number"
+            },
+            "since": "0.1",
+            "class": "sgvizler.parser"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 25,
+            "description": "The Google Visualization package name.",
+            "itemtype": "property",
+            "name": "GVIZ",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "final": 1,
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 35,
+            "description": "The Google Visualization DataTable class name.",
+            "itemtype": "property",
+            "name": "DATATABLE",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "final": 1,
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 45,
+            "description": "The Google Maps package name.",
+            "itemtype": "property",
+            "name": "GVIZ",
+            "type": "String",
+            "access": "private",
+            "tagname": "",
+            "final": 1,
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 55,
+            "description": "Stores the modules of the registered functions\naccording to the type of function, i.e., `chart` or\n`datatable`.",
+            "itemtype": "property",
+            "name": "modules",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 69,
+            "description": "Stores registered function names and their\ndependencies, e.g., specifies which google\nvisualization packages to load for the different\ncharts.\n\nProperty legend:\n\n - `t`: type. Values: `core`, `datatable`, `chart` (default)\n - `d`: dependences. Object containing functions--gviz package/js file\n   - `i`: the function itself, as in I.",
+            "itemtype": "property",
+            "name": "registry",
+            "type": "Object",
+            "access": "private",
+            "tagname": "",
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 173,
+            "description": "Get list of registered chart module (names), i.e., modules for\nwhich there are registered functions for drawing\ncharts.",
+            "itemtype": "method",
+            "name": "chartModules",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "(an array of strings)",
+                "type": "Array"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 186,
+            "description": "Get list of registered chart functions names (not the\nfunctions themselves).",
+            "itemtype": "method",
+            "name": "chartsFunctions",
+            "access": "protected",
+            "tagname": "",
+            "return": {
+                "description": "(an array of strings)",
+                "type": "Array"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 214,
+            "description": "Get list of dependencies, either google visualization\npackages or javascripts (URLs), for given function\nname.",
+            "itemtype": "method",
+            "name": "getDependencies",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "functionName",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "(an array of strings)",
+                "type": "Array"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/registry.js",
+            "line": 236,
+            "description": "Add function to registry.",
+            "itemtype": "method",
+            "name": "addFunction",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "module",
+                    "description": "name of module to which function belongs.",
+                    "type": "String"
+                },
+                {
+                    "name": "name",
+                    "description": "name of function.",
+                    "type": "String"
+                },
+                {
+                    "name": "type",
+                    "description": "of function, usually either `'chart'`, `'datatable'`.",
+                    "type": "String"
+                },
+                {
+                    "name": "dependencies",
+                    "description": "list of function\nname--dependency pairs. Example: `{ 'XYZ':\n'http://example.org/XYZ.js' }` if the function requires\nthe XYX function to draw and this function is located\nat `http://example.org/XYZ.js`.",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.registry"
+        },
+        {
+            "file": "src/util.js",
+            "line": 21,
+            "description": "Checks if `input` is a string.",
+            "itemtype": "method",
+            "name": "isString",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "True iff `input` is a string.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 33,
+            "description": "Checks if `input` is a number.",
+            "itemtype": "method",
+            "name": "isNumber",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "True iff `input` is a number.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 45,
+            "description": "Checks if `input` is a boolean.",
+            "itemtype": "method",
+            "name": "isBoolean",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "True iff `input` is a boolean.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 57,
+            "description": "Checks if `input` is a primitive, i.e., either a string,\na number or a boolean.",
+            "itemtype": "method",
+            "name": "isPrimitive",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "True iff `input` is a string, a number or a boolean.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 70,
+            "description": "Checks if `input` is a function.",
+            "itemtype": "method",
+            "name": "isFunction",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": ""
+                }
+            ],
+            "requires": [
+                "jQuery"
+            ],
+            "return": {
+                "description": "True iff `input` is a function.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 81,
+            "description": "Checks if `input` is an array.",
+            "itemtype": "method",
+            "name": "isArray",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": ""
+                }
+            ],
+            "requires": [
+                "jQuery"
+            ],
+            "return": {
+                "description": "True iff `input` is an array.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 92,
+            "description": "Checks if `input` is a URL.",
+            "itemtype": "method",
+            "name": "isURL",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "True iff `input` is a URL.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 114,
+            "description": "Establish \"classical inheritance\" from Parent to\nChild. Child is linked to the Parent's prototype\nthrough a new proxy object. This means the Child has a\nprototype object of its own, and access to the Parent's\nprototype.\n\nTaken from book \"JavaScript Patterns\".",
+            "itemtype": "method",
+            "name": "inherit",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "Child",
+                    "description": "",
+                    "type": "Object"
+                },
+                {
+                    "name": "Parent",
+                    "description": "",
+                    "type": "Object"
+                }
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 139,
+            "description": "Generic set/get method. If `value` is defined, then the\nattribute/property `attr` of `setObject` is set to\n`value` and `returnObject` is returned. Otherwise, the\n(value of) `attr` attribute/property is\nreturned. Useful for a casading pattern.",
+            "itemtype": "method",
+            "name": "getset",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "attr",
+                    "description": "The name of the property to get/set.",
+                    "type": "String"
+                },
+                {
+                    "name": "value",
+                    "description": "The value to set.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "setObject",
+                    "description": "The object for which the property shall be set/get.",
+                    "type": "Object"
+                },
+                {
+                    "name": "returnObject",
+                    "description": "The object to return if value is undefined.",
+                    "type": "Object"
+                }
+            ],
+            "return": {
+                "description": "Either `returnObject` or `setObject[attr]`",
+                "type": "Any"
+            },
+            "example": [
+                "\n    getset('age', 55, person.myArray, person)\n  sets `person.myArray.age = 55` and returns `person`.\n\n    getset('age', undefined, person.myArray, person)\n  returns `person.myArray.age`."
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 167,
+            "description": "Checks if a string starts with (is the prefix of) an other string.",
+            "itemtype": "method",
+            "name": "startsWith",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "string",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "prefix",
+                    "description": "",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "True iff `prefix` is the prefix of `string`.",
+                "type": "Boolean"
+            },
+            "example": [
+                "\n    startsWith(\"Hal\", \"Hallo!\");  // returns true\n    startsWith(\"hal\", \"Hallo!\");  // returns false"
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 183,
+            "description": "Gets the object located at `path` from `object`. `path`\nis given in dot notation.",
+            "itemtype": "method",
+            "name": "getObjectByPath",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "path",
+                    "description": "",
+                    "type": "String"
+                },
+                {
+                    "name": "object",
+                    "description": "",
+                    "type": "Object",
+                    "optional": true,
+                    "optdefault": "window"
+                },
+                {
+                    "name": "create",
+                    "description": "",
+                    "type": "Boolean",
+                    "optional": true,
+                    "optdefault": "false"
+                }
+            ],
+            "return": {
+                "description": "Returns the object/value located at\nthe `path` of `object`; otherwise, if `create` is true,\nit is created.",
+                "type": "Object"
+            },
+            "example": [
+                "\n    getObjectByPath('sgvizler.visualization.Table', registry, true)\n  returns the object located at\n  `registry['sgvizler']['visualization']['Table']` if it\n  exists; otherwise, since `'create' === true`, the path\n  and (empty) object is created and returned."
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 219,
+            "description": "Checks if a an array contains a given element.",
+            "itemtype": "method",
+            "name": "isInArray",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "item",
+                    "description": "",
+                    "type": "Any"
+                },
+                {
+                    "name": "array",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "True iff `array` contains an element `item`.",
+                "type": "Boolean"
+            },
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 232,
+            "description": "Removes duplicates from an array.",
+            "itemtype": "method",
+            "name": "removeDuplicates",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "array",
+                    "description": "",
+                    "type": "Array"
+                }
+            ],
+            "return": {
+                "description": "The input array with duplicates removed.",
+                "type": "Array"
+            },
+            "example": [
+                "\n    removeDuplicates([1, 1, 1, 2, 4, 3, 2]);  // returns [1, 2, 4, 3]"
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 253,
+            "description": "Converts `input` to an array. If `input` is undefined,\nthen an empty array is returned. If `input` is\nprimitive, then it is put in an (empty) array. If `input`\n/is/ an array, then the `input` is simply returned.\n\nUseful for converting input to other methods to arrays.",
+            "itemtype": "method",
+            "name": "toArray",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "input",
+                    "description": "",
+                    "type": "Undefined|primitive|Array"
+                }
+            ],
+            "return": {
+                "description": "An array representation of `input`.",
+                "type": "Array"
+            },
+            "example": [
+                "\n    toArray(undefined);       // returns []\n    toArray('myString');      // returns ['myString']\n    toArray([1, 2, 3]);       // returns [1, 2, 3]\n    toArray(function () {});  // throws TypeError"
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        },
+        {
+            "file": "src/util.js",
+            "line": 285,
+            "description": "Creates an HTML element according to a custom made\n\"array syntax\". Used to make HTML DOM manipulation more\ncode compact.",
+            "itemtype": "method",
+            "name": "createHTMLElement",
+            "access": "protected",
+            "tagname": "",
+            "params": [
+                {
+                    "name": "elementType",
+                    "description": "The type of element to\ncreate, e.g., \"div\" or \"h1\".",
+                    "type": "String"
+                },
+                {
+                    "name": "attributes",
+                    "description": "Object of\nattribute--value's to be added to the element.",
+                    "type": "Object",
+                    "optional": true
+                },
+                {
+                    "name": "children",
+                    "description": "An array of\nchildren to be added to the element; each element in\nthe `children` array is an array of three elements, one\nfor each parameter of this method. If this argument is\na primitive, then it is inserted as a text node.",
+                    "type": "Array|primitive",
+                    "optional": true
+                }
+            ],
+            "return": {
+                "description": "Element (ready for insertion into DOM.)",
+                "type": "Object"
+            },
+            "example": [
+                "\n    createHTMLElement('ul', { 'class': \"myClass\", 'id': \"myID\" }, [ ['li', null, \"One\" ],\n                                                                    ['li', { 'id': \"ABC\" } , 2 ],\n                                                                    ['li', null, true] ] );\n\n  will create the HTML element:\n\n    <ul id=\"myID\" class=\"myClass\">\n      <li>One</li>\n      <li id=\"ABC\">2</li>\n      <li>true</li>\n    </ul>"
+            ],
+            "since": "0.6.0",
+            "class": "sgvizler.util"
+        }
+    ],
+    "warnings": []
+}

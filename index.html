@@ -1,0 +1,2363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sgvizler 0.6</title>
+<!-- 2016-01-02 lø. 11:38 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Martin" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="sgvizler-www.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sgvizler 0.6</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#intro">Introduction</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#using-sgvizler">Using</a></li>
+<li><a href="#charts">Charts</a></li>
+<li><a href="#datatables">Datatables</a></li>
+<li><a href="#user-defined-functions">Extending</a></li>
+<li><a href="#screenshots">Screenshots</a></li>
+<li><a href="#download">Downloads</a></li>
+<li><a href="#links">Links</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><a href="#examples">Code</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-intro" class="outline-2">
+<h2 id="intro"><a id="sec-1" name="sec-1"></a>Introduction</h2>
+<div class="outline-text-2" id="text-intro">
+
+<p>
+Sgvizler is a JavaScript library which renders the result of SPARQL
+SELECT queries into charts or HTML elements; see <a href="#screenshots">Screenshots</a> for
+examples.
+</p>
+
+<p>
+Charts may be included directly into your web pages simply by adding
+HTML elements of the following form to your page, using
+<code>data-sgvizler-</code> prefixed HTML attributes to specify the SPARQL
+endpoint, SPARQL query and chart function (More options and usages
+are available, see <a href="#using-sgvizler">Using</a>):
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html" id="sgvizler-quick-start-example">&lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"example"</span>
+     <span style="color: #eedd82;">data-sgvizler-endpoint</span>=<span style="color: #ffa07a;">"http://sws.ifi.uio.no/sparql/npd"</span>
+     <span style="color: #eedd82;">data-sgvizler-query</span>=<span style="color: #ffa07a;">"SELECT ?class (count(?instance) AS ?noOfInstances)</span>
+<span style="color: #ffa07a;">                          WHERE{ ?instance a ?class }</span>
+<span style="color: #ffa07a;">                          GROUP BY ?class</span>
+<span style="color: #ffa07a;">                          ORDER BY ?class"</span>
+     <span style="color: #eedd82;">data-sgvizler-chart</span>=<span style="color: #ffa07a;">"google.visualization.PieChart"</span>
+     <span style="color: #eedd82;">style</span>=<span style="color: #ffa07a;">"width:800px; height:400px;"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+</pre>
+</div>
+<p>
+The above block will render into the following pie chart (here shown
+as a static, scaled down screenshot).  A minimal working example of
+this is found at <a href="./example/quick-start.html">./example/quick-start.html</a>.
+</p>
+
+<div class="figure">
+<p><img src="./image/gPieChart.png" alt="gPieChart.png" width="400px" border="1" style="padding:0;margin:0;" />
+</p>
+</div>
+
+
+<p>
+In brief, Sgvizler draws a chart by:
+</p>
+<ol class="org-ol">
+<li>Given a SPARQL query and a SPARQL endpoint, querying the
+endpoint for the result set, which must be in either <a href="http://www.w3.org/TR/rdf-sparql-XMLres/">SPARQL Query
+Results XML Format</a> or <a href="http://www.w3.org/TR/rdf-sparql-json-res/">SPARQL Query Results in JSON format</a>.
+</li>
+<li>The results are then parsed into the <a href="http://code.google.com/apis/chart/interactive/docs/datatables_dataviews.html#javascriptliteral">JSON format that Google
+prefers</a>.
+</li>
+<li>While the result set is collected and parsed, the designated
+visualisation function, e.g., simple DOM manipulation, a Google
+chart, or other external visualisation library (e.g., <a href="http://d3js.org/">D3</a>), is
+loaded.
+</li>
+<li>When the query result set and visualisation function are ready,
+the result set is visualised.
+</li>
+</ol>
+
+<p>
+Sgvizler supports all the major chart types offered by the <a href="http://code.google.com/apis/chart/">Google
+Visualization API</a>. Additionally, Sgvizler is extended with a set of
+functions for drawing graphs&#x2014;using external javascript libraries,
+and functions for building basic HTML structures, like tables, lists
+and text blocks. The same extension mechanism is available to
+Sgvizler's users, meaning <a href="#user-defined-functions">user-defined visualisation functions</a> may
+easily be added to Sgvizler's repertoire.
+</p>
+
+<p>
+If you use Sgvizler in your academic work, please cite the following
+paper (There is also a <i>poster</i> available):
+</p>
+<blockquote>
+<p>
+Martin G. Skjæveland. <a href="http://2012.eswc-conferences.org/sites/default/files/eswc2012_submission_303.pdf">Sgvizler: A JavaScript Wrapper for Easy
+Visualization of SPARQL Result Sets</a>. In: 9th Extended Semantic Web
+Conference (ESWC 2012), workshop and demo proceedings. Heraklion,
+Crete, Greece, 2015.
+</p>
+</blockquote>
+
+<p>
+The name and tool relies on and/or is inspired by <a href="http://www.w3.org/TR/rdf-sparql-query/">SPARQL</a>, <a href="http://code.google.com/apis/chart/">Google
+Visualization API</a>, <a href="http://www.sparql.org/query.html">SPARQLer</a>, <a href="http://dbpedia.org/snorql/">Snorql</a> and <a href="http://km.aifb.kit.edu/sites/spark/">Spark</a>.
+</p>
+
+<p>
+This page describes version 0.6 of Sgvizler. For earlier versions
+consult the old Sgvizler site: <a href="http://dev.data2000.no/sgvizler/">http://dev.data2000.no/sgvizler/</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-setup" class="outline-2">
+<h2 id="setup"><a id="sec-2" name="sec-2"></a>Setup</h2>
+<div class="outline-text-2" id="text-setup">
+
+<p>
+To set up Sgvizler on your own site you will need to include a few
+javascripts to your pages and configure Sgvizler to fit your SPARQL
+endpoints and dataset&#x2014;for the latter see <a href="#using-sgvizler">Using</a>.
+</p>
+
+<p>
+To include the Sgvizler script, either
+</p>
+
+<ul class="org-ul">
+<li><a href="#download">Download</a> a copy of Sgvizler and run a local copy on your webserver,
+</li>
+<li><del>use cdnjs</del> (not yet available, #39),
+</li>
+<li>or use one of the following URI (possibly slow):
+<dl class="org-dl">
+<dt> <a href="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.min.js">http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.min.js</a> </dt><dd>         Minified version.
+</dd>
+<dt> <a href="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js">http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js</a> </dt><dd>         Not minified, and including comments. Use for testing and bug
+reporting.
+</dd>
+</dl>
+</li>
+</ul>
+
+<p>
+The following libraries must also be included:
+</p>
+
+<dl class="org-dl">
+<dt> <a href="https://developers.google.com/chart/interactive/docs/reference">Google Visualization API</a> </dt><dd>Includes many chart types and the
+`DataTable` object, which is the input to the visualisation
+functions and a handy object for manipulating the result set.
+</dd>
+
+<dt> <a href="http://jquery.com">jQuery</a> </dt><dd>Used for communicating with the SPARQL endpoint and to
+manipulate the DOM.
+</dd>
+</dl>
+
+<p>
+Below is a working example for including the necessary javascripts:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html" id="sgvizler-js-import">&lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+&lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"https://www.google.com/jsapi"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+&lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-using-sgvizler" class="outline-2">
+<h2 id="using-sgvizler"><a id="sec-3" name="sec-3"></a>Using</h2>
+<div class="outline-text-2" id="text-using-sgvizler">
+
+<p>
+There are three intended ways to use Sgvizler:
+</p>
+<ol class="org-ol">
+<li>Put SPARQL queries directly in HTML containers
+</li>
+<li>Use a HTML form to query SPARQL endpoints
+</li>
+<li>Use Sgvizler's JavaScript API
+</li>
+</ol>
+
+<p>
+In all cases you may want to setup Sgvizler with a your own default
+values.  Your Sgvizler instance is probably best configured by a
+series of functions defined on the <code>sgvizler</code> object, setting
+prefixes, the default endpoint, default chart, default chart size
+and so on; see the documentation for the complete list:
+<a href="./doc/0.6/classes/sgvizler.html">./doc/0.6/classes/sgvizler.html</a>&#x2014;these options are similar to the
+available <a href="#sgvizler-attributes">sgvizler attributes described below</a>. Settings given for a
+specific HTML container or on a <code>Query</code> object instance, as
+explained below, will override the values set on the <code>sgvizler</code>
+object.
+</p>
+
+<p>
+This javascript block exemplifies how to set a few values which will
+be used for all future queries issues by Sgvizler, unless the values
+are later reset. This example setup is used for all the live
+examples this section.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-js" id="sgvizler-setup">   sgvizler
+       .prefix(<span style="color: #ffa07a;">"ex"</span>, <span style="color: #ffa07a;">"http://example.org#"</span>)
+       .defaultEndpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+       .defaultQuery(<span style="color: #ffa07a;">"SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7"</span>)
+       .defaultChartFunction(<span style="color: #ffa07a;">"sgvizler.visualization.Table"</span>)
+       .defaultChartWidth(500)
+       .defaultChartHeight(500);
+</pre>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">1. Query stored in HTML container</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Add <code>&lt;div&gt;</code> elements, or other suitable HTML containers, and
+include special (HTML5 compatible) <code>data-sgvizler-</code> prefixed
+"sgvizler attributes", to get HTML of the following format:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-html" id="sgvizler-usage-html-container">&lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"myExample"</span>
+     <span style="color: #eedd82;">data-sgvizler-endpoint</span>=<span style="color: #ffa07a;">"http://sws.ifi.uio.no/sparql/npd"</span>
+     <span style="color: #eedd82;">data-sgvizler-query</span>=<span style="color: #ffa07a;">"SELECT ?class (count(?instance) AS ?noOfInstances)</span>
+<span style="color: #ffa07a;">                          WHERE{ ?instance a ?class }</span>
+<span style="color: #ffa07a;">                          GROUP BY ?class</span>
+<span style="color: #ffa07a;">                          ORDER BY ?class"</span>
+     <span style="color: #eedd82;">data-sgvizler-chart</span>=<span style="color: #ffa07a;">"google.visualization.PieChart"</span>
+     <span style="color: #eedd82;">data-sgvizler-chart-options</span>=<span style="color: #ffa07a;">"is3D=true|title=Number of instances"</span>
+     <span style="color: #eedd82;">style</span>=<span style="color: #ffa07a;">"width:800px; height:400px;"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+</pre>
+</div>
+
+<p>
+Sgvizler must also be told to draw the chart. This is normally
+easiest done by loading all such HTML "sgvizler containers" on page
+load with the following javascript call (See
+<a href="./example/usage-container-drawall.html">./example/usage-container-drawall.html</a> for a live example which
+draws the above chart):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js" id="sgvizler-js-drawAll">$(document).ready(
+    <span style="color: #00ffff;">function</span> (){ sgvizler.containerDrawAll(); }
+);
+</pre>
+</div>
+
+<p>
+Individual containers can be drawn with the call &#x2026;
+</p>
+<div class="org-src-container">
+
+<pre class="src src-js" id="sgvizler-js-drawOne">$(document).ready(
+    <span style="color: #00ffff;">function</span> (){ sgvizler.containerDraw(<span style="color: #ffa07a;">"myExample"</span>); }
+);
+</pre>
+</div>
+<p>
+&#x2026; where <code>myExample</code> is the <code>id</code> attribute value of the container
+to be drawn. (See <a href="./example/usage-container-drawone.html">./example/usage-container-drawone.html</a> for a live
+example)
+</p>
+
+<p>
+See the <a href="./doc/0.6/">documentation</a>, of the <code>sgvizler</code> and <code>Query</code> objects
+especially, for the description of these and other functions.
+</p>
+</div>
+
+<div id="outline-container-sgvizler-attributes" class="outline-4">
+<h4 id="sgvizler-attributes"><a id="sec-3-1-1" name="sec-3-1-1"></a>Sgvizler HTML attributes</h4>
+<div class="outline-text-4" id="text-sgvizler-attributes">
+<p>
+The list below explains the HTML attributes that Sgvizler require
+and recognise (Required attributes are marked by *).
+</p>
+
+<dl class="org-dl">
+<dt> <b>id*</b> </dt><dd>             Some identifying string, e.g., <code>myExample</code>. The
+identifier for the HTML container to put the
+visualisation results. The value must be unique to all
+elements on the same page.
+</dd>
+
+<dt> <b>data-sgvizler-query*</b> </dt><dd>        A SPARQL query string. The SPARQL SELECT query specifying a
+query result to fit the visualisation function. The query
+result set (number of columns and datatypes) must fit the
+format required by the selected visualisation function; find
+the chart and description here [wiki:Sgvizler/Chart].
+</dd>
+
+<dt> <b>data-sgvizler-endpoint</b> </dt><dd>        A URL string to a SPARQL endpoint, e.g., <code>http://dbpedia.org/sparql</code>.
+</dd>
+
+<dt> <b>data-sgvizler-endpoint_output</b> </dt><dd>        The format Sgvizler shall ask the endpoint to return query
+results as. Possible values are <code>json</code>, <code>jsonp</code> or <code>xml</code>, the
+default is <code>json</code>.
+</dd>
+
+<dt> <b>data-sgvizler-rdf</b> </dt><dd>        List of URLs to RDF files. The list must be separated by
+<code>|</code>-characters. This is just a shorthand way of telling
+Sgvizler to include a list of FROMs in the query. The
+configured endpoint reads the RDF files and executes the query
+over them; this means that the files must be accessible to the
+endpoint and the endpoint must allow <code>FROM</code> in queries.
+</dd>
+
+<dt> <b>data-sgvizler-chart</b> </dt><dd>        The visualisation function to use. The value is the name of
+the chart object, e.g., <code>google.visualization.LineChart</code> or
+<code>sgvizler.visualization.Table</code>. Find the value for the chart
+you want on its [wiki:Sgvizler/Chart] page.
+</dd>
+
+<dt> <b>data-sgvizler-chart-options</b> </dt><dd>       A list of options which are sent to the chart function. Each
+option is given as <code>option=value</code> and each option-value-pair
+is separated with a vertical bar,
+e.g. <code>option1=value1|option2=value2</code>. See the relevant
+[wiki:Sgvizler/Chart] page for available options.
+</dd>
+
+<dt> <b>data-sgvizler-loglevel</b> </dt><dd>        To what extent Sgvizler shall give feedback to the user. <i>This
+feature is not yet implemented.</i>
+</dd>
+
+<dt> <b>style</b> </dt><dd>               This is just the normal way of adding css style to your
+elements, but <code>width</code> and <code>height</code> will also be picked
+up by Sgvizler to determine the size of the chart. The
+default values are respectively 800px and 400px.
+</dd>
+
+<dt> <b>data-sgvizler-endpoint_query_url</b> </dt><dd>        Part of a URL to append to SPARQL endpoint URL such that this,
+together with the SPARQL query forms a link that will print
+the results of the query, i.e., (SPARQL endpoint URL) + (this
+variable) + (query) = (query results (in a web
+browser)). Default is <code>?output=text&amp;amp;query=</code>. This is used
+when an error occurs and allows the users to check if the
+query results are as expected, directly from the endpoint.
+</dd>
+
+<dt> <b>data-sgvizler-validator_query_url</b> </dt><dd>        URL to some SPARQL validator such that this URL plus the
+SPARQL query forms a link that will validate the given query,
+i.e., (the value of this attribute) + (query) = (a url to the
+validation results for query). Default value is
+<code>http://www.sparql.org/query-validator?languageSyntax=SPARQL&amp;amp;outputFormat=sparql&amp;amp;linenumbers=true&amp;amp;query=</code>.
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">2. Query Form</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Add an HTML form with input fields for SPARQL query, SPARQL
+endpoint and chart function.  The form closely resembles the query
+forms of <a href="http://www.sparql.org/query.html">SPARQLer</a> and <a href="http://dbpedia.org/snorql/">Snorql</a>.
+</p>
+
+<p>
+Add the form to your site by using the function
+<code>sgvizler.drawForm(elementID)</code>, where <code>elementID</code> is the HTML
+element ID of where to put the form&#x2014;if no argument is provided,
+then the <code>body</code> element is used.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html" id="sgvizler-query-form">&lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"myForm"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+&lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span>&gt;
+  $(document).ready(function() { sgvizler.formDraw(<span style="color: #ffa07a;">"myForm"</span>); });
+&lt;/<span style="color: #87cefa;">script</span>&gt;
+</pre>
+</div>
+
+<p>
+An example of the above code and form is found here:
+<a href="./example/usage-query-form.html">./example/usage-query-form.html</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">3. Using Sgvizler's API</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Use the available public functions for the <code>sgvizler</code> and <code>Query</code>
+object when you need a different configuration than the two
+above. See the <a href="http://doc.data2000.no/sgvizler/0.6/">documentation</a> and give attention to <a href="http://doc.data2000.no/sgvizler/0.6/classes/sgvizler.Query.html">Query
+object</a>. Here is an example of how to use the API to draw charts,
+the live version is here: <a href="./example/usage-api.html">./example/usage-api.html</a>.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-html" id="sgvizler-api-example">&lt;<span style="color: #87cefa;">script</span>&gt;
+var Q = new sgvizler.Query();                           // Create a Query instance.
+
+// Values may also be set in the sgvizler object---but will be
+// overwritten here.
+Q.query(<span style="color: #ffa07a;">"SELECT * {?s ?p ?o} LIMIT 10"</span>)
+    .endpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+    .endpointOutputFormat(<span style="color: #ffa07a;">"json"</span>)                      // Possible values 'xml', 'json', 'jsonp'.
+    .chartFunction(<span style="color: #ffa07a;">"google.visualization.Table"</span>)       // The name of the function to draw the chart.
+    .draw(<span style="color: #ffa07a;">"myElementID"</span>);                              // Draw the chart in the designated HTML element.
+&lt;/<span style="color: #87cefa;">script</span>&gt;
+&lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"myElementID"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+</pre>
+</div>
+
+<p>
+If you want to directly access and manipulate the query results, use
+the function <code>Query.getDataTable(success, fail)</code> and register
+functions that are applied to the resulting query results'
+<a href="https://developers.google.com/chart/interactive/docs/reference#DataTable">datatable</a> on success and on failure.  The function <code>getDataTable</code>
+does not ''return'' a datatable (but instead registers functions)
+since retrieving the query results from the SPARQL endpoint is done
+asynchronously.
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-js"><span style="color: #00ffff;">var</span> <span style="color: #eedd82;">Q</span> = <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">sgvizler.Query</span>(),
+    mySuccessFunc = <span style="color: #00ffff;">function</span> (<span style="color: #eedd82;">datatable</span>) {
+      <span style="color: #ff7f24;">/* </span><span style="color: #ff7f24;">Do what you want with the datatable */</span>
+    },
+    myFailFunc = <span style="color: #00ffff;">function</span> (<span style="color: #eedd82;">datatable</span>) {
+      <span style="color: #ff7f24;">/* </span><span style="color: #ff7f24;">Handle the failure */</span>
+    };
+
+Q.query(<span style="color: #ffa07a;">"SELECT * {?s ?p ?o} LIMIT 10"</span>)
+    .endpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+    .getDataTable(mySuccessFunc, myFailFunc);
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-charts" class="outline-2">
+<h2 id="charts"><a id="sec-4" name="sec-4"></a>Charts</h2>
+<div class="outline-text-2" id="text-charts">
+
+<p>
+When designing your SPARQL query for visualisation with Sgvizler the
+order and the datatypes of the variables in the SPARQL SELECT block
+is crucial. Check the specification of each of the visualisation
+functions below.
+</p>
+
+<p>
+Live examples are found here: <a href="./v/0.6/example/">./v/0.6/example/</a>
+</p>
+
+<p>
+Datatypes are decided only on the basis of the XSD datatype of the
+values. <code>xsd:int</code>, <code>xsd:long</code>, <code>xsd:integer</code>, <code>xsd:float</code>,
+<code>xsd:double</code>, <code>xsd:decimal</code> are typed as the javascript <code>number</code>
+datatype", <code>xsd:boolean</code> as <code>boolean</code>; <code>xsd:date</code> and <code>xsd:dateTime</code>
+as <code>Date</code> object; and <code>xsd:time</code> as a "timeofday" Array. The rest,
+especially string, untyped literals and resources, are typed as
+"string". Many of the charts expect certain columns to be of
+datatype number; you may want to <a href="./FAQ.html#casting-datatype">cast the results</a>.  <b>NB:</b> Sgvizler
+sets the datatype for each column by looking at the first row of
+results only.
+</p>
+
+<p>
+It is also possible to preprocess the query results before they are
+passed on to the visualisation function, see <a href="#datatables">Datatables</a>.
+</p>
+
+<p>
+The chart functions may have many different options, e.g., setting
+colour, controlling axis and dimensions. Consult Google's page for
+the options for their visualisations functions. The
+<code>sgvizler.visualisation</code> functions are documented below. Feel free
+to fork and improve these functions; they are found here:
+<a href="https://github.com/mgskjaeveland/sgvizler/tree/master/src/visualization">github: src/visualization</a>
+</p>
+</div>
+
+<div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Chart types</h3>
+<div class="outline-text-3" id="text-4-1">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Chart function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><a href="#LineChartAreaChartSteppedAreaChartColumnChartBarChart">Line Chart</a></td>
+<td class="left">google.visualization.LineChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#LineChartAreaChartSteppedAreaChartColumnChartBarChart">Area Chart</a></td>
+<td class="left">google.visualization.AreaChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#LineChartAreaChartSteppedAreaChartColumnChartBarChart">Area Chart</a></td>
+<td class="left">google.visualization.SteppedAreaChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#LineChartAreaChartSteppedAreaChartColumnChartBarChart">Column Chart</a></td>
+<td class="left">google.visualization.ColumnChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#LineChartAreaChartSteppedAreaChartColumnChartBarChart">Bar Chart</a></td>
+<td class="left">google.visualization.BarChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#Sparkline">Sparkline</a></td>
+<td class="left">google.visualization.ImageSparkLine</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#ScatterChart">Scatter Chart</a></td>
+<td class="left">google.visualization.ScatterChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#BubbleChart">Bubble Chart</a></td>
+<td class="left">google.visualization.BubbleChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#PieChart">Pie Chart</a></td>
+<td class="left">google.visualization.PieChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#CandlestickChart">Candlestick Chart</a></td>
+<td class="left">google.visualization.CandlestickChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#Gauge">Gauge</a></td>
+<td class="left">google.visualization.Gauge</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#OrgChart">Org Chart</a></td>
+<td class="left">google.visualization.OrgChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#TreeMap">Tree Map</a></td>
+<td class="left">google.visualization.TreeMap</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#MotionChart">Motion Chart</a></td>
+<td class="left">google.visualization.MotionChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#Timeline">Timeline</a></td>
+<td class="left">google.visualization.AnnotatedTimeLine</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#GeoChart">Geo Chart</a></td>
+<td class="left">google.visualization.GeoChart</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#GeoMap">Geo Map</a></td>
+<td class="left">google.visualization.GeoMap</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#Map">Map</a>, <a href="#Map">Map+</a></td>
+<td class="left">google.visualization.Map, sgvizler.visualization.Map</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#Table">Table</a></td>
+<td class="left">google.visualization.Table, sgvizler.visualization.Table</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#Force-directedGraph">Force-directed Graph</a></td>
+<td class="left">sgvizler.visualization.D3ForceGraph</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#Graph">Graph</a></td>
+<td class="left">sgvizler.visualization.DraculaGraph</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#List">List</a></td>
+<td class="left">sgvizler.visualization.List</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#DefinitionList">Definition List</a></td>
+<td class="left">sgvizler.visualization.DefList</td>
+</tr>
+
+<tr>
+<td class="left"><a href="#sec-4-1-21">Text</a></td>
+<td class="left">sgvizler.visualization.Text</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<div id="outline-container-LineChartAreaChartSteppedAreaChartColumnChartBarChart" class="outline-4">
+<h4 id="LineChartAreaChartSteppedAreaChartColumnChartBarChart"><a id="sec-4-1-1" name="sec-4-1-1"></a>Line Chart, Area Chart, Stepped Area Chart, Column Chart, Bar Chart</h4>
+<div class="outline-text-4" id="text-LineChartAreaChartSteppedAreaChartColumnChartBarChart">
+
+
+<div class="figure">
+<p><img src="./image/gLineChart.png" alt="gLineChart.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> Line chart</p>
+</div>
+
+<p>
+Format: 2&#x2013;N columns:
+</p>
+<ol class="org-ol">
+<li>The category label, i.e., the x-axis. Any datatype(?)
+</li>
+<li>2nd.&#x2013;Nth. column: each column represents a separate y-axis
+series. Datatype: number.
+</li>
+</ol>
+
+<p>
+These chart types are very similar and have the same data format
+requirements. Line charts represents the relationship between the
+x-series and each y-series as a line. An area chart colours the area
+below this line. A column chart represents the relationship with
+vertical bars, and bar charts using horizontal bars.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Sparkline" class="outline-4">
+<h4 id="Sparkline"><a id="sec-4-1-2" name="sec-4-1-2"></a>Sparkline</h4>
+<div class="outline-text-4" id="text-Sparkline">
+
+
+<div class="figure">
+<p><img src="./image/gSparkline2.png" alt="gSparkline2.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> Sparkline</p>
+</div>
+
+<p>
+Format: 1&#x2013;N columns: each column represents a separate y-axis
+series. Datatype: number.
+</p>
+
+<p>
+Minimalistic line chart showing only the line, no labels or
+axis. Rendered as an image.
+</p>
+</div>
+</div>
+
+<div id="outline-container-ScatterChart" class="outline-4">
+<h4 id="ScatterChart"><a id="sec-4-1-3" name="sec-4-1-3"></a>Scatter Chart</h4>
+<div class="outline-text-4" id="text-ScatterChart">
+
+
+<div class="figure">
+<p><img src="./image/gScatterChart.png" alt="gScatterChart.png" />
+</p>
+<p><span class="figure-number">Figure 3:</span> Scatter chart</p>
+</div>
+
+<p>
+Format: 2&#x2013;N columns: (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/scatterchart.html#Data_Format">Google's description</a>)
+</p>
+<ol class="org-ol">
+<li>The x-axis. Datatype: number.
+</li>
+<li>2nd.&#x2013;Nth. column: each column represents a separate y-axis
+series. Datatype: number.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-BubbleChart" class="outline-4">
+<h4 id="BubbleChart"><a id="sec-4-1-4" name="sec-4-1-4"></a>Bubble Chart</h4>
+<div class="outline-text-4" id="text-BubbleChart">
+
+
+<div class="figure">
+<p><img src="./image/gBubbleChart.png" alt="gBubbleChart.png" />
+</p>
+<p><span class="figure-number">Figure 4:</span> Bubble chart</p>
+</div>
+
+<p>
+Similar to scatter plot, but can represent additional dimensions
+using marker size and colour. See <a href="http://code.google.com/apis/chart/interactive/docs/gallery/bubblechart.html#Data_Format">Google's description</a>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-PieChart" class="outline-4">
+<h4 id="PieChart"><a id="sec-4-1-5" name="sec-4-1-5"></a>Pie Chart</h4>
+<div class="outline-text-4" id="text-PieChart">
+
+
+<div class="figure">
+<p><img src="./image/gPieChart.png" alt="gPieChart.png" />
+</p>
+<p><span class="figure-number">Figure 5:</span> Pie chart</p>
+</div>
+
+<p>
+Format: 2 columns: (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/piechart.html#Data_Format">Google's description</a>)
+</p>
+
+<ol class="org-ol">
+<li>The pie slice label. Datatype: any?
+</li>
+<li>The pie slice value. Datatype: number.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-CandlestickChart" class="outline-4">
+<h4 id="CandlestickChart"><a id="sec-4-1-6" name="sec-4-1-6"></a>Candlestick Chart</h4>
+<div class="outline-text-4" id="text-CandlestickChart">
+
+<p>
+See the <a href="http://code.google.com/apis/chart/interactive/docs/gallery/candlestickchart.html#Data_Format">description at Google</a> for the data format description and
+an example.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Gauge" class="outline-4">
+<h4 id="Gauge"><a id="sec-4-1-7" name="sec-4-1-7"></a>Gauge</h4>
+<div class="outline-text-4" id="text-Gauge">
+
+
+<div class="figure">
+<p><img src="./image/gGauge.png" alt="gGauge.png" />
+</p>
+<p><span class="figure-number">Figure 6:</span> Gauge</p>
+</div>
+
+<p>
+Format: 2 columns: (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/gauge.html#Data_Format">Google's description</a>)
+</p>
+
+<ol class="org-ol">
+<li>Value of gauge. Datatype: number.
+</li>
+<li>Name of gauge. Datatype: string.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-OrgChart" class="outline-4">
+<h4 id="OrgChart"><a id="sec-4-1-8" name="sec-4-1-8"></a>Org Chart</h4>
+<div class="outline-text-4" id="text-OrgChart">
+
+
+<div class="figure">
+<p><img src="./image/gOrgChart.png" alt="gOrgChart.png" />
+</p>
+<p><span class="figure-number">Figure 7:</span> Org chart</p>
+</div>
+
+<p>
+Format: 1&#x2013;3 columns: (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/orgchart.html#Data_Format">Google's description</a>)
+</p>
+
+<ol class="org-ol">
+<li>ID of node. Datatype: any.
+</li>
+<li>ID of parent. Datatype: any.
+</li>
+<li>Tool-tip text to show, when a user hovers over this node.
+</li>
+</ol>
+
+<p>
+Draws trees representing the child-parent relation. See also Tree
+Map if you want to represent values of your node, and draw boxes
+and not trees.
+</p>
+</div>
+</div>
+
+<div id="outline-container-TreeMap" class="outline-4">
+<h4 id="TreeMap"><a id="sec-4-1-9" name="sec-4-1-9"></a>Tree Map</h4>
+<div class="outline-text-4" id="text-TreeMap">
+
+
+<div class="figure">
+<p><img src="./image/gTreeMap.png" alt="gTreeMap.png" />
+</p>
+<p><span class="figure-number">Figure 8:</span> Tree map</p>
+</div>
+
+<p>
+Format: 3&#x2013;4 columns: (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/treemap.html#Data_Format">Google's description</a>)
+</p>
+
+<ol class="org-ol">
+<li>ID of node. Datatype: string.
+</li>
+<li>ID of parent. Datatype: string.
+</li>
+<li>A value which determines the size of the node. Datatype: number, must be positive.
+</li>
+<li>A value which determines the colour of the node. Datatype: number.
+</li>
+</ol>
+
+<p>
+Draws a tree structure as a partitioned box. The size of the box
+is determined by the value of the third argument. The colour of the
+box of the fourth argument. Only the values of child nodes
+matter. Parents' value is the sum of its children values. Zoom in
+with left-clicks, zoom out with right-clicks. See Org Chart if you
+want trees and not boxes.
+</p>
+</div>
+</div>
+
+<div id="outline-container-MotionChart" class="outline-4">
+<h4 id="MotionChart"><a id="sec-4-1-10" name="sec-4-1-10"></a>Motion Chart</h4>
+<div class="outline-text-4" id="text-MotionChart">
+
+
+<div class="figure">
+<p><img src="./image/gMotionChart.png" alt="gMotionChart.png" />
+</p>
+</div>
+
+<p>
+Format: 3&#x2013;N columns: (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/treemap.html#Data_Format">Google's description</a>)
+</p>
+
+<ol class="org-ol">
+<li>ID of the thing. Datatype: string.
+</li>
+<li>Timestamp for value. Datatype: different time formats, see Google's page.
+</li>
+<li>3rd&#x2013;Nth. column: Values. Datatype: string or number.
+</li>
+</ol>
+
+<p>
+A complex chart type with animation and many different charts in
+one. Shows values for things over time. Value series can be turned
+on or off.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Timeline" class="outline-4">
+<h4 id="Timeline"><a id="sec-4-1-11" name="sec-4-1-11"></a>Timeline</h4>
+<div class="outline-text-4" id="text-Timeline">
+
+
+<div class="figure">
+<p><img src="./image/gTimeline.png" alt="gTimeline.png" />
+</p>
+<p><span class="figure-number">Figure 9:</span> Timeline</p>
+</div>
+
+<p>
+Draws an interactive diagram with dates or timestamps on the
+x-axis and the y-axis series as line charts. Scroll back and
+forth, and zoom in time. Somewhat difficult data format, see
+<a href="http://code.google.com/apis/chart/interactive/docs/gallery/annotatedtimeline.html#Data_Format">Google's description</a> for a description. Drawn using
+Flash. Requires that the size of the html container element is
+explicitly set.
+</p>
+</div>
+</div>
+
+<div id="outline-container-GeoChart" class="outline-4">
+<h4 id="GeoChart"><a id="sec-4-1-12" name="sec-4-1-12"></a>Geo Chart</h4>
+<div class="outline-text-4" id="text-GeoChart">
+
+<p>
+See <a href="http://code.google.com/apis/chart/interactive/docs/gallery/geochart.html">Google's description</a> for more information.
+</p>
+</div>
+</div>
+
+<div id="outline-container-GeoMap" class="outline-4">
+<h4 id="GeoMap"><a id="sec-4-1-13" name="sec-4-1-13"></a>Geo Map</h4>
+<div class="outline-text-4" id="text-GeoMap">
+
+
+<div class="figure">
+<p><img src="./image/gGeoMap.png" alt="gGeoMap.png" />
+</p>
+<p><span class="figure-number">Figure 10:</span> Geo map</p>
+</div>
+
+<p>
+Format: 2&#x2013;4 columns: (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/geomap.html#Data_Format">Google's description</a>)
+</p>
+
+<ol class="org-ol">
+<li>Latitude. Datatype: number.
+</li>
+<li>Longitude. Datatype: number.
+</li>
+<li>Value to display at the given position. Datatype: number.
+</li>
+<li>Label for the position. Datatype: string.
+</li>
+</ol>
+
+<p>
+Draws a map and lays out the values of the 3rd column as circles
+of size and colour according to the size of the value. This chart
+offers few zooming and panning options. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-Map" class="outline-4">
+<h4 id="Map"><a id="sec-4-1-14" name="sec-4-1-14"></a>Map</h4>
+<div class="outline-text-4" id="text-Map">
+
+<p>
+Format: 1&#x2013;3 columns, the two first columns specify a geographical
+point, the optional third a name for the point.  (See <a href="http://code.google.com/apis/chart/interactive/docs/gallery/map.html#Data_Format">Google's
+description</a> for details.) See also the chart type Map+
+below. Displays markers on a Google Map. Max. 400 markers.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Map+" class="outline-4">
+<h4 id="Map+"><a id="sec-4-1-15" name="sec-4-1-15"></a>Map+</h4>
+<div class="outline-text-4" id="text-Map+">
+
+
+<div class="figure">
+<p><img src="./image/sMap.png" alt="sMap.png" />
+</p>
+<p><span class="figure-number">Figure 11:</span> Map</p>
+</div>
+
+<p>
+This is a custom-made function which produces nicely formatted
+html boxes to place on the markers of a Google Map Chart. If there
+are less than four columns this chart behaves just like Map. All
+options are passed through to Google's Map Chart, hence Map+
+accepts the same options as Map does, except Map+ operates only in
+<code>dataMode=markers</code> mode.
+</p>
+
+<p>
+Format 2&#x2013;6 columns:
+</p>
+<ol class="org-ol">
+<li>Latitude. Datatype: number.
+</li>
+<li>Longitude. Datatype: number.
+</li>
+<li>Heading. Datatype: any.
+</li>
+<li>Paragraph text. Datatype: any.
+</li>
+<li>Link. Datatype: any, but should be a URL.
+</li>
+<li>Image. Datatype: any, but should be a link to a small image.
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-Table" class="outline-4">
+<h4 id="Table"><a id="sec-4-1-16" name="sec-4-1-16"></a>Table</h4>
+<div class="outline-text-4" id="text-Table">
+
+
+<div class="figure">
+<p><img src="./image/gTable.png" alt="gTable.png" />
+</p>
+<p><span class="figure-number">Figure 12:</span> Table</p>
+</div>
+
+<p>
+The <code>google.visualisation.Table</code> shows the result set as a table,
+including some formatting features, e.g., rows can be sorted by
+clicking on columns. (<a href="http://code.google.com/apis/chart/interactive/docs/gallery/table.html#Data_Format">Google's description</a>).
+</p>
+
+<p>
+The <code>sgvizler.visualisation.Table</code> function similarly shows the
+results as a table, but uses plain HTML: <code>&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;,
+    &lt;td&gt;</code>.
+</p>
+</div>
+</div>
+
+<div id="outline-container-Force-directedGraph" class="outline-4">
+<h4 id="Force-directedGraph"><a id="sec-4-1-17" name="sec-4-1-17"></a>Force-directed Graph</h4>
+<div class="outline-text-4" id="text-Force-directedGraph">
+
+
+<div class="figure">
+<p><img src="./image/dForceGraph.png" alt="dForceGraph.png" />
+</p>
+<p><span class="figure-number">Figure 13:</span> Force-directed graph</p>
+</div>
+
+<p>
+Format 2&#x2013;4 columns:
+</p>
+<ol class="org-ol">
+<li>ID of source. Datatype: any.
+</li>
+<li>ID of target. Datatype: any.
+</li>
+<li>A value which determines the size of the node. Datatype: number, must be positive.
+</li>
+<li>A value which determines the colour of the node. Datatype: any.
+</li>
+</ol>
+
+<p>
+This chart type function is written using the <a href="http://mbostock.github.com/d3/">D3</a> JavaScript
+library. There are tons of possibilities for formatting the graph
+with this library, but only a few available through
+Sgvizler.
+</p>
+
+<p>
+Chart options:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">directed</td>
+<td class="left">false</td>
+</tr>
+
+<tr>
+<td class="left">noderadius</td>
+<td class="left">0.5</td>
+</tr>
+
+<tr>
+<td class="left">nodefontsize</td>
+<td class="left">"10px"</td>
+</tr>
+
+<tr>
+<td class="left">nodeheight</td>
+<td class="left">20</td>
+</tr>
+
+<tr>
+<td class="left">nodestrokewidth</td>
+<td class="left">"1px"</td>
+</tr>
+
+<tr>
+<td class="left">nodecornerradius</td>
+<td class="left">"1px"</td>
+</tr>
+
+<tr>
+<td class="left">nodepadding</td>
+<td class="left">7</td>
+</tr>
+
+<tr>
+<td class="left">nodecolor</td>
+<td class="left">"green"</td>
+</tr>
+
+<tr>
+<td class="left">edgestroke</td>
+<td class="left">"blue"</td>
+</tr>
+
+<tr>
+<td class="left">edgefill</td>
+<td class="left">"blue"</td>
+</tr>
+
+<tr>
+<td class="left">edgestrokewidth</td>
+<td class="left">1</td>
+</tr>
+
+<tr>
+<td class="left">edgefontsize</td>
+<td class="left">"10px"</td>
+</tr>
+
+<tr>
+<td class="left">edgeseparator</td>
+<td class="left">", "</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-Graph" class="outline-4">
+<h4 id="Graph"><a id="sec-4-1-18" name="sec-4-1-18"></a>Graph</h4>
+<div class="outline-text-4" id="text-Graph">
+
+
+<div class="figure">
+<p><img src="./image/rdGraph.png" alt="rdGraph.png" />
+</p>
+<p><span class="figure-number">Figure 14:</span> Graph</p>
+</div>
+
+<p>
+Format 4&#x2013;7 columns:
+</p>
+<ol class="org-ol">
+<li>ID of source. Datatype: any, should be a URL.
+</li>
+<li>Label of source.
+</li>
+<li>ID of target. Datatype: any, should be a URL.
+</li>
+<li>Label of target.
+</li>
+<li>Label of edge between source and target. Multiple edges between
+same source and target are concatenated.
+</li>
+<li>Colour of source node.
+</li>
+<li>Colour of target node.
+</li>
+</ol>
+
+<p>
+Chart options:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Default value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">noderadius</td>
+<td class="left">0.5</td>
+</tr>
+
+<tr>
+<td class="left">nodefontsize</td>
+<td class="left">"10px"</td>
+</tr>
+
+<tr>
+<td class="left">nodeheight</td>
+<td class="left">20</td>
+</tr>
+
+<tr>
+<td class="left">nodestrokewidth</td>
+<td class="left">"1px"</td>
+</tr>
+
+<tr>
+<td class="left">directed</td>
+<td class="left">false</td>
+</tr>
+
+<tr>
+<td class="left">nodecornerradius</td>
+<td class="left">"1px"</td>
+</tr>
+
+<tr>
+<td class="left">nodepadding</td>
+<td class="left">7</td>
+</tr>
+
+<tr>
+<td class="left">nodecolor</td>
+<td class="left">"green"</td>
+</tr>
+
+<tr>
+<td class="left">edgestroke</td>
+<td class="left">"blue"</td>
+</tr>
+
+<tr>
+<td class="left">edgefill</td>
+<td class="left">"blue"</td>
+</tr>
+
+<tr>
+<td class="left">edgestrokewidth</td>
+<td class="left">1</td>
+</tr>
+
+<tr>
+<td class="left">edgefontsize</td>
+<td class="left">"10px"</td>
+</tr>
+
+<tr>
+<td class="left">edgeseparator</td>
+<td class="left">", "</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-List" class="outline-4">
+<h4 id="List"><a id="sec-4-1-19" name="sec-4-1-19"></a>List</h4>
+<div class="outline-text-4" id="text-List">
+
+
+<div class="figure">
+<p><img src="./image/sList.png" alt="sList.png" />
+</p>
+<p><span class="figure-number">Figure 15:</span> List</p>
+</div>
+
+<p>
+This is a custom-made function which produces a simple html
+list. It can be either numbered or bullets.
+</p>
+
+<p>
+Format is any number of columns. All columns are treated as text.
+</p>
+
+<p>
+Chart options:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Default</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><code>list</code></td>
+<td class="left"><code>ul</code></td>
+<td class="left">Specifies the list type, should be either <code>ul</code> (unordered/bullets) or <code>ol</code> (ordered/numbered).</td>
+</tr>
+
+<tr>
+<td class="left"><code>cellSep</code></td>
+<td class="left">", "</td>
+<td class="left">The glue between cells in each row. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>rowPrefix</code></td>
+<td class="left">(empty string)</td>
+<td class="left">String to prefix each row with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>rowPostfix</code></td>
+<td class="left">(empty string)</td>
+<td class="left">String to postfix each row with. Can be html.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+<div id="outline-container-DefinitionList" class="outline-4">
+<h4 id="DefinitionList"><a id="sec-4-1-20" name="sec-4-1-20"></a>Definition List</h4>
+<div class="outline-text-4" id="text-DefinitionList">
+
+
+<div class="figure">
+<p><img src="./image/sDefList.png" alt="sDefList.png" />
+</p>
+<p><span class="figure-number">Figure 16:</span> Definition list</p>
+</div>
+
+<p>
+Similar to List, but creates a html definition list.
+</p>
+
+<p>
+Format two or more columns. All columns are treated as text. First
+column contains the terms to be defined, the rest contains the
+definition.
+</p>
+
+<p>
+Chart options:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Default</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><code>cellSep</code></td>
+<td class="left">", "</td>
+<td class="left">The glue between cells in each row. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>termPrefix</code></td>
+<td class="left">(empty string)</td>
+<td class="left">String to prefix each term with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>termPostfix</code></td>
+<td class="left"><code>:</code></td>
+<td class="left">String to postfix each row with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>definitionPrefix</code></td>
+<td class="left">(empty string)</td>
+<td class="left">String to prefix each definition with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>definitionPostfix</code></td>
+<td class="left">(empty string)</td>
+<td class="left">String to postfix each definition with. Can be html.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-Text" class="outline-4">
+<h4 id="Text"><a id="sec-4-1-21" name="sec-4-1-21"></a>Text</h4>
+<div class="outline-text-4" id="text-Text">
+
+
+<div class="figure">
+<p><img src="./image/sText.png" alt="sText.png" />
+</p>
+<p><span class="figure-number">Figure 17:</span> Text</p>
+</div>
+
+<p>
+A generic text producer.
+</p>
+
+<p>
+Any number of columns. The default treats the results as a block of
+text, each cell is a sequence of words, each row a paragraph.
+</p>
+
+<p>
+Chart options:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="left">Default</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left"><code>cellSep</code></td>
+<td class="left">", "</td>
+<td class="left">The glue between cells in each row. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>cellPrefix</code></td>
+<td class="left">(empty string)</td>
+<td class="left">String to prefix each cell with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>cellPostfix</code></td>
+<td class="left">(empty string)</td>
+<td class="left">String to postfix each cell with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>rowPrefix</code></td>
+<td class="left"><code>&lt;p&gt;</code></td>
+<td class="left">String to prefix each row with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>rowPostfix</code></td>
+<td class="left"><code>&lt;/p&gt;</code></td>
+<td class="left">String to postfix each row with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>resultsPrefix</code></td>
+<td class="left"><code>&lt;div&gt;</code></td>
+<td class="left">String to prefix the whole results with. Can be html.</td>
+</tr>
+
+<tr>
+<td class="left"><code>resultsPostfix</code></td>
+<td class="left"><code>&lt;/div&gt;</code></td>
+<td class="left">String to postfix the whole results with. Can be html.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-datatables" class="outline-2">
+<h2 id="datatables"><a id="sec-5" name="sec-5"></a>Datatables</h2>
+<div class="outline-text-2" id="text-datatables">
+
+<p>
+It is possible to manipulate the data collected from the endpoint
+before is it passed on to the visualisation function. This can come
+in handy when certain functions are too complex or cumbersome to
+formulate as a SPARQL query. These functions takes as input and
+returns an object of type <a href="https://developers.google.com/chart/interactive/docs/reference#DataTable">google.visualisation.DataTable</a>, and are
+applied after the query results have been parsed into a datatable
+and before the datatable is sent to the visualization function.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">Example</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+A simple example of such a function is
+<code>sgvizler.visualization.prefixify</code>, which replaces all namespaces
+with a prefix, using the <code>namespace.prefixify</code> function available in
+the <a href="./doc/0.6/classes/sgvizler.namespace.html">sgvizler.namespace</a> object.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js">        <span style="color: #ff7f24;">/** </span>
+<span style="color: #ff7f24;">         * Walks through all cells of columns with datatype string and</span>
+<span style="color: #ff7f24;">         * runs prefixify, which replaces namespace with its prefix.</span>
+<span style="color: #ff7f24;">         *</span>
+<span style="color: #ff7f24;">         * @method prefixify</span>
+<span style="color: #ff7f24;">         * @public</span>
+<span style="color: #ff7f24;">         * @param {google.visualization.DataTable} data</span>
+<span style="color: #ff7f24;">         * @return {google.visualization.DataTable}</span>
+<span style="color: #ff7f24;">         * @since 0.6.0</span>
+<span style="color: #ff7f24;">         */</span>
+        DT.prefixify = datatables.add(modST, <span style="color: #ffa07a;">'prefixify'</span>, <span style="color: #00ffff;">function</span> (<span style="color: #eedd82;">dataTable</span>) {
+            <span style="color: #00ffff;">var</span> <span style="color: #eedd82;">c</span>, <span style="color: #eedd82;">clen</span> = dataTable.getNumberOfColumns(),
+                r, rlen = dataTable.getNumberOfRows();
+
+            <span style="color: #00ffff;">for</span> (c = 0; c &lt; clen; c += 1) {
+                <span style="color: #00ffff;">if</span> (dataTable.getColumnType(c) === <span style="color: #ffa07a;">'string'</span>) {
+                    <span style="color: #00ffff;">for</span> (r = 0; r &lt; rlen; r += 1) {
+                        dataTable.setValue(r, c,
+                            namespace.prefixify(dataTable.getValue(r, c))
+                            );
+                    }
+                }
+            }
+            <span style="color: #00ffff;">return</span> dataTable;
+        });
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-user-defined-functions" class="outline-2">
+<h2 id="user-defined-functions"><a id="sec-6" name="sec-6"></a>Extending</h2>
+<div class="outline-text-2" id="text-user-defined-functions">
+
+<p>
+Sgvizler is built to be extended with user-defined functions.
+</p>
+
+<p>
+To create your own visualisation or datatable function use the
+function <code>sgvizler.chartsAdd</code> or <code>sgvizler.datatablesAdd</code>, see the
+<a href="./doc/0.6/classes/sgvizler.html">documentation</a> for details. These functions have
+has four input parameters:
+</p>
+
+<dl class="org-dl">
+<dt> <code>module</code> </dt><dd>The javascript namespace to where the function to be
+created belongs, e.g., <code>MyOwnNamespace</code>
+</dd>
+<dt> <code>name</code> </dt><dd>The name of the function, e.g., <code>HelloWorld</code>
+</dd>
+<dt> <code>func</code> </dt><dd>The function, i.e., the function that does all the
+work. For <code>chartsAdd</code>, this function should take two
+arguments: <code>function (datatable, chartOpt)</code>, where
+<code>data</code> is a Google DataTable object and <code>chartOpt</code> is an
+object of options for the chart function.  For
+<code>datatablesAdd</code> the function must take a single argument
+of type <code>google.visualization.DataTable</code>, as explained
+in <a href="#datatables">Datatables</a>.
+</dd>
+<dt> <code>dependencies</code> </dt><dd>An object of dependencies that function
+requires, typically external javascript
+libraries. Each attribute name of the object
+must be a function name that is contained in the
+javascript to be loaded.
+</dd>
+</dl>
+</div>
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">Example</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+This is a simple (and useless) Hello World example, which displays
+a table where all cells contain as default the value <code>Hello World</code>,
+i.e., <i>all</i> values are replaced with this value. The default value
+may be changed with the option <code>word</code>.
+</p>
+
+<p>
+More real examples are found in src/visualization/.
+</p>
+</div>
+
+<div id="outline-container-sec-6-1-1" class="outline-4">
+<h4 id="sec-6-1-1">Chart function</h4>
+<div class="outline-text-4" id="text-6-1-1">
+<div class="org-src-container">
+
+<pre class="src src-js" id="MyOwnNamespace.HelloWorld"><span style="color: #00ffff;">var</span> <span style="color: #eedd82;">MyOwnNamespace</span> = {};
+
+MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
+    <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">1. arg: module.</span>
+    <span style="color: #ffa07a;">"MyOwnNamespace"</span>,
+    <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">2. arg: function name.</span>
+    <span style="color: #ffa07a;">"HelloWorld"</span>,
+    <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">3. arg: visualisation function.</span>
+    <span style="color: #00ffff;">function</span> (<span style="color: #eedd82;">datatable</span>, <span style="color: #eedd82;">chartOptions</span>) {
+            <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">collect from numbers from the datatable:</span>
+        <span style="color: #00ffff;">var</span> <span style="color: #eedd82;">c</span>, <span style="color: #eedd82;">noColumns</span> = datatable.getNumberOfColumns(),
+            r, noRows    = datatable.getNumberOfRows(),
+            <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">set default values for chart options</span>
+            opt = $.extend({ word: <span style="color: #ffa07a;">'Hello World'</span> }, chartOptions),
+            tablecontents = <span style="color: #ffa07a;">""</span>;
+
+        <span style="color: #00ffff;">for</span> (r = 0; r &lt; noRows; r += 1) {
+            tablecontents += <span style="color: #ffa07a;">'&lt;tr&gt;'</span>;
+            <span style="color: #00ffff;">for</span> (c = 0; c &lt; noColumns; c += 1) {
+                tablecontents += <span style="color: #ffa07a;">'&lt;td&gt;'</span> + opt.word + <span style="color: #ffa07a;">'&lt;/td&gt;'</span>;
+            }
+            tablecontents += <span style="color: #ffa07a;">'&lt;/tr&gt;'</span>;
+        }
+
+        $(<span style="color: #7fffd4;">this</span>.container)
+            .empty()
+            .html(tablecontents);
+
+        <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">Using an external library, loaded by the dependencies (arg. 4)</span>
+        <span style="color: #00ffff;">new</span> <span style="color: #98fb98;">Tablesort</span>(<span style="color: #7fffd4;">this</span>.container);
+    },
+    <span style="color: #ff7f24;">// </span><span style="color: #ff7f24;">4. arg: dependencies. 'Tablesort' is the function we need.</span>
+    { Tablesort: <span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/tablesort/1.6.1/tablesort.min.js"</span> }
+);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-6-1-2" class="outline-4">
+<h4 id="sec-6-1-2">Result</h4>
+<div class="outline-text-4" id="text-6-1-2">
+<p>
+With the function MyOwnNamespace.HelloWorld defined as above, the
+result of the following HTML can be found in
+<a href="./example/hello-world.html">./example/hello-world.html</a>.  Note that we change the default value
+in the options attribute to "Hi World".
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-js" id="sgvizler-hello-world-example">&lt;table id=<span style="color: #ffa07a;">"example"</span> style=<span style="color: #ffa07a;">"border: 1px solid brown;"</span>
+     data-sgvizler-endpoint=<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>
+     data-sgvizler-query=<span style="color: #ffa07a;">"SELECT * { ?s ?p ?o, ?o2 } LIMIT 6"</span>
+     data-sgvizler-chart=<span style="color: #ffa07a;">"MyOwnNamespace.HelloWorld"</span>
+     data-sgvizler-chart-options=<span style="color: #ffa07a;">"word=Hi World"</span>&gt;
+&lt;/table&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-screenshots" class="outline-2">
+<h2 id="screenshots"><a id="sec-7" name="sec-7"></a>Screenshots</h2>
+<div class="outline-text-2" id="text-screenshots">
+
+<p>
+Samples of many of the chart types and renderings that Sgvizler can
+produce. The caption gives the function name. Click the caption for
+a larger image.
+</p>
+
+
+<div class="figure">
+<p><img src="./image/gAreaChart.png" alt="gAreaChart.png" />
+</p>
+<p><span class="figure-number">Figure 18:</span> <a href="./image/gAreaChart.png">google.visualization.AreaChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gBarChart.png" alt="gBarChart.png" />
+</p>
+<p><span class="figure-number">Figure 19:</span> <a href="./image/gBarChart.png">google.visualization.BarChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gBubbleChart.png" alt="gBubbleChart.png" />
+</p>
+<p><span class="figure-number">Figure 20:</span> <a href="./image/gBubbleChart.png">google.visualization.BubbleChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gGauge.png" alt="gGauge.png" />
+</p>
+<p><span class="figure-number">Figure 21:</span> <a href="./image/gGauge.png">google.visualization.Gauge</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gGeoChart.png" alt="gGeoChart.png" />
+</p>
+<p><span class="figure-number">Figure 22:</span> <a href="./image/gGeoChart.png">google.visualization.GeoChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gGeoMap.png" alt="gGeoMap.png" />
+</p>
+<p><span class="figure-number">Figure 23:</span> <a href="./image/gGeoMap.png">google.visualization.GeoMap</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gLineChart.png" alt="gLineChart.png" />
+</p>
+<p><span class="figure-number">Figure 24:</span> <a href="./image/gLineChart.png">google.visualization.LineChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gMotionChart.png" alt="gMotionChart.png" />
+</p>
+<p><span class="figure-number">Figure 25:</span> <a href="./image/gMotionChart.png">google.visualization.MotionChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gOrgChart.png" alt="gOrgChart.png" />
+</p>
+<p><span class="figure-number">Figure 26:</span> <a href="./image/gOrgChart.png">google.visualization.OrgChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gPieChart.png" alt="gPieChart.png" />
+</p>
+<p><span class="figure-number">Figure 27:</span> <a href="./image/gPieChart.png">google.visualization.PieChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gScatterChart.png" alt="gScatterChart.png" />
+</p>
+<p><span class="figure-number">Figure 28:</span> <a href="./image/gScatterChart.png">google.visualization.ScatterChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gSparkline.png" alt="gSparkline.png" />
+</p>
+<p><span class="figure-number">Figure 29:</span> <a href="./image/gSparkline.png">google.visualization.ImageSparkLine</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gSteppedAreaChart.png" alt="gSteppedAreaChart.png" />
+</p>
+<p><span class="figure-number">Figure 30:</span> <a href="./image/gSteppedAreaChart.png">google.visualization.SteppedAreaChart</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gTable.png" alt="gTable.png" />
+</p>
+<p><span class="figure-number">Figure 31:</span> <a href="./image/gTable.png">google.visualization.Table</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gTimeline.png" alt="gTimeline.png" />
+</p>
+<p><span class="figure-number">Figure 32:</span> <a href="./image/gTimeline.png">google.visualization.AnnotatedTimeLine</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/gTreeMap.png" alt="gTreeMap.png" />
+</p>
+<p><span class="figure-number">Figure 33:</span> <a href="./image/gTreeMap.png">google.visualization.TreeMap</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/sDefList.png" alt="sDefList.png" />
+</p>
+<p><span class="figure-number">Figure 34:</span> <a href="./image/sDefList.png">sgvizler.visualization.DefList</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/sList.png" alt="sList.png" />
+</p>
+<p><span class="figure-number">Figure 35:</span> <a href="./image/sList.png">sgvizler.visualization.List</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/sMap.png" alt="sMap.png" />
+</p>
+<p><span class="figure-number">Figure 36:</span> <a href="./image/sMap.png">sgvizler.visualization.Map</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/sText.png" alt="sText.png" />
+</p>
+<p><span class="figure-number">Figure 37:</span> <a href="./image/sText.png">sgvizler.visualization.Text</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/dForceGraph.png" alt="dForceGraph.png" />
+</p>
+<p><span class="figure-number">Figure 38:</span> <a href="./image/dForceGraph.png">sgvizler.visualization.D3ForceGraph</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/rdGraph.png" alt="rdGraph.png" />
+</p>
+<p><span class="figure-number">Figure 39:</span> <a href="./image/rdGraph.png">sgvizler.visualization.DraculaGraph</a></p>
+</div>
+
+<div class="figure">
+<p><img src="./image/sMapWKT.png" alt="sMapWKT.png" />
+</p>
+<p><span class="figure-number">Figure 40:</span> <a href="./image/sMapWKT.png">sgvizler.visualization.MapWKT</a></p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-download" class="outline-2">
+<h2 id="download"><a id="sec-8" name="sec-8"></a>Downloads</h2>
+<div class="outline-text-2" id="text-download">
+
+<p>
+The downloads contain "compiled" and minified library, source code,
+documentation, tests, and examples.
+</p>
+
+<ul class="org-ul">
+<li><a href="./download/0.6/sgvizler-0.6.0.zip">Version 0.6.0</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-links" class="outline-2">
+<h2 id="links"><a id="sec-9" name="sec-9"></a>Links</h2>
+<div class="outline-text-2" id="text-links">
+</div>
+
+<div id="outline-container-sec-9-1" class="outline-3">
+<h3 id="sec-9-1">Sgvizler at other sites</h3>
+<div class="outline-text-3" id="text-9-1">
+<ul class="org-ul">
+<li><a href="http://github.com/mgskjaeveland/sgvizler">Sgvizler on github</a>
+</li>
+<li><a href="http://www.w3.org/2001/sw/wiki/Sgvizler">Sgvizler's page</a> on the Semantic Web Standards wiki.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-9-2" class="outline-3">
+<h3 id="sec-9-2">Sites using Sgvizler</h3>
+<div class="outline-text-3" id="text-9-2">
+<ul class="org-ul">
+<li><a href="http://www.slideshare.net/anjeve/visualizing-web-data-query-results">Visualizing Web Data Query Results WWW2012 tutorial</a>
+</li>
+<li><a href="http://sws.ifi.uio.no/sgvizler/npd/">Linked Open NPD FactPages</a>. <a href="http://sws.ifi.uio.no/project/npd/">Project homepage</a>.
+</li>
+<li><a href="http://sws.ifi.uio.no/sgvizler/gulliste/">Byantikvarens gule liste</a>. <a href="http://sws.ifi.uio.no/gulside/">Project homepage</a> in Norwegian.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-9-3" class="outline-3">
+<h3 id="sec-9-3">Other SPARQL visualisers</h3>
+<div class="outline-text-3" id="text-9-3">
+<p>
+Links to other folks who do something similar:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.jenitennison.com/blog/node/113">Jeni Tennison</a> describes how to convert the SPARQL XML results with
+XSLT to the format that the Google Visualization ''Query'' object
+is able to read.
+</li>
+<li><a href="http://data-gov.tw.rpi.edu/wiki/How_to_render_SPARQL_results_using_Google_Visualization_API">The Data-gov Wiki</a> seems to use exactly this (i.e. the bullet
+above) approach.
+</li>
+<li><a href="http://km.aifb.kit.edu/sites/spark/">Spark</a> "is a !JavaScript library that allows the simple integration
+of data from all over the Web in any HTML page, using a rich set
+of visualisations."
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-faq" class="outline-2">
+<h2 id="faq"><a id="sec-10" name="sec-10"></a>FAQ</h2>
+<div class="outline-text-2" id="text-faq">
+
+<p>
+See <a href="./FAQ.html">FAQ</a>. 
+</p>
+</div>
+</div>
+<div id="outline-container-contact" class="outline-2">
+<h2 id="contact"><a id="sec-11" name="sec-11"></a>Contact</h2>
+<div class="outline-text-2" id="text-contact">
+
+<p>
+If your reason for contact relates to a running instance of
+Sgvizler, please provide a link to the page and explain the steps
+necessary to reproduce the situation that the question is about.
+</p>
+
+<p>
+For bugs, suggestions/improvements, etc., file an issue at github:
+<a href="https://github.com/mgskjaeveland/sgvizler/issues">https://github.com/mgskjaeveland/sgvizler/issues</a>
+</p>
+
+<p>
+If you have a question which does not fit the format of an issue,
+please use the mailing list <code>sgvizler@list.data2000.no</code>. Only
+members of the list can post messages; to become a member, go here:
+<a href="http://list.data2000.no/listinfo.cgi/sgvizler-data2000.no">http://list.data2000.no/listinfo.cgi/sgvizler-data2000.no</a>. The
+mailinglist has an open archive:
+<a href="http://list.data2000.no/pipermail/sgvizler-data2000.no/">http://list.data2000.no/pipermail/sgvizler-data2000.no/</a>
+</p>
+
+<p>
+To contact the developer of Sgvizler directly, use
+<code>m.g.skjaeveland@gmail.com</code>, but please only when it is not possible
+to use the other channels.
+</p>
+</div>
+</div>
+<div id="outline-container-examples" class="outline-2">
+<h2 id="examples"><a id="sec-12" name="sec-12"></a>Code</h2>
+<div class="outline-text-2" id="text-examples">
+
+<p>
+This section contains the complete listings of the examples found in
+<a href="./example/">./example/</a>.
+</p>
+</div>
+
+<div id="outline-container-sec-12-1" class="outline-3">
+<h3 id="sec-12-1"><code>quick-start.html</code></h3>
+<div class="outline-text-3" id="text-12-1">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #87cefa;">html</span>&gt;
+  &lt;<span style="color: #87cefa;">head</span>&gt;
+    &lt;<span style="color: #87cefa;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">MWE</span>&lt;/<span style="color: #87cefa;">title</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"https://www.google.com/jsapi"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span>&gt;
+      $(document).ready(
+          function (){ sgvizler.containerDrawAll(); }
+      );
+    &lt;/<span style="color: #87cefa;">script</span>&gt;
+  &lt;/<span style="color: #87cefa;">head</span>&gt;
+  &lt;<span style="color: #87cefa;">body</span>&gt;
+    &lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"example"</span>
+         <span style="color: #eedd82;">data-sgvizler-endpoint</span>=<span style="color: #ffa07a;">"http://sws.ifi.uio.no/sparql/npd"</span>
+         <span style="color: #eedd82;">data-sgvizler-query</span>=<span style="color: #ffa07a;">"SELECT ?class (count(?instance) AS ?noOfInstances)</span>
+<span style="color: #ffa07a;">                            WHERE{ ?instance a ?class }</span>
+<span style="color: #ffa07a;">                            GROUP BY ?class</span>
+<span style="color: #ffa07a;">                            ORDER BY ?class"</span>
+         <span style="color: #eedd82;">data-sgvizler-chart</span>=<span style="color: #ffa07a;">"google.visualization.PieChart"</span>
+         <span style="color: #eedd82;">style</span>=<span style="color: #ffa07a;">"width:800px; height:400px;"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+  &lt;/<span style="color: #87cefa;">body</span>&gt;
+&lt;/<span style="color: #87cefa;">html</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12-2" class="outline-3">
+<h3 id="sec-12-2"><code>hello-world.html</code></h3>
+<div class="outline-text-3" id="text-12-2">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #87cefa;">html</span>&gt;
+  &lt;<span style="color: #87cefa;">head</span>&gt;
+    &lt;<span style="color: #87cefa;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">MWE</span>&lt;/<span style="color: #87cefa;">title</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"https://www.google.com/jsapi"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span>&gt;
+      var MyOwnNamespace = {};
+      
+      MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
+          // 1. arg: module.
+          <span style="color: #ffa07a;">"MyOwnNamespace"</span>,
+          // 2. arg: function name.
+          <span style="color: #ffa07a;">"HelloWorld"</span>,
+          // 3. arg: visualisation function.
+          function (datatable, chartOptions) {
+            // collect from numbers from the datatable:
+        var c, noColumns = datatable.getNumberOfColumns(),
+            r, noRows    = datatable.getNumberOfRows(),
+            // set default values for chart options
+            opt = $.extend({ word: 'Hello World' }, chartOptions),
+            tablecontents = <span style="color: #ffa07a;">""</span>;
+      
+        for (r = 0; r &lt; noRows; r += 1) {
+            tablecontents += '&lt;<span style="color: #87cefa;">tr</span>&gt;';
+            for (c = 0; c &lt; noColumns; c += 1) {
+                tablecontents += '&lt;<span style="color: #87cefa;">td</span>&gt;' + opt.word + '&lt;/<span style="color: #87cefa;">td</span>&gt;';
+            }
+            tablecontents += '&lt;/<span style="color: #87cefa;">tr</span>&gt;';
+        }
+      
+        $(this.container)
+            .empty()
+            .html(tablecontents);
+      
+        // Using an external library, loaded by the dependencies (arg. 4)
+        new Tablesort(this.container);
+          },
+          // 4. arg: dependencies. 'Tablesort' is the function we need.
+          { Tablesort: <span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/tablesort/1.6.1/tablesort.min.js"</span> }
+      );
+      $(document).ready(
+          function (){ sgvizler.containerDrawAll(); }
+      );
+    &lt;/<span style="color: #87cefa;">script</span>&gt;
+  &lt;/<span style="color: #87cefa;">head</span>&gt;
+  &lt;<span style="color: #87cefa;">body</span>&gt;
+  &lt;<span style="color: #87cefa;">table</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"example"</span> <span style="color: #eedd82;">style</span>=<span style="color: #ffa07a;">"border: 1px solid brown;"</span>
+       <span style="color: #eedd82;">data-sgvizler-endpoint</span>=<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>
+       <span style="color: #eedd82;">data-sgvizler-query</span>=<span style="color: #ffa07a;">"SELECT * { ?s ?p ?o, ?o2 } LIMIT 6"</span>
+       <span style="color: #eedd82;">data-sgvizler-chart</span>=<span style="color: #ffa07a;">"MyOwnNamespace.HelloWorld"</span>
+       <span style="color: #eedd82;">data-sgvizler-chart-options</span>=<span style="color: #ffa07a;">"word=Hi World"</span>&gt;
+  &lt;/<span style="color: #87cefa;">table</span>&gt;
+  &lt;/<span style="color: #87cefa;">body</span>&gt;
+&lt;/<span style="color: #87cefa;">html</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12-3" class="outline-3">
+<h3 id="sec-12-3"><code>usage-container-drawall.html</code></h3>
+<div class="outline-text-3" id="text-12-3">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #87cefa;">html</span>&gt;
+  &lt;<span style="color: #87cefa;">head</span>&gt;
+    &lt;<span style="color: #87cefa;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">MWE</span>&lt;/<span style="color: #87cefa;">title</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"https://www.google.com/jsapi"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span>&gt;
+         sgvizler
+             .prefix(<span style="color: #ffa07a;">"ex"</span>, <span style="color: #ffa07a;">"http://example.org#"</span>)
+             .defaultEndpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+             .defaultQuery(<span style="color: #ffa07a;">"SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7"</span>)
+             .defaultChartFunction(<span style="color: #ffa07a;">"sgvizler.visualization.Table"</span>)
+             .defaultChartWidth(500)
+             .defaultChartHeight(500);
+      $(document).ready(
+          function (){ sgvizler.containerDrawAll(); }
+      );
+    &lt;/<span style="color: #87cefa;">script</span>&gt;
+  &lt;/<span style="color: #87cefa;">head</span>&gt;
+  &lt;<span style="color: #87cefa;">body</span>&gt;
+  &lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"myExample"</span>
+       <span style="color: #eedd82;">data-sgvizler-endpoint</span>=<span style="color: #ffa07a;">"http://sws.ifi.uio.no/sparql/npd"</span>
+       <span style="color: #eedd82;">data-sgvizler-query</span>=<span style="color: #ffa07a;">"SELECT ?class (count(?instance) AS ?noOfInstances)</span>
+<span style="color: #ffa07a;">                          WHERE{ ?instance a ?class }</span>
+<span style="color: #ffa07a;">                          GROUP BY ?class</span>
+<span style="color: #ffa07a;">                          ORDER BY ?class"</span>
+       <span style="color: #eedd82;">data-sgvizler-chart</span>=<span style="color: #ffa07a;">"google.visualization.PieChart"</span>
+       <span style="color: #eedd82;">data-sgvizler-chart-options</span>=<span style="color: #ffa07a;">"is3D=true|title=Number of instances"</span>
+       <span style="color: #eedd82;">style</span>=<span style="color: #ffa07a;">"width:800px; height:400px;"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+  &lt;/<span style="color: #87cefa;">body</span>&gt;
+&lt;/<span style="color: #87cefa;">html</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12-4" class="outline-3">
+<h3 id="sec-12-4"><code>usage-container-drawone.html</code></h3>
+<div class="outline-text-3" id="text-12-4">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #87cefa;">html</span>&gt;
+  &lt;<span style="color: #87cefa;">head</span>&gt;
+    &lt;<span style="color: #87cefa;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">MWE</span>&lt;/<span style="color: #87cefa;">title</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"https://www.google.com/jsapi"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span>&gt;
+         sgvizler
+             .prefix(<span style="color: #ffa07a;">"ex"</span>, <span style="color: #ffa07a;">"http://example.org#"</span>)
+             .defaultEndpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+             .defaultQuery(<span style="color: #ffa07a;">"SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7"</span>)
+             .defaultChartFunction(<span style="color: #ffa07a;">"sgvizler.visualization.Table"</span>)
+             .defaultChartWidth(500)
+             .defaultChartHeight(500);
+      $(document).ready(
+          function (){ sgvizler.containerDraw(<span style="color: #ffa07a;">"myExample"</span>); }
+      );
+    &lt;/<span style="color: #87cefa;">script</span>&gt;
+  &lt;/<span style="color: #87cefa;">head</span>&gt;
+  &lt;<span style="color: #87cefa;">body</span>&gt;
+  &lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"myExample"</span>
+       <span style="color: #eedd82;">data-sgvizler-endpoint</span>=<span style="color: #ffa07a;">"http://sws.ifi.uio.no/sparql/npd"</span>
+       <span style="color: #eedd82;">data-sgvizler-query</span>=<span style="color: #ffa07a;">"SELECT ?class (count(?instance) AS ?noOfInstances)</span>
+<span style="color: #ffa07a;">                          WHERE{ ?instance a ?class }</span>
+<span style="color: #ffa07a;">                          GROUP BY ?class</span>
+<span style="color: #ffa07a;">                          ORDER BY ?class"</span>
+       <span style="color: #eedd82;">data-sgvizler-chart</span>=<span style="color: #ffa07a;">"google.visualization.PieChart"</span>
+       <span style="color: #eedd82;">data-sgvizler-chart-options</span>=<span style="color: #ffa07a;">"is3D=true|title=Number of instances"</span>
+       <span style="color: #eedd82;">style</span>=<span style="color: #ffa07a;">"width:800px; height:400px;"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+  &lt;/<span style="color: #87cefa;">body</span>&gt;
+&lt;/<span style="color: #87cefa;">html</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12-5" class="outline-3">
+<h3 id="sec-12-5"><code>usage-query-form.html</code></h3>
+<div class="outline-text-3" id="text-12-5">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #87cefa;">html</span>&gt;
+  &lt;<span style="color: #87cefa;">head</span>&gt;
+    &lt;<span style="color: #87cefa;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">MWE</span>&lt;/<span style="color: #87cefa;">title</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"https://www.google.com/jsapi"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span>&gt;
+         sgvizler
+             .prefix(<span style="color: #ffa07a;">"ex"</span>, <span style="color: #ffa07a;">"http://example.org#"</span>)
+             .defaultEndpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+             .defaultQuery(<span style="color: #ffa07a;">"SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7"</span>)
+             .defaultChartFunction(<span style="color: #ffa07a;">"sgvizler.visualization.Table"</span>)
+             .defaultChartWidth(500)
+             .defaultChartHeight(500);
+    &lt;/<span style="color: #87cefa;">script</span>&gt;
+  &lt;/<span style="color: #87cefa;">head</span>&gt;
+  &lt;<span style="color: #87cefa;">body</span>&gt;
+  &lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"myForm"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+  &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span>&gt;
+    $(document).ready(function() { sgvizler.formDraw(<span style="color: #ffa07a;">"myForm"</span>); });
+  &lt;/<span style="color: #87cefa;">script</span>&gt;
+  &lt;/<span style="color: #87cefa;">body</span>&gt;
+&lt;/<span style="color: #87cefa;">html</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-12-6" class="outline-3">
+<h3 id="sec-12-6"><code>usage-api.html</code></h3>
+<div class="outline-text-3" id="text-12-6">
+<div class="org-src-container">
+
+<pre class="src src-html">&lt;<span style="color: #87cefa;">html</span>&gt;
+  &lt;<span style="color: #87cefa;">head</span>&gt;
+    &lt;<span style="color: #87cefa;">title</span>&gt;<span style="font-weight: bold; text-decoration: underline;">MWE</span>&lt;/<span style="color: #87cefa;">title</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.0/jquery.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"https://www.google.com/jsapi"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span> <span style="color: #eedd82;">type</span>=<span style="color: #ffa07a;">"text/javascript"</span> <span style="color: #eedd82;">src</span>=<span style="color: #ffa07a;">"http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"</span>&gt;&lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span>&gt;
+         sgvizler
+             .prefix(<span style="color: #ffa07a;">"ex"</span>, <span style="color: #ffa07a;">"http://example.org#"</span>)
+             .defaultEndpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+             .defaultQuery(<span style="color: #ffa07a;">"SELECT * { ?a ?b ?c, ?d, ?e } LIMIT 7"</span>)
+             .defaultChartFunction(<span style="color: #ffa07a;">"sgvizler.visualization.Table"</span>)
+             .defaultChartWidth(500)
+             .defaultChartHeight(500);
+    &lt;/<span style="color: #87cefa;">script</span>&gt;
+  &lt;/<span style="color: #87cefa;">head</span>&gt;
+  &lt;<span style="color: #87cefa;">body</span>&gt;
+    &lt;<span style="color: #87cefa;">script</span>&gt;
+    var Q = new sgvizler.Query();                           // Create a Query instance.
+    
+    // Values may also be set in the sgvizler object---but will be
+    // overwritten here.
+    Q.query(<span style="color: #ffa07a;">"SELECT * {?s ?p ?o} LIMIT 10"</span>)
+        .endpointURL(<span style="color: #ffa07a;">"http://dbpedia.org/sparql"</span>)
+        .endpointOutputFormat(<span style="color: #ffa07a;">"json"</span>)                      // Possible values 'xml', 'json', 'jsonp'.
+        .chartFunction(<span style="color: #ffa07a;">"google.visualization.Table"</span>)       // The name of the function to draw the chart.
+        .draw(<span style="color: #ffa07a;">"myElementID"</span>);                              // Draw the chart in the designated HTML element.
+    &lt;/<span style="color: #87cefa;">script</span>&gt;
+    &lt;<span style="color: #87cefa;">div</span> <span style="color: #eedd82;">id</span>=<span style="color: #ffa07a;">"myElementID"</span>&gt;&lt;/<span style="color: #87cefa;">div</span>&gt;
+  &lt;/<span style="color: #87cefa;">body</span>&gt;
+&lt;/<span style="color: #87cefa;">html</span>&gt;
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

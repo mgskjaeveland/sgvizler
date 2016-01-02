@@ -1,0 +1,85 @@
+body {
+    font-family: Arial;
+    margin: 0 auto;
+    padding: 0% 13% 10% 15%;
+}
+
+
+h2 {
+    margin-top: 100px;
+    border-bottom: 1px solid #ccc;
+    clear: both;
+}
+
+
+
+h1.title {
+    font-size: 500%;
+    text-align: center;
+}
+
+div#table-of-contents {
+    position: fixed;
+    top: 20px;
+    right: 10px;
+    background-color: #fff;
+    opacity: 0.8;
+}
+div#text-table-of-contents {
+    font-size: 80%;
+}
+div#table-of-contents h2 {
+    font-size: 100%;
+    border-bottom: 0;
+    margin: 0;
+}
+
+
+th {
+    text-align: left;
+}
+
+td {
+    padding: 1px 6px 2px 6px;
+}
+
+pre.src {
+    color: #eee;
+    background-color: #444;
+}
+
+div#outline-container-charts div.figure {
+    float: right;
+    margin: 0px 5px 0 5px;
+    padding: 0;
+    text-align: center;
+    clear: right;
+}
+
+div#outline-container-charts div.figure img {
+    width: 200px;
+}
+div#outline-container-charts span.figure-number {
+    display: none;
+}
+div#outline-container-charts div.figure p {
+    font-size: 85%;
+}
+
+div#text-screenshots div.figure {
+    float: left;
+    margin: 0px 5px 0 5px;
+    text-align: center;
+}
+
+div#text-screenshots span.figure-number {
+    display: none;
+}
+
+div#text-screenshots div.figure img {
+    width: 200px;
+}
+
+div#text-screenshots div.figure p {
+    font-size: 85%;
+}

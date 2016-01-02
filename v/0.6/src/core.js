@@ -28,11 +28,11 @@
              * @for sgvizler
              * @since 0.6.0
              **/
-            HOMEPAGE = "http://dev.data2000.no/sgvizler/",
+            HOMEPAGE = "http://mgskjaeveland.github.io/sgvizler/",
 
             // global private constants
             LOGOIMAGE = "http://beta.data2000.no/sgvizler/misc/image/mr.sgvizler.png",
-            CHARTSCSS = "http://beta.data2000.no/sgvizler/release/0.6/sgvizler.charts.css";
+            CHARTSCSS = "http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.charts.css";
 
         return {
             VERSION: VERSION,

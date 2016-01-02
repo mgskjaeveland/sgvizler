@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/container.js - Sgvizler</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="http://beta.data2000.no/misc/image/mr.sgvizler.png" title="Sgvizler"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.6.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/sgvizler.html">sgvizler</a></li>
+                                <li><a href="../classes/sgvizler.charts.html">sgvizler.charts</a></li>
+                                <li><a href="../classes/sgvizler.charts.Chart.html">sgvizler.charts.Chart</a></li>
+                                <li><a href="../classes/sgvizler.container.html">sgvizler.container</a></li>
+                                <li><a href="../classes/sgvizler.core.html">sgvizler.core</a></li>
+                                <li><a href="../classes/sgvizler.datatable.html">sgvizler.datatable</a></li>
+                                <li><a href="../classes/sgvizler.datatables.html">sgvizler.datatables</a></li>
+                                <li><a href="../classes/sgvizler.defaults.html">sgvizler.defaults</a></li>
+                                <li><a href="../classes/sgvizler.form.html">sgvizler.form</a></li>
+                                <li><a href="../classes/sgvizler.loader.html">sgvizler.loader</a></li>
+                                <li><a href="../classes/sgvizler.logger.html">sgvizler.logger</a></li>
+                                <li><a href="../classes/sgvizler.namespace.html">sgvizler.namespace</a></li>
+                                <li><a href="../classes/sgvizler.parser.html">sgvizler.parser</a></li>
+                                <li><a href="../classes/sgvizler.Query.html">sgvizler.Query</a></li>
+                                <li><a href="../classes/sgvizler.registry.html">sgvizler.registry</a></li>
+                                <li><a href="../classes/sgvizler.util.html">sgvizler.util</a></li>
+                                <li><a href="../classes/sgvizler.visualization.D3ForceGraph.html">sgvizler.visualization.D3ForceGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DefList.html">sgvizler.visualization.DefList</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DraculaGraph.html">sgvizler.visualization.DraculaGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.List.html">sgvizler.visualization.List</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Map.html">sgvizler.visualization.Map</a></li>
+                                <li><a href="../classes/sgvizler.visualization.MapWKT.html">sgvizler.visualization.MapWKT</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Table.html">sgvizler.visualization.Table</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Text.html">sgvizler.visualization.Text</a></li>
+                                <li><a href="../classes/sgvizler.visualization.util.html">sgvizler.visualization.util</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: src/container.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+
+    /**
+     * Draws charts specified in HTML containers, here we call them
+     * &quot;sgvizler-containers&quot;.
+     *
+     * Example of use: The following sgvizler-container will be
+     * selected by sgvizler due to the use of designated
+     * attributes. The result is a pie chart (draw with
+     * &#x60;google.visualization.PieChart&#x60;) showing the number of instance
+     * per class in the endpoint at
+     * &#x60;http://sws.ifi.uio.no/sparql/ndp&#x60;.
+     *
+     *     &lt;div id=&quot;ex1&quot;
+     *          data-sgvizler-endpoint=&quot;http://sws.ifi.uio.no/sparql/npd&quot;
+     *          data-sgvizler-query=&quot;SELECT ?class (count(?instance) AS ?noOfInstances)
+     *                               WHERE{ ?instance a ?class }
+     *                               GROUP BY ?class
+     *                               ORDER BY ?class&quot;
+     *          data-sgvizler-chart=&quot;google.visualization.PieChart&quot;
+     *          style=&quot;width:800px; height:400px;&quot;&gt;&lt;/div&gt;
+     *
+     * These container must have an id attribute (or else sgvizler
+     * will not know where to put the chart) and a query attribute (or
+     * else the container will be ignored by sgvizler).
+     *
+     * Dependencies:
+     *
+     *  - sgvizler.util
+     *  - sgvizler.loader
+     *  - sgvizler.logger
+     *  - sgvizler.Query
+     *  - jQuery
+     *
+     * @class sgvizler.container
+     * @static
+     */
+
+    S.container = (function () {
+
+        /*global $ */
+
+        // Module dependencies:
+        var util = S.util,
+            loadDependencies = S.loader.loadDependencies,
+            logger = S.logger,
+            Query = S.Query,
+
+            // CONSTANTS
+            /**
+             * The prefix of attributes which values designated for
+             * sgvizler should be given. Currently &#x60;data-sgvizler-&#x60;.
+             *
+             * Note that &#x60;data-&#x60; prefixed attribute names is valid
+             * HTML5.
+             * @property PREFIX
+             * @type string
+             * @final
+             * @private
+             * @since 0.2
+             **/
+            PREFIX = &#x27;data-sgvizler-&#x27;,
+
+            /**
+             * The prefix of attributes which values designated for
+             * sgvizler and which are sent to the chart function
+             * should be given. Currently
+             * &#x60;data-sgvizler-chart-options&#x60;.
+             *
+             * @property PREFIXCHART
+             * @type string
+             * @final
+             * @private
+             * @since 0.2
+             **/
+            PREFIXCHART = PREFIX + &#x27;chart-options&#x27;,
+
+            /**
+             * In attributes where multiple values may be given the
+             * properties VALUEASSIGN and VALUESPILT decides how to
+             * parse the attribute value into multiple name--value
+             * pairs.
+             * @property VALUEASSIGN
+             * @type string
+             * @final
+             * @private
+             * @since 0.2
+             **/
+            VALUEASSIGN = &#x27;=&#x27;,
+
+            /**
+             * In attributes where multiple values may be given the
+             * properties VALUEASSIGN and VALUESPILT decides how to
+             * parse the attribute value into multiple name--value
+             * pairs.
+             *
+             * @property VALUESPILT
+             * @type string
+             * @final
+             * @private
+             * @since 0.2
+             **/
+            VALUESPLIT = &#x27;|&#x27;,
+
+            /**
+             * Collects values designated for sgvizler in the given
+             * element---by element id.
+             *
+             * See also property PREFIX.
+             *
+             * @method getQueryAttributes
+             * @private
+             * @param {string} elementID The ID for which the attributes should be collected.
+             * @return {Object} List of name--value pairs.
+             * @since 0.2
+             **/
+            getQueryAttributes = function (elementID) {
+                var i, len,
+                    queryOpt = {},
+                    elmAttrs = document.getElementById(elementID).attributes;
+                for (i = 0, len = elmAttrs.length; i &lt; len; i += 1) {
+                    if (util.startsWith(elmAttrs[i].name, PREFIX)) {
+                        queryOpt[elmAttrs[i].name.substring(PREFIX.length)] = elmAttrs[i].value;
+                    }
+                }
+                return queryOpt;
+            },
+
+            /**
+             * Collects values designated for sgvizler, and which are
+             * options to the chart function, in the given
+             * element---by element id.
+             *
+             * See also property CHARTPREFIX.
+             *
+             * @method getChartAttributes
+             * @private
+             * @param {string} elementID The ID for which the attributes should be collected.
+             * @return {Object} List of name--value pairs.
+             * @since 0.2
+             **/
+            getChartAttributes = function (elementID) {
+                var i, j, ilen, jlen,
+                    options,
+                    assignment,
+                    path,
+                    o,
+                    chartOpt = {},
+                    attrValue = $(&quot;#&quot; + elementID).attr(PREFIXCHART);
+                if (attrValue !== undefined) {
+                    options = attrValue.split(VALUESPLIT);
+                    for (i = 0, ilen = options.length; i &lt; ilen; i += 1) {
+                        assignment = options[i].split(VALUEASSIGN);
+                        path = assignment[0].split(&quot;.&quot;);
+                        o = chartOpt;
+                        for (j = 0, jlen = path.length - 1; j &lt; jlen; j += 1) {
+                            if (o[path[j]] === undefined) {
+                                o[path[j]] = {};
+                            }
+                            o = o[path[j]];
+                        }
+                        o[path[j]] = assignment[1];
+                    }
+                }
+                // get width and heigth from css. take only numbers.
+                chartOpt.width = /(\d+)/.exec($(&quot;#&quot; + elementID).css(&#x27;width&#x27;))[1];
+                chartOpt.height = /(\d+)/.exec($(&quot;#&quot; + elementID).css(&#x27;height&#x27;))[1];
+                return chartOpt;
+            },
+
+            /**
+             * Finds all sgvizler-containers on the page and loads
+             * their dependencies in one go.
+             * @method loadDependenciesOnPage
+             * @private
+             * @param {Array|string} [strFunctions] Array (or just a
+             * single string) of function names to get in addition to
+             * the functions specifies in sgvizler-containers.
+             * @since 0.6.0
+             **/
+            loadDependenciesOnPage = function (strFunctions) {
+                strFunctions = util.toArray(strFunctions);
+
+                // Collect functions specified in html tags.
+                $(&#x27;[&#x27; + PREFIX + &#x27;chart]&#x27;).each(function () {
+                    strFunctions.push($(this).attr(PREFIX + &quot;chart&quot;));
+                });
+                logger.log(&quot;initializer: loading functions: &quot; + strFunctions);
+                loadDependencies(strFunctions);
+            },
+
+            /**
+             * Draws the sgvizler-containers with the given element id.
+             * @method containerDraw
+             * @public
+             * @for sgvizler
+             * @param {String} elementID
+             * @since 0.6.0
+             **/
+            draw = function (elementID) {
+                var queryOptions = getQueryAttributes(elementID),
+                    chartOptions = getChartAttributes(elementID),
+                    froms = (queryOptions.rdf &amp;&amp; queryOptions.rdf.split(VALUESPLIT)) || [],
+                    query = new Query(queryOptions, chartOptions);
+
+                while (froms.length) {
+                    query.addFrom(froms.pop());
+                }
+
+                logger.log(&quot;drawing id: &quot; + elementID);
+                query.draw(elementID);
+            },
+
+            /**
+             * Draws all sgvizler-containers on page.
+             * @method containerDrawAll
+             * @public
+             * @for sgvizler
+             * @since 0.3
+             **/
+            drawAll = function () {
+                // Load dependencies for charts found on page.
+                loadDependenciesOnPage();
+
+                // Draw all containers with sgvizler query string attribute.
+                $(&#x27;[&#x27; + PREFIX + &#x27;query]&#x27;).each(function () {
+                    draw($(this).attr(&quot;id&quot;));
+                });
+            };
+
+
+         /////////////////////////////////////////
+         // PUBLICs
+
+        return {
+            draw: draw,
+            drawAll: drawAll
+        };
+
+    }());
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
