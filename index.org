@@ -959,6 +959,10 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 
   - [[./download/0.6/sgvizler-0.6.0.zip][Version 0.6.0]]
 
+  Everything is also available at github: http://github.com/mgskjaeveland/sgvizler.
+    
+  The code is released under the MIT licence.
+
 * Links
   :PROPERTIES:
   :CUSTOM_ID: links
@@ -1015,13 +1019,15 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
   To contact the developer of Sgvizler directly, use
   =m.g.skjaeveland@gmail.com=, but please only when it is not possible
   to use the other channels.
-* Code
+
+* MWEs
   :PROPERTIES:
   :CUSTOM_ID: examples
   :END:
 
-  This section contains the complete listings of the examples found in
-  [[./example/]].
+  This section contains the complete listings of some of the examples
+  linked to from this page. These should be possible to run from any
+  webserver.
 
 ** snippets							   :noexport:
 #+NAME: html-head-start
