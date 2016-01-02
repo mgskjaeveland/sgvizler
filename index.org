@@ -959,7 +959,8 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 
   - [[./download/0.6/sgvizler-0.6.0.zip][Version 0.6.0]]
 
-  Everything is also available at github: http://github.com/mgskjaeveland/sgvizler.
+  Everything is also available at github:
+  http://github.com/mgskjaeveland/sgvizler.
     
   The code is released under the MIT licence.
 
