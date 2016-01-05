@@ -1,8 +1,27 @@
 #+TITLE: Sgvizler 0.6
-#+OPTIONS: H:4 num:nil toc:1 ^:nil
+#+OPTIONS: H:4 num:nil toc:nil ^:nil
 #+LANGUAGE: en
 #+OPTIONS: html-postamble:nil
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="sgvizler-www.css" />
+
+#+BEGIN_HTML
+<div id="menu">
+  <div id="quick-links">
+    <ul>
+      <li><a href="./v/0.6/docs/">Docs</a></li>
+      <li><a href="./v/0.6/example/">Examples</a></li>
+      <li><a href="https://github.com/mgskjaeveland/sgvizler">Github</a></li>
+      <li><a href="FAQ.html">FAQ</a></li>
+    </ul>
+  </div>
+#+END_HTML
+#+TOC: headlines 1
+#+BEGIN_HTML
+</div>
+#+END_HTML
+
+  If you want a quick start, download one of the [[#examples]] to your
+  webserver, and start hacking.
 
 * Introduction
   :PROPERTIES:
@@ -72,9 +91,10 @@
   This page describes version 0.6 of Sgvizler. For earlier versions
   consult the old Sgvizler site: http://dev.data2000.no/sgvizler/.
 
-* Setup
+* Setting up Sgvizler
   :PROPERTIES:
   :CUSTOM_ID: setup
+  :ALT_TITLE: Setup
   :END:
 
   To set up Sgvizler on your own site you will need to include a few
@@ -109,12 +129,14 @@
 <script type="text/javascript" src="http://mgskjaeveland.github.io/sgvizler/v/0.6/sgvizler.js"></script>
 #+END_SRC
 
-* Using
+* Using Sgvizler
   :PROPERTIES:
   :CUSTOM_ID: using-sgvizler
+  :ALT_TITLE: Using
   :END:
 
   There are three intended ways to use Sgvizler:
+
   1. Put SPARQL queries directly in HTML containers
   2. Use a HTML form to query SPARQL endpoints
   3. Use Sgvizler's JavaScript API
@@ -145,8 +167,10 @@
        .defaultChartHeight(500);
 #+END_SRC
 
-
 ** 1. Query stored in HTML container
+  :PROPERTIES:
+  :CUSTOM_ID: using-sgvizler-html-container
+  :END:   
 
    Add =<div>= elements, or other suitable HTML containers, and
    include special (HTML5 compatible) =data-sgvizler-= prefixed
@@ -268,6 +292,9 @@ $(document).ready(
 
 
 ** 2. Query Form
+  :PROPERTIES:
+  :CUSTOM_ID: using-sgvizler-query-form
+  :END:
 
    Add an HTML form with input fields for SPARQL query, SPARQL
    endpoint and chart function.  The form closely resembles the query
@@ -290,6 +317,9 @@ $(document).ready(
    [[./example/usage-query-form.html]].
 
 ** 3. Using Sgvizler's API
+   :PROPERTIES:
+   :CUSTOM_ID: using-sgvizler-api
+   :END:
 
    Use the available public functions for the =sgvizler= and =Query=
    object when you need a different configuration than the two
@@ -336,9 +366,10 @@ Q.query("SELECT * {?s ?p ?o} LIMIT 10")
     .getDataTable(mySuccessFunc, myFailFunc);
 #+END_SRC
 
-* Charts
+* Charts: Designing SPARQL queries
   :PROPERTIES:
   :CUSTOM_ID: charts
+  :ALT_TITLE: Charts
   :END:
 
   When designing your SPARQL query for visualisation with Sgvizler the
@@ -776,9 +807,10 @@ Q.query("SELECT * {?s ?p ?o} LIMIT 10")
     | ~resultsPrefix~  | ~<div>~        | String to prefix the whole results with. Can be html.  |
     | ~resultsPostfix~ | ~</div>~       | String to postfix the whole results with. Can be html. |
 
-* Datatables
+* Datatables: Manipulating incoming data
   :PROPERTIES:
   :CUSTOM_ID: datatables
+  :ALT_TITLE: Datatables
   :END:
 
   It is possible to manipulate the data collected from the endpoint
@@ -798,9 +830,10 @@ Q.query("SELECT * {?s ?p ?o} LIMIT 10")
 
 #+INCLUDE: "./v/0.6/src/datatable/prefixify.js" src js
 
-* Extending
+* Extending Sgvizler with user-defined functions
   :PROPERTIES:
   :CUSTOM_ID: user-defined-functions
+  :ALT_TITLE: Extending
   :END:
 
   Sgvizler is built to be extended with user-defined functions.
@@ -992,12 +1025,6 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
   - [[http://km.aifb.kit.edu/sites/spark/][Spark]] "is a !JavaScript library that allows the simple integration
     of data from all over the Web in any HTML page, using a rich set
     of visualisations."
-* FAQ
-  :PROPERTIES:
-  :CUSTOM_ID: faq
-  :END:
-
-  See [[./FAQ.html][FAQ]]. 
 * Contact
   :PROPERTIES:
   :CUSTOM_ID: contact
@@ -1021,14 +1048,15 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
   =m.g.skjaeveland@gmail.com=, but please only when it is not possible
   to use the other channels.
 
-* MWEs
+* Minimal working examples
   :PROPERTIES:
   :CUSTOM_ID: examples
+  :ALT_TITLE: MWEs
   :END:
 
   This section contains the complete listings of some of the examples
-  linked to from this page. These should be possible to run from any
-  webserver.
+  linked to from this page. These should be possible to run as-is from
+  any webserver.
 
 ** snippets							   :noexport:
 #+NAME: html-head-start
@@ -1043,6 +1071,8 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 #+BEGIN_SRC html :exports none
   </head>
   <body>
+    <h1>Sgvizler MWE</h1>
+    <p>Please allow the page to load for a few seconds.</p>
 #+END_SRC
 
 #+NAME: html-footer
@@ -1052,6 +1082,8 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 #+END_SRC
 
 ** ~quick-start.html~
+
+   Go to description: [[#intro]].
 
 #+BEGIN_SRC html :noweb yes :tangle example/quick-start.html
 <<html-head-start>>
@@ -1063,20 +1095,9 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 <<html-footer>>
 #+END_SRC
 
-** ~hello-world.html~
-
-#+BEGIN_SRC html :noweb yes :tangle example/hello-world.html
-<<html-head-start>>
-    <script>
-      <<MyOwnNamespace.HelloWorld>>
-      <<sgvizler-js-drawAll>>
-    </script>
-<<html-head-end>>
-  <<sgvizler-hello-world-example>>
-<<html-footer>>
-#+END_SRC
-
 ** ~usage-container-drawall.html~
+
+   Go to description: [[#using-sgvizler-html-container]].
 
 #+BEGIN_SRC html :noweb yes :tangle example/usage-container-drawall.html
 <<html-head-start>>
@@ -1091,6 +1112,8 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 
 ** ~usage-container-drawone.html~
 
+   Go to description: [[#using-sgvizler-html-container]].
+
 #+BEGIN_SRC html :noweb yes :tangle example/usage-container-drawone.html
 <<html-head-start>>
     <script>
@@ -1104,6 +1127,8 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 
 ** ~usage-query-form.html~
 
+   Go to description: [[#using-sgvizler-query-form]]
+
 #+BEGIN_SRC html :noweb yes :tangle example/usage-query-form.html
 <<html-head-start>>
     <script>
@@ -1116,6 +1141,8 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
 
 ** ~usage-api.html~
 
+   Go to description: [[#using-sgvizler-api]]
+
 #+BEGIN_SRC html :noweb yes :tangle example/usage-api.html
 <<html-head-start>>
     <script>
@@ -1125,3 +1152,18 @@ MyOwnNamespace.HelloWorld = sgvizler.chartsAdd(
     <<sgvizler-api-example>>
 <<html-footer>>
 #+END_SRC
+** ~hello-world.html~
+
+   Go to description: [[#user-defined-functions]].
+
+#+BEGIN_SRC html :noweb yes :tangle example/hello-world.html
+<<html-head-start>>
+    <script>
+      <<MyOwnNamespace.HelloWorld>>
+      <<sgvizler-js-drawAll>>
+    </script>
+<<html-head-end>>
+  <<sgvizler-hello-world-example>>
+<<html-footer>>
+#+END_SRC
+
