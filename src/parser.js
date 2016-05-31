@@ -90,12 +90,12 @@
                 } else if (gdatatype === 'date') {
                     //assume format yyyy-MM-dd
                     newvalue = new Date(value.substr(0, 4),
-                                        value.substr(5, 2),
+                                        parseInt(value.substr(5, 2))-1,
                                         value.substr(8, 2));
                 } else if (gdatatype === 'datetime') {
                     //assume format yyyy-MM-ddZHH:mm:ss
                     newvalue = new Date(value.substr(0, 4),
-                                        value.substr(5, 2),
+                                        parseInt(value.substr(5, 2))-1,
                                         value.substr(8, 2),
                                         value.substr(11, 2),
                                         value.substr(14, 2),
