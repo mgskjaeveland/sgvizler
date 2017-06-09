@@ -4,37 +4,6 @@ Sgvizler is a javascript wrapper for easy visualisation of SPARQL result sets.
 
 See http://mgskjaeveland.github.io/sgvizler/ for how to set up, use, and extend Sgvizler, including documentation, downloads, and examples.
 
-
-How to install Sgvizler :
-
-I) Clone the project from Github :
-
-	"https://github.com/mgskjaeveland/sgvizler.git"
-
-II) Install these programs :
-
-	i) Nodejs : "sudo apt install nodejs-legacy"
-(for Ubuntu 16.04 this installed version is not up to date, to get the last version : https://askubuntu.com/questions/786272/why-does-installing-node-6-x-on-ubuntu-16-04-actually-install-node-4-2-6)
-
-	ii) "npm install -g npm"
-
-	iii) Yuidocjs : "npm -g install yuidocjs."
-
-	iv) "npm install uglify-js -g"
-
-III) Setup :
-
-	i) Type : "yuidoc." at the source of the tree.
-	This will generate a ./out directory
-
-	ii) Being in ./sgvizler, type "make sgvizler.js" 
-	This will create all necessary files thanks to Makefile
-	
-	iii) Finally, type "uglifyjs sgvizler.js -o sgvizler.min.js"
-	To get the minifier version of sgvizler.js
-
-
-
 Add visualisations directly into your webpages like this:
 ```html
 <div id="example"
@@ -48,3 +17,27 @@ Add visualisations directly into your webpages like this:
 ```
 to get charts like this:
 ![pie chart](http://mgskjaeveland.github.io/sgvizler/image/gPieChart.png)
+
+## Installing Sgvizler :
+
+1. Install nodejs and necessary packages :
+
+	i) Nodejs : "sudo apt install nodejs-legacy"
+(for Ubuntu 16.04 this installed version is not up to date, to get the last version : https://askubuntu.com/questions/786272/why-does-installing-node-6-x-on-ubuntu-16-04-actually-install-node-4-2-6)
+
+	ii) "npm install -g npm"
+
+	iii) Yuidocjs : "npm -g install yuidocjs."
+
+	iv) "npm install uglify-js -g"
+
+2. "Compile" with makefile :
+
+	i) Type : "yuidoc." at the source of the tree.
+	This will generate a ./out directory
+
+	ii) Being in ./sgvizler, type "make sgvizler.js" 
+	This will create all necessary files thanks to Makefile
+	
+	iii) Finally, type "uglifyjs sgvizler.js -o sgvizler.min.js"
+	To get the minifier version of sgvizler.js
