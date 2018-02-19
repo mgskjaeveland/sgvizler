@@ -21,7 +21,7 @@
                  */
                 linkify = function (url, arraySyntax) {
                     var prefixed = namespace.prefixify(url),
-                        base = namespace.getBaseURL,
+                        base = namespace.getBaseURL(),
                         href = url, // the hyperlink.
                         link,       // what to click.
                         result;
