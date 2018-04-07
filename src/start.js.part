@@ -1,4 +1,4 @@
-// Sgvizler - https://dev.data2000.no/sgvizler/
+// Sgvizler 0.7 - https://dev.data2000.no/sgvizler/
 // (c) 2011--2013 - Martin G. Skjæveland - MIT license
 
 (function (window, undefined) { // trick: safekeep 'undefined', and minify.
