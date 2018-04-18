@@ -98,5 +98,5 @@ clean:
 all: \
 	$(JS_FILES) \
 	$(JS_FILES:.js=.min.js) \
-	docs \
-	example.html
+	example.html \
+	#docs

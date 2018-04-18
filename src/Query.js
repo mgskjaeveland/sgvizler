@@ -391,26 +391,6 @@
             },
 
             /**
-             * Sets and returns `noOfResults`, i.e., the number of
-             * rows in the query result.
-             * @method getResultRowCount
-             * @private
-             * @param {google.visualization.DataTable} dataTable
-             * @return {Number}
-             * @since 0.5
-             **/
-            getResultRowCount = function (dataTable) {
-                if (noOfResults === undefined) {
-                    if (endpointOutputFormat() === qfXML) {
-                        noOfResults = parser.countXML(dataTable);
-                    } else {
-                        noOfResults = parser.countJSON(dataTable);
-                    }
-                }
-                return noOfResults;
-            },
-
-            /**
              * Converts "raw" query results into Google JSON, using
              * sgvizler.parser.
              * @method getGoogleJSON
@@ -421,12 +401,10 @@
              **/
             getGoogleJSON = function (data) {
                 var gJSON = {};
-                if (getResultRowCount(data)) {
-                    if (endpointOutputFormat() === qfXML) {
-                        gJSON = parser.convertXML(data);
-                    } else {
-                        gJSON = parser.convertJSON(data);
-                    }
+                if (endpointOutputFormat() === qfXML) {
+                    gJSON = parser.getGoogleJsonFromSparqlXml(data);
+                } else {
+                    gJSON = parser.getGoogleJsonFromSparqlJson(data);
                 }
                 return gJSON;
             },
@@ -616,6 +594,7 @@
                         .done(
                             function () {
                                 dataTable = new google.visualization.DataTable(getGoogleJSON(queryResult));
+				noOfResults = dataTable.getNumberOfRows();
                                 if (myDatatableFunction) {
                                     var func = util.getObjectByPath(myDatatableFunction);
                                     dataTable = func(dataTable);
