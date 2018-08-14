@@ -40,6 +40,7 @@
 		var xsdns = namespace.get('xsd'),
 		    table = [];
 		table[xsdns + "float"]    = 'number';
+		table[xsdns + "double"]   = 'number';
 		table[xsdns + "decimal"]  = 'number';
 		table[xsdns + "int"]      = 'number';
 		table[xsdns + "integer"]  = 'number';
