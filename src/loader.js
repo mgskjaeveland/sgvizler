@@ -94,7 +94,7 @@
                         other_params: "sensor=false",
                         callback: function () {
                             loader.resolve();
-                            logger.log("loadGVizScript: google.maps. LOADED: ");
+                            logger.log("loadGMapScript: google.maps. LOADED: ");
                         }
                     };
                 google.load('maps', '3', options);
