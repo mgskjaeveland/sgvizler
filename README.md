@@ -1,3 +1,5 @@
+It has been a while since this project has seen any updates, so it is archived! Feel free to fork and continue the development.
+
 # Sgvizler
 
 Sgvizler is a javascript wrapper for easy visualisation of SPARQL result sets. 
